@@ -1,0 +1,47 @@
+{% unless block.settings.content == 'metafield' %}
+<div class="col-12 accordion product__accordion {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}">
+    <input type="radio" id="{{block.id}}--close" name="{{block.id}}">
+    <label class="accordion__item" {{block.shopify__attrbutes}}>
+        <input type="radio" name="{{block.id}}">
+        <span class="accordion__item--title">{{block.settings.heading}}<label class="collapse" for="{{block.id}}--close"></label></span>
+        <div class="accordion__item--content inherit {% if block.settings.content == 'description' or block.settings.content contains 'page' %}{% endif %}">
+            {%- case block.settings.content %}
+                {% when 'description' %}
+                    {{product.description}}
+                {% when 'reviews' %}
+                    {% if settings.reviewApp == "loox" %}
+                        <div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+                    {% elsif settings.reviewApp == "shopifyReviews" %}
+                        <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+                    {% elsif settings.reviewApp == "alireviews" %}
+                        <div id="shopify-ali-review" product-id="{{ product.id }}"> {{ shop.metafields.review_collector.review_code }} </div>
+                    {% endif %}
+                {% when 'custom' %}
+                    {{block.settings.customContent}}
+                {% when 'page' %}
+                    {% assign page = pages[block.settings.page] %}
+                    {{page.content}}
+                {% when 'productPage' %}
+                    {% assign page = pages[product.handle] %}
+                    {{page.content}}
+            {% endcase %}
+        </div>
+    </label>
+</div>
+{% else %}
+    {% unless block.settings.metafieldNS == blank or block.settings.metafieldKey == blank %}
+        {% assign metafield = product.metafields[block.settings.metafieldNS][block.settings.metafieldKey] %}
+        {% unless metafield == blank %}
+        <div class="col-12 accordion product__accordion {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}">
+            <input type="radio" id="{{block.id}}--close" name="{{block.id}}">
+            <label class="accordion__item" {{block.shopify__attrbutes}}>
+                <input type="radio" name="{{block.id}}">
+                <span class="accordion__item--title">{{block.settings.heading}}<label class="collapse" for="{{block.id}}--close"></label></span>
+                <div class="accordion__item--content inherit">
+                    {{metafield | metafield_tag}}
+                </div>
+            </label>
+        </div>
+        {% endunless %}
+    {% endunless %}
+{% endunless %}

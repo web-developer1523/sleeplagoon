@@ -1,0 +1,391 @@
+<style type="text/css">
+ #s--{{section.id}} .layout__content {
+    padding-left: 12px;
+    padding-right: 12px;
+ }
+
+ #s--{{section.id}}.contact__form--flex .layout__content,
+ #s--{{section.id}}.contact__form--flexreverse .layout__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+ }
+
+ #s--{{section.id}}.contact__form--flexreverse .layout__content {
+    flex-direction: row-reverse;
+}
+ 
+ 
+#s--{{section.id}}.contact__form--flexreverse .contact__form--form,
+#s--{{section.id}}.contact__form--flex .contact__form--form,
+#s--{{section.id}}.contact__form--flex .contact__form-content,
+#s--{{section.id}}.contact__form--flexreverse .contact__form-content {
+    width: 50%;
+}
+
+#s--{{section.id}} #contact_form {
+    width: {{ section.settings.formWidth }}%;
+ }
+
+ @media screen and (max-width: 767px) {
+    .layout__content {
+        flex-direction: column !important;
+        gap: 0 !important;
+    }
+
+    .contact__form--form,
+    .contact__form-content,
+    #contact_form {
+        width: 100% !important;
+    }
+ }
+</style>
+
+{%- if section.settings.layout == 'default' -%}
+{%- assign layoutConfig = settings.baseLayout -%}
+{%- else -%}
+{%- assign layoutConfig = section.settings.layout -%}
+{%- endif -%}
+
+<div id="s--{{section.id}}" class="row layout__{{-layoutConfig}} contact__form{% if settings.easeIn %} ease-in{% endif %} contact__form--{{ section.settings.contentLayout }}">
+
+    <div class="{{ section.settings.verticalAlignment }} layout__content">
+        {% if section.settings.heading != '' and section.settings.subheading != '' %}
+            <div class="contact__form-content">
+                {% render 'block__general--heading' with section as section %}
+            </div>
+        {% endif %}
+    
+        {% if section.blocks.size > 0 %}
+            <div class="contact__form--form">
+                {% form 'contact' %} 
+                    {% if form.posted_successfully? %}
+                        <style>
+                        .contact__form h2 {
+                            margin-bottom: 24px;
+                        }
+                
+                        .contact__form {
+                            text-align: center;
+                        }
+                        </style>
+                        <h2 class="h-reset">{{'contact.page.success' | t}}</h2>
+                    {% endif %}
+                    {{ form.errors | default_errors }}
+                    {% unless form.posted_successfully? %}
+                        {% for block in section.blocks %}
+                            <div class="contact__block">
+                                {% render 'get-block', block: block, i: forloop.index %}
+                            </div>
+                        {% endfor %}
+                        <div class="contact__block">
+                        {% assign submitText = 'contact.buttons.submit' | t %}
+                        {% render 'submit-button', text: submitText, type: 'primary' %}
+                        </div> 
+                    {% else %}
+                    {% assign btc = 'contact.buttons.back_to_contact' | t %}
+                    {% render 'button', type: 'primary', text: btc, url: page.url, class: 'contact__back' %}
+                    {% endunless %}
+                {% endform %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Contact form",
+    "settings": [
+        {
+            "type" : "header",
+            "content": "Instructions"
+        },
+        {
+            "type": "paragraph",
+            "content": "Fields marked with * MUST be included in order for the form to work."
+        },
+        {
+            "type": "paragraph",
+            "content": "Placeholder is the text that will be shown as an example input."
+        },
+        {
+            "type": "paragraph",
+            "content": "If a field is set as required, customers won't be able to submit the form without filling the input."
+        },
+        {
+            "type": "header",
+            "content": "Section layout"
+        },
+        {
+          "type": "select",
+          "id": "layout",
+          "label": "Section layout",
+          "options": [
+            {"value": "default", "label": "Global default"},
+            {"value": "boxed", "label": "Boxed"},
+            {"value": "stretchBg", "label": "Full width background"},
+            {"value": "stretchContent", "label": "Full width"}
+          ],
+          "default": "default"
+        },
+        {
+            "type": "select",
+            "id": "contentLayout",
+            "label": "Content layout",
+            "options": [
+                {
+                    "value": "default",
+                    "label": "Default"
+                },
+                {
+                    "value": "flex",
+                    "label": "Form on right"
+                },
+                {
+                    "value": "flexreverse",
+                    "label": "Form on Left"
+                }
+            ],
+            "default": "default"
+        },
+        {
+            "type": "select",
+            "id": "verticalAlignment",
+            "label": "Content alignment (top to bottom)",
+            "options": [
+              {"value": "top", "label": "Top"},
+              {"value": "middle", "label": "Middle"},
+              {"value": "bottom", "label": "Bottom"}
+            ],
+            "default": "middle"
+        },
+        {
+            "type": "select",
+            "id": "formWidth",
+            "label": "Form width",
+            "options": [
+                {
+                    "value": "100",
+                    "label": "100%"
+                },
+                {
+                    "value": "75",
+                    "label": "75%"
+                },
+                {
+                    "value": "50",
+                    "label": "50%"
+                },
+                {
+                    "value": "25",
+                    "label": "25%"
+                }
+            ],
+            "default": "50",
+        },
+        {
+            "type": "header",
+            "content": "Section heading"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Section heading",
+            "default": "Check out this section's heading"
+        },
+        {
+            "type": "color",
+            "id": "headingColor",
+            "default": "rgba(0,0,0,0)",
+            "label": "Heading Color"
+        },
+        {
+            "type": "text",
+            "id": "subheading",
+            "label": "Section subheading",
+            "default": "THIS IS A SUBHEADING"
+        },
+        {
+            "type": "color",
+            "id": "subheadingColor",
+            "default": "rgba(0,0,0,0)",
+            "label": "Subheading Color"
+        },
+        {
+            "type": "select",
+            "id": "subheadingPosition",
+            "label": "Subheading position",
+            "options": [
+              {"value": "above", "label": "Above heading"},
+              {"value": "below", "label": "Below heading"}
+            ],
+            "default": "above"
+        },
+        {
+            "type": "select",
+            "id": "headingAlignment",
+            "label": "Heading alignment (left to right)",
+            "options": [
+            {"value": "start", "label": "Left"},
+            {"value": "center", "label": "Center"},
+            {"value": "end", "label": "Right"}
+            ],
+            "default": "center"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "contactFormEmail",
+            "name": "Sender email field (*)",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Field name",
+                    "default": "Input title"
+                },
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "Placeholder",
+                    "default": "Example input"
+                }
+            ]
+        },
+        {
+            "type": "contactFormText",
+            "name": "Text field",
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "This field is required",
+                    "default": false
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Field name",
+                    "default": "Input title"
+                },
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "Placeholder",
+                    "default": "Example input"
+                },
+                {
+                    "type": "select",
+                    "id": "type",
+                    "label": "Field type",
+                    "options": [
+                        {"value": "text", "label": "Text"},
+                        {"value": "date", "label": "Date"},
+                        {"value": "email", "label": "E-mail"},
+                        {"value": "number", "label": "Number"},
+                        {"value": "tel", "label": "Phone"}
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "contactFormTextarea",
+            "name": "Textarea field",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Field name",
+                    "default": "Input title"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "This field is required",
+                    "default": false
+                },
+                {
+                    "type": "text",
+                    "id": "placeholder",
+                    "label": "Placeholder",
+                    "default": "Example input"
+                }
+            ]
+        },
+        {
+            "type": "contactFormRadio",
+            "name": "Radio button field",
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "This field is required",
+                    "default": false
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Field name",
+                    "default": "Input title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "options",
+                    "label": "Options",
+                    "default": "Option 1, Option 2, Option 3",
+                    "info": "Comma separated options."
+                }
+            ]
+        },
+        {
+            "type": "contactFormDropdown",
+            "name": "Dropdown field",
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "This field is required",
+                    "default": false
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Field name",
+                    "default": "Input title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "options",
+                    "label": "Options",
+                    "default": "Option 1, Option 2, Option 3",
+                    "info": "Comma separated options."
+                }
+            ]
+        },
+        {
+            "type": "contactFormCheckbox",
+            "name": "Checkbox field",
+            "settings": [
+                {
+                    "type": "checkbox",
+                    "id": "required",
+                    "label": "This field is required",
+                    "default": false
+                },
+                {
+                    "type": "text",
+                    "id": "name",
+                    "label": "Field name",
+                    "default": "Input title"
+                },
+                {
+                    "type": "checkbox",
+                    "id": "checked",
+                    "label": "Checked by default",
+                    "default": false
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

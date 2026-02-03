@@ -1,0 +1,5 @@
+{% unless product.selected_or_first_available_variant.sku == blank %}
+    <p class="h-reset prodcut__sku font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontSize}} {% unless block.settings.noMargin or noMargin %}margin__bottom--reduced{%endunless-%}" {{block.shopify_attributes}}>
+        SKU: <span class="product-page--sku"> {{ product.selected_or_first_available_variant.sku }} </span>
+    </p>
+{% endunless %}

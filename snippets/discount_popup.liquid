@@ -1,0 +1,296 @@
+{% render 'discount_popup-css' %}
+
+<div class="new-modal{% if settings.discount_popup_disable_mobile %} hide-mobile{% endif %}" id="OfferCartpopup" role="dialog">
+  <div class="vertical-alignment-helper{% if settings.discount_image_desktop %} img_hide_desktop{% endif %}{% if settings.discount_image_enable %} img_hide_mobile{% endif %}">
+    <div class="modal-dialog vertical-align-center">
+      <div class="new-modal-content">
+          <span class="new-close-button">
+            {% render 'get-icon', icon: 'discountClose' %}
+          </span>
+          <div class="modal-body">
+              <div class="body-left col-12 col-md-6 suc_hide{% if settings.discount_image_enable %} hide-mobile{% endif %}{% if settings.discount_image_desktop %} hide-desktop{% endif %}" {% if settings.discount_icon != blank %}style="background-image: url('{{ settings.discount_icon | img_url: '1024x' }}');background-position: center;
+                background-size: cover;
+                background-repeat: no-repeat;flex-grow:1;"{% endif %}>
+                {% if settings.discount_icon != blank %}
+              
+                <img src="{{ settings.discount_icon | img_url:'medium' }}" style="visibility: hidden;height: 470px;">
+                {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              <div class="{% if settings.discount_image_desktop %}body-right-full{% else %}body-right{% endif %} col-12 col-md-6">
+                <div class="suc_hide hide-success">
+                  <span class="title">{{ settings.discount_popup_title }}</span>
+                  <div class="popp-msg">
+                    <span>
+                      {{ settings.discount_popup_description1 }} 
+                    </span>
+                  </div>
+                </div>
+                <div class="popup-container">
+                  {% if settings.mailchimp_link != blank %}
+
+                  <form action="{{ settings.mailchimp_link }}" method="post" name="mc-embedded-subscribe-form" class="contact-form" id="contact_form" target="_blank">
+                    <div class="input-group">
+                      <input type="email" id="Email" class="input-group-field" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+                      <span class="input-group-btn customer_btn_popup center">
+                        <input type="submit" class="btn button--primary__filled" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.discount_submit' | t }}">
+                      </span>                
+                    </div>
+                  </form>       
+
+                  {% elsif settings.klaviyo_link != blank %}
+
+                  <form action="//manage.kmail-lists.com/subscriptions/subscribe" method="post" class="klaviyo_styling klaviyo_standard_embed_{{settings.klaviyo_link}}" id="email_signup" target="_blank" novalidate="novalidate">
+                    <input type="hidden" name="g" value="{{settings.klaviyo_link}}">
+                    <input type="hidden" name="$fields" value="firstName,lastName"/>
+                    <div class="input-group klaviyo_field_group">
+                      <input type="email" id="k_id_email" class="input-group-field" value="" name="EMAIL" class="contact_email" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}">
+                      <div class="klaviyo_messages">
+                        <div class="success_message" style="display:none;"></div>
+                        <div class="error_message" style="display:none;"></div>
+                      </div>
+                      <span class="input-group-btn customer_btn_popup center">
+                        <input type="submit" class="btn button--primary__filled" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.discount_submit' | t }}">
+                        {% render 'button__submit' %}
+                      </span>               
+                    </div>
+                  </form>
+
+                  {% else %}
+
+                  {% form 'customer', id: "popup_news" %}
+
+                  {{ form.errors | default_errors }}
+                  {% if form.posted_successfully? %}
+                    <style>
+                        .hide-success{
+                            display: none !important;
+                        }
+                        
+                        .sub_msg{
+                            display: grid !important;
+                            place-items: center !important;
+                            gap: 1.5rem;
+                        }
+                        
+                        .sub_msg h3{
+                            text-align: center !important;
+                            font-size: 32px !important;
+                            margin: 0;
+                        }
+                        
+                        .sub_msg a {
+                            text-align: center !important;
+                            padding: 12px 25px;
+                            border-radius: 15px !important;
+                            width: 200px !important;
+                            font-size: 14px;
+                            letter-spacing: .4px;
+                        }
+                        
+                        @media only screen and (max-width: 768px){
+                            .new-modal-content .modal-body{
+                            height: 100%;
+                            overflow: hidden;
+                            }
+                            .body-left.col-12.col-md-6.suc_hide{
+                            flex-basis: 25%!important;
+                            } 
+                            .body-right.col-12.col-md-6{
+                            flex-basis: 25%!important;
+                            }
+                        }
+                    </style>
+
+                  <div class="sub_msg">
+                    {% render 'get-icon', icon: 'discountCheck' %}
+                    {% unless settings.discount_popup_link_text == blank %}{{ settings.discount_popup_submit_text }}{% else %}<h2>Thank you for Subscribing!</h2>{% endunless %}
+                    <div class="sub_msg--caption">{% unless settings.discount_popup_submit_caption == blank %}{{settings.discount_popup_submit_caption}}{% else %}We're thrilled to have you with us! We've sent your discount code to the email you provided.{% endunless %}</div>
+                    {% unless settings.discount_popup_link_text == blank %}
+                        <a class="button button--primary__filled" href="{{ settings.discount_popup_link }}">{{settings.discount_popup_link_text}} </a>
+                    {% endunless %} 
+                  </div>
+
+                  {% else %}
+                  <div class="input-group">
+                    <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.email_placeholder' | t }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+                    <input type="hidden" name="contact[tags]" value="discount">
+                    <span class="input-group-btn customer_btn_popup center">
+                      <input type="submit" class="btn button--primary__filled" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.discount_submit' | t }}">
+                    </span>
+                  </div>
+                  {% endif %}
+                  {% endform %}   
+                  {% endif %}
+                </div>    
+            
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const remainderTimeset2 = "{{ settings.discount_popup_time }}";
+  const expiretime = {{ settings.expire_time }};
+  const item_count = "{{ cart.item_count }}";
+  const remainderTime2 = remainderTimeset2 * 60 * 1000;
+  const newModal = document.querySelector(".new-modal");
+  const newCloseButton = document.querySelector(".new-close-button");
+  const disableMobile = {{ settings.discount_popup_disable_mobile | default: false }};
+  const isMobile = window.innerWidth <= 768;
+
+  let z = 0; // Declare z here
+
+  function getParameterByName(name, url) {
+    if(!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    let regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if(!results) return null;
+    if(!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+  }
+
+  function setCookie(name, value, days) {
+    const date = days ? new Date(Date.now() + days * 24 * 60 * 60 * 1000) : new Date();
+    const expires = days ? `; expires=${date.toGMTString()}` : "";
+    document.cookie = `${name}=${value};${expires}; path=/`;
+    document.cookie = `target_time=${date.toGMTString()};`;
+  }
+
+  function getCookie(cname) {
+    const name = cname + "=";
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i].trim();
+      if(c.indexOf(name) == 0) {
+        return c.substring(name.length);
+      }
+    }
+    return "";
+  }
+
+  function readCookie(name) {
+    const nameEQ = escape(name) + "=";
+    const ca = document.cookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i].trim();
+      if(c.indexOf(nameEQ) == 0) {
+        return unescape(c.substring(nameEQ.length));
+      }
+    }
+    return null;
+  }
+
+  const timeDate2 = getCookie("discount_popup");
+  if(!timeDate2) {
+    const dd = new Date(Date.now() + remainderTime2);
+    const endTime2 = dd.toGMTString();
+    setCookie("discount_popup", endTime2, expiretime);
+  }
+
+  const ddd = new Date();
+  const startTime12 = ddd.toGMTString();
+  const date1_2 = new Date(startTime12);
+  const date2_2 = new Date(timeDate2);
+  const timeDiff2 = Math.abs(date2_2.getTime() - date1_2.getTime());
+  const diffDays2 = Math.ceil(timeDiff2 / 1000);
+
+  if(item_count == 0 && date2_2 > date1_2) {
+    setTimeout(() => {
+      newModal.classList.toggle("new-show-modal");
+      setCookie("discount_popup_email", 'yes', expiretime);
+    }, diffDays2 * 1000);
+  }
+
+  const emailtest = getCookie("discount_popup_email");
+  const urlpara = getParameterByName('customer_posted');
+
+  if(emailtest == 'yes' && urlpara == 'true') {
+    newModal.classList.toggle("new-show-modal");
+    setCookie("discount_popup_email", 'no', expiretime);
+  }
+
+  {% if settings.mailchimp_link != blank or settings.klaviyo_link != blank %}
+  const offerCartPopupSubmitButton = document.querySelector('#OfferCartpopup input[type="submit"]');
+  offerCartPopupSubmitButton.addEventListener("click", (event) => {
+    const formId = event.target.form.id;
+    if (formId === "popup_news") {
+      const offerCartPopupCloseButton = document.querySelector('#OfferCartpopup .close');
+      offerCartPopupCloseButton.click();
+      setCookie("discount_popup_email", 'no', expiretime);
+    }
+  });
+  {% endif %}
+
+  {% if settings.discount_popup_time == 'exit_popup' %}
+  if(z == 0) {
+    let eventName = 'visibilitychange';
+    if(document.webkitHidden != undefined) {
+      eventName = 'webkitvisibilitychange';
+    }
+
+    function handleVisibilityChange() {
+      if(document.webkitHidden || document.hidden) {
+        if(z == 0) {
+          if(readCookie('discount_popup_email') == null || readCookie('discount_popup_email') == 'yes' && readCookie('popup_one_time') == null) {
+            setCookie("popup_one_time", '1', expiretime);
+            newModal.classList.toggle("new-show-modal");
+            setCookie("discount_popup_email", 'yes', expiretime);
+          }
+          z++;
+        }
+      }
+    }
+
+    const html = document.getElementsByTagName('html')[0];
+
+    function Mouseleave(e) {
+      if(e.clientY > 20 || (!true)) {
+        return;
+      } else {
+        if(z == 0) {
+          if(readCookie('discount_popup_email') == null || readCookie('discount_popup_email') == 'yes' && readCookie('popup_one_time') == null) {
+            setCookie("popup_one_time", '1', expiretime);
+            newModal.classList.toggle("new-show-modal");
+            setCookie("discount_popup_email", 'yes', expiretime);
+          }
+          z++;
+        }
+      }
+    }
+
+    const myFunc = () => {
+      const w = document.body.clientWidth;
+      if(w <= 749) {
+        document.addEventListener(eventName, handleVisibilityChange, false);
+      } else {
+        html.addEventListener('mouseleave', Mouseleave);
+      }
+    };
+
+    myFunc();
+    window.addEventListener('resize', myFunc);
+  }
+  {% endif %}
+
+  function toggleNewModal() {
+    newModal.classList.toggle("new-show-modal");
+  }
+
+  function windowOnClick(event) {
+    if(event.target === newModal) {
+      toggleNewModal();
+    }
+  }
+
+  newCloseButton.addEventListener("click", toggleNewModal);
+  window.addEventListener("click", windowOnClick); 
+})();
+</script>

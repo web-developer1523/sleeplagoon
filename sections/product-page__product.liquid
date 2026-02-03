@@ -1,0 +1,1389 @@
+<script type="application/ld+json">
+{
+      "@context": "https://schema.org/",
+      "@type": "Product",
+      "name": "{{product.title |escape}}",
+      {% if product.featured_image != nil %}
+      "image": [
+        "https:{{product.featured_image | img_url: '960x960'}}",
+        "https:{{product.featured_image | img_url: '960x720'}}",
+        "https:{{product.featured_image | img_url: '960x540'}}"
+       ],
+      {% endif %}
+      "description": "{{product.description | strip_html | escape}}",
+      "brand": {
+        "@type": "Brand",
+        "name": "{{product.vendor |escape}}"
+      },
+      "offers" : {
+        "@type" : "Offer",
+        "availability" : "https://schema.org/{% if product.available %}InStock{%else%}SoldOut{%endif%}",
+        "price" : "{{product.price | money_without_currency }}",
+        "priceCurrency": "{{shop.currency}}",
+        "url" : "{{ shop.url }}{{routes.root_url}}{{product.url}}" 
+      }
+}
+</script>
+
+{% assign current_variant = product.selected_or_first_available_variant %}
+{% assign featured_image = product.featured_image %}
+{% assign isAutoZoom = section.settings.autoZoom %}
+{% assign video_loop = section.settings.video_loop %}
+{% assign video_autoplay = section.settings.video_autoplay %}
+
+{% assign imageClass = '' %}
+{% if isAutoZoom %}
+    {% assign imageClass = 'image-zoom' %}
+{% endif %}
+
+<style>
+{% if section.settings.galleryPosition == "right" %}
+.product__row {
+  flex-direction: row-reverse;
+}
+{% endif %}
+
+.gallery__vertical img {
+  width: 100%;
+  object-fit: {{section.settings.galleryImageFit}};
+}
+
+.gallery__vertical {
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  margin: 0px -{{section.settings.galleryImageGap | divided_by: 2}}px;
+}
+
+.gallery__vertical .col-12 {
+  padding: 0px {{section.settings.galleryImageGap | divided_by: 2}}px;
+  margin-top: {{section.settings.galleryImageGap}}px;
+}
+
+{% if section.settings.imageSticky %}
+  @media only screen and (min-width: 768px) { 
+    .gallery {
+      position: sticky!important;
+      top: {{ section.settings.imageStickyPosition }}px;
+    }
+  }
+{% endif %}
+
+{% if section.settings.productMainImageSize == 'full_ratio' %}
+@media only screen and (min-width: 768px) {
+    .gallery {
+        max-height: none !important;
+    }
+}
+{% endif %}
+
+#colorcode {};
+</style>
+
+{% render 'product-page__sticky-atc', product: product, section: section %}
+
+{% if section.settings.view == "marketplace" %}
+{% assign size = 'col-md' %}
+{% else %}
+{% assign size = 'col-md-6' %}
+{% endif %}
+
+
+{% if customer %}
+  <ul style="display:none;">
+    {% assign tag_list = customer.tags | split: ', ' %}
+    {% assign sleep_position = '' %}
+    {% assign sleep_goal = '' %}
+
+    {% for tag in tag_list %}
+      {% assign parts = tag | split: '__' %}
+      {% if parts.size > 2 %}
+        {% assign key = parts[1] %}
+        {% assign value = parts[2] %}
+        <li><strong>{{ key }}:</strong> {{ value | replace: '_', ' ' | capitalize }}</li>
+
+        {% if key == 'sleep_position' %}
+          {% assign sleep_position = value %}
+        {% endif %}
+
+        {% if key == 'sleep_goal' %}
+          {% assign sleep_goal = value %}
+        {% endif %}
+
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+<div>
+  <p>We noticed you Sleep Position is <strong>{{ sleep_position | replace: '_', ' ' | capitalize | remove:'"' }}</strong> and Sleep Goal <strong>{{ sleep_goal | replace: '_', ' ' | capitalize | remove:'"' }}</strong></p>
+</div>
+
+
+  {% comment %} {% if sleep_position != '' %}
+    <p>Sleep Position: {{ sleep_position | replace: '_', ' ' | capitalize }}</p>
+  {% endif %}
+
+  {% if sleep_goal != '' %}
+    <p>Sleep Goal: {{ sleep_goal | replace: '_', ' ' | capitalize }}</p>
+  {% endif %}
+{% endif %}  {% endcomment %}
+
+{% else %}
+<!-- Logged-out user: use JS to read localStorage -->
+<ul id="customer-preferences" style="display:none;"></ul>
+<p id="customer-preferences-text" style="text-align:center;"></p>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const sessionData = localStorage.getItem('cartful_complete_sessions');
+  if (!sessionData) return;
+
+  try {
+    const data = JSON.parse(sessionData);
+    const prefs = data.shopperPreferences || {};
+    const ul = document.getElementById('customer-preferences');
+    let sleepPosition = '';
+    let sleepGoal = '';
+
+    for (const [question, answer] of Object.entries(prefs)) {
+      // Map question to key names
+      let key = '';
+      if (question.toLowerCase().includes('sleep position')) key = 'sleep_position';
+      else if (question.toLowerCase().includes('primary sleep goal')) key = 'sleep_goal';
+      else if (question.toLowerCase().includes('body frame')) key = 'body_frame';
+      else if (question.toLowerCase().includes('pillow to feel')) key = 'pillow_feel';
+      else if (question.toLowerCase().includes('support under your head')) key = 'head_support';
+      else if (question.toLowerCase().includes('sleep hot or cold')) key = 'sleep_temperature';
+      else if (question.toLowerCase().includes('sleep challenges')) key = 'sleep_challenges';
+      else key = question.replace(/\s+/g, '_').toLowerCase();
+
+      // Create list item for other preferences
+      if (key !== 'sleep_position' && key !== 'sleep_goal') {
+        const li = document.createElement('li');
+        li.innerHTML = `<strong>${key}:</strong> ${answer}`;
+        ul.appendChild(li);
+      }
+
+      // Save sleep_position and sleep_goal
+      if (key === 'sleep_position') sleepPosition = answer;
+      if (key === 'sleep_goal') sleepGoal = answer;
+    }
+
+    // Display single message in the required format
+    if (sleepPosition || sleepGoal) {
+      const textEl = document.getElementById('customer-preferences-text');
+      const formatText = (str) => {
+        if (!str) return '';
+        // Replace underscores with space and capitalize first letter of each word
+        return str.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      };
+      textEl.innerHTML = `We noticed your Sleep Position is <strong>${formatText(sleepPosition)}</strong> and Sleep Goal <strong>${formatText(sleepGoal)}</strong>`;
+    }
+
+  } catch(e) {
+    console.error('Error parsing session data:', e);
+  }
+});
+</script>
+
+{% endif %}
+
+
+
+
+
+{%- comment -%}
+Product row container
+{%- endcomment -%}
+<div data-product-holder class="row product__row {{section.settings.layout}} product__row--{{-section.settings.view}}">
+{%- comment -%}
+Default gallery with thumbnails (always rendered - used for mobile, featured products, modals in case another gallery type is selected) 
+{%- endcomment -%}
+<div class="col-12 {{size}} gallery gallery__default {% if section.settings.galleryStyle != 'default'%}hide-desktop{%endif%}{% if settings.easeIn %} ease-in{% endif %}">
+  {% render 'gallery--default', product: product, section: section, isAutoZoom: isAutoZoom, video_loop: video_loop, video_autoplay: video_autoplay %}
+</div>
+{%- comment -%}
+/Default gallery with thumbnails
+{% endcomment %}
+
+{%- comment -%}
+Checking for vertical gallery styles (additional gallery styles can be added here)
+{%- endcomment -%}
+{% case section.settings.galleryStyle %}
+  {% when 'verticalSingle' %}
+    <div data-gallery-type="vSingle" class="col-12 {{size}} gallery__vertical hide-mobile {% if isAutoZoom %}zoom{% endif %}">
+      {% for image in product.images %}
+        <div data-variants="{% for var in image.variants %}{{var.id}}|{% endfor %}" class="col-12">
+          {% render 'image', size: '900x', src: image.src, alt: image.alt, class: imageClass %}
+        </div>
+      {% endfor %}
+      {% for media in product.media %}
+        {% case media.media_type %}
+          {% when 'image' %}
+            {% continue %}
+          {% when 'external_video' %}
+          <div class="col-12">
+            <div class="external__holder" data-media-holder="{{media.id}}" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+              {% capture med %}{{ media | external_video_tag: class: 'gallery__external lazyload' }}{% endcapture %}
+              {{med | replace_first: 'src', 'data-src'}}
+            </div>
+          </div>
+          {% when 'video' %}
+          <div class="col-12">
+            <div class="video__holder" data-media-holder="{{media.id}}">
+              {% capture med %}{{ media | video_tag: class: 'gallery__video lazyload' }}{% endcapture %}
+              {{med | replace_first: 'src', 'data-src' | replace_first: 'poster=', 'controls=true poster='}}
+            </div>
+          </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  {% when 'verticalDouble' %}
+    <div data-gallery-type="vDouble" class="col-12 {{size}} gallery__vertical hide-mobile">
+      {% for image in product.images %}
+        <div data-variants="{% for var in image.variants %}{{var.id}}|{% endfor %}" {% if forloop.first %}class="col-12 col-md-12 {% if isAutoZoom %}zoom{% endif %}"{%else%}class="col-12 col-md-6 {% if isAutoZoom %}zoom{% endif %}"{%endif%}>
+          {% render 'image', size: '900x', src: image.src, alt: image.alt, class: imageClass %}
+        </div>
+      {% endfor %}
+      {% for media in product.media %}
+        {% case media.media_type %}
+          {% when 'image' %}
+            {% continue %}
+          {% when 'external_video' %}
+          <div class="col-12 col-md-6">
+            <div class="external__holder" data-media-holder="{{media.id}}" style="padding-top: {{ 1 | divided_by: media.aspect_ratio | times: 100}}%;">
+              {% capture med %}{{ media | external_video_tag: class: 'gallery__external lazyload' }}{% endcapture %}
+              {{med | replace_first: 'src', 'data-src'}}
+            </div>
+          </div>
+          {% when 'video' %}
+          <div class="col-12 col-md-6">
+            <div class="video__holder" data-media-holder="{{media.id}}">
+              {% capture med %}{{ media | video_tag: class: 'gallery__video lazyload' }}{% endcapture %}
+              {{med | replace_first: 'src', 'data-src' | replace_first: 'poster=', 'controls=true poster='}}
+            </div>
+          </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+{% endcase %}
+{%- comment -%}
+/Checking for vertical gallery styles
+{%- endcomment -%}
+
+{%- comment -%}
+Rendering according to the view (default, marketplace)
+{%- endcomment -%}
+{% if section.settings.view == 'default' %}
+  <div class="col-12 {{size}} product__page--info unflex" id="product--page">
+  {% comment %} PRODUCT FORM 1 of 2{% endcomment %}
+  {% form "product", product %}
+    {% assign firstTab = true %}
+    {% for block in section.blocks %}
+      {% if block.type == '@app' %}
+        <div class="col-12 {{section.settings.layout}} unflex no-gap">
+          {% render block %}
+        </div>
+        {% continue %}
+      {% endif %}
+      {% if block.type == 'productPageTab' %}
+        {% if block.settings.showInline and firstTab %}
+          {% assign firstTab = false %}
+          {% assign tabs = section.blocks | where: 'type', 'productPageTab' %}
+          {% if tabs.size > 0 %}
+            <div class="col-12 {{section.settings.layout}} unflex tab__container tab__container--product no-gap">
+              <div class="tab__holder">
+                {% assign first = true %}
+                {% for tab in tabs %}
+                  {% if tab.settings.showInline %}
+                    <span class="tab--product {% if first %}tab--active{% endif -%}" onclick="BoosterTheme.ELEMENTS.toggleTab(this, 'tab--{{-tab.id}}')">{{tab.settings.heading}}</span>
+                    {% assign first = false %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% assign first = true %}
+              {% for tab in tabs %}
+                {% if tab.settings.showInline %}
+                  {% render 'get-block', block: tab, section: section, first: first, product: product %}
+                  {% assign first = false %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% else %}
+          {% continue %}
+        {% endif %}
+      {% endif %}
+      {% render 'get-block', block: block, product: product, form: form %}
+    {% else %}
+      {% render 'block__product-page--title', product: product, noMargin: true %}
+      {% render 'block__product-page--price', product: product %}
+      {% render 'block__product-page--swatch' with product as product %}
+      {% render 'block__product-page--atc', product: product, form: form %}
+      {% if settings.quickShop %}
+        <div class="product__description">
+          <span class="product__description--title">Product description</span>
+          <div>{{product.description}}</div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endform %}
+  {% comment %} END PRODUCT FORM {% endcomment %}
+  </div>
+{% else %}
+  <div class="col-12 {{size}} unflex product__page--info">
+    <h1 class="h-reset product__title margin__bottom--reduced{% if settings.easeIn %} ease-in{% endif %}">{{ product.title }}</h1>
+    {% render 'block__product-page--price' with product as product %}
+    {% if product.description != blank %}
+    <div class="product__description">
+      <span class="product__description--title">{{'product_page.page.product_description'|t}}</span>
+      <div>{{ product.description }}</div>
+    </div>
+    {% endif %}
+  </div>
+  <div class="col-12 {{size}} product__page--info unflex fancy-scroll" id="product--page">
+  {% comment %} PRODUCT FORM 2 of 2{% endcomment %}
+  {% form "product", product %}
+    {% assign firstTab = true %}
+    {% for block in section.blocks %}
+      {% if block.type == '@app' %}
+        <div class="col-12 {{section.settings.layout}} unflex no-gap">
+          {% render block %}
+        </div>
+        {% continue %}
+      {% endif %}
+      {% if block.type == 'productPageTab' %}
+        {% if block.settings.showInline and firstTab %}
+          {% assign firstTab = false %}
+          {% assign tabs = section.blocks | where: 'type', 'productPageTab' %}
+          {% if tabs.size > 0 %}
+            <div class="col-12 {{section.settings.layout}} unflex tab__container tab__container--product no-gap">
+              <div class="tab__holder">
+                {% assign first = true %}
+                {% for tab in tabs %}
+                  {% if tab.settings.showInline %}
+                    <span class="tab--product {% if first %}tab--active{% endif -%}" onclick="BoosterTheme.ELEMENTS.toggleTab(this, 'tab--{{-tab.id}}')">{{tab.settings.heading}}</span>
+                    {% assign first = false %}
+                  {% endif %}
+                {% endfor %}
+              </div>
+              {% assign first = true %}
+              {% for tab in tabs %}
+                {% if tab.settings.showInline %}
+                  {% render 'get-block', block: tab, section: section, first: first, product: product %}
+                  {% assign first = false %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% else %}
+          {% continue %}
+        {% endif %}
+      {% endif %}
+      {% render 'get-block', block: block, product: product, form: form %}
+    {% endfor %}
+  {% endform %}
+  {% comment %} END PRODUCT FORM {% endcomment %}
+  </div>
+{% endif %}
+
+{%- comment -%}
+/Rendering according to the view
+{%- endcomment -%}
+</div>
+{%- comment -%}
+/Product container row
+{%- endcomment -%}
+
+{% assign tabs = section.blocks | where: 'type', 'productPageTab' %}
+{% if tabs.size > 0 %}
+  <div class="col-12 {{section.settings.layout}} unflex tab__container tab__container--product">
+    <div class="tab__holder">
+      {% for tab in tabs %}
+        {% if tab.settings.showInline %}
+          {% continue %}
+        {% endif %}
+        <span class="tab--product {% if forloop.first %}tab--active{% endif -%}" onclick="BoosterTheme.ELEMENTS.toggleTab(this, 'tab--{{-tab.id}}')">{{tab.settings.heading}}</span>
+      {% endfor %}
+    </div>
+    {% for tab in tabs %}
+      {% if tab.settings.showInline %}
+        {% continue %}
+      {% endif %}
+      {% render 'get-block', block: tab, section: section, first: forloop.first, product: product %}
+    {% endfor %}
+  </div>
+{% endif %}
+
+{% comment %}
+marketplace view - failover title (.hide-mobile)
+marketplace view - failover price (.hide-mobile)
+gallery failover for quickbuy modal/modals
+{% endcomment %}
+
+{% if section.settings.productNavigation %}
+{% render 'block__product-page--next__prev' %}
+{% endif %}
+
+{% if isAutoZoom and settings.jQuery %}
+<style>
+.zoom {
+    display:inline-block;
+    position: relative;
+}
+
+.zoom:hover { 
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+}
+
+.zoom:active {
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+</style>
+
+<script defer="defer">
+    window.addEventListener('DOMContentLoaded', () => {
+        ($ => {
+            $('.image-zoom')
+                .css('display', 'block')
+                .parent()
+                .zoom({
+                    url: $(this).find('img').attr('data-zoom'),
+                    magnify: 1
+                });
+        })(jQuery)
+    })
+</script>
+{% endif %}
+
+{% schema %}
+{
+  "name": {
+    "en": "Product page content"
+  },
+  "settings": [
+    {
+        "type" : "header",
+        "content": "Instructions"
+    },
+    {
+        "type": "paragraph",
+        "content": "Blocks marked with * MUST be included in order for the page to work."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "view",
+      "label": "Product page type",
+      "options": [
+        {"value": "marketplace", "label": "Marketplace"},
+        {"value": "default", "label": "Default"}
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Page width",
+      "options": [
+        {"value": "max-width", "label": "Boxed"},
+        {"value": "full-width", "label": "Full width"}
+      ],
+      "default": "max-width"
+    },
+    {
+      "type": "header",
+      "content": "Gallery"
+    },
+    {
+      "type": "select",
+      "id": "galleryStyle",
+      "label": "Gallery Style",
+      "options": [
+        {"value": "default", "label": "Default"},
+        {"value": "verticalDouble", "label": "Vertical list (2 column)"},
+        {"value": "verticalSingle", "label": "Vertical list (1 column)"}
+      ],
+      "default": "default"
+    },
+    {
+      "type": "select",
+      "id": "galleryPosition",
+      "label": "Gallery Position",
+      "options": [
+        {"value": "left", "label": "Left"},
+        {"value": "right", "label": "Right"}
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Gallery video"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_loop",
+      "label": "Enable video loop",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "video_autoplay",
+      "label": "Enable autoplay",
+      "default": true
+    },
+    {
+        "type" : "header",
+        "content": "Instructions"
+    },
+    {
+        "type": "paragraph",
+        "content": "1. Zoom functionality will only work with jQuery, please enable the jQuery in Theme settings > Advance HTML & CSS > Enable jQuery."
+    },
+    {
+        "type": "paragraph",
+        "content": "2. It is best use with JPEG images."
+    },
+    {
+      "type": "checkbox",
+      "label": "Zoom image on hover",
+      "id": "autoZoom",
+      "info": "If enabled, hovering over an image will zoom it in. Otherwise works on click only.",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "label": "Change image on hover",
+      "id": "autoChange",
+      "info": "If enabled, hovering a thumbnail will change the image. Otherwise works on click only.",
+      "default": false
+    },
+    {
+      "type": "select",
+      "label": "Verical gallery image fit",
+      "id": "galleryImageFit",
+      "options": [
+        {"value": "contain", "label": "Preserve ratio"},
+        {"value": "cover", "label": "Adjust ratio to fill empty space - crop image"}
+      ],
+      "default": "cover",
+      "info": "In case your product's image doesn't fit the image ratio you've selected below, the image can either: "
+    },
+    {
+      "type": "range",
+      "label": "Gap between vertical gallery images",
+      "id": "galleryImageGap",
+      "unit": "px",
+      "min": 0,
+      "max": 50,
+      "default": 16,
+      "info": "Vertical gap between vertical gallery images."
+    },
+    {
+      "type": "paragraph",
+      "content": "Preserve ratio - the whole image will be shown in its original dimensions, but may cause empty/white space to appear"
+    },
+    {
+      "type": "paragraph",
+      "content": "Adjust the ratio to fill empty space - if the image doesn't fit the ratio, it will be cropped and adjusted to fill the space - no empty/white space"
+    },
+    {
+      "type": "header",
+      "content": "Navigation"
+    },
+    {
+      "type": "checkbox",
+      "id": "productNavigation",
+      "label": "Enable previous/next product",
+      "info": "Previews next and previous product links. Only works inside collections.",
+      "default": true
+    },
+    {
+        "type": "header",
+        "content": "Product Image"
+    },
+    {
+        "type": "select",
+        "id": "productMainImageSize",
+        "label": "Product Main Image Size",
+        "info": "Select Full Ratio if you want the main image to display its full ratio. Default is crop.",
+        "options": [
+            {
+                "value": "full_ratio",
+                "label": "Full Ratio"
+            },
+            {
+                "value": "crop",
+                "label": "Crop"
+            }
+        ],
+        "default": "crop"
+    },
+    {
+      "type": "checkbox",
+      "id": "imageSticky",
+      "label": "Enable Sticky Image",
+      "info": "Product Thumbnail and Main Image will stick on the top when scrolling through content.",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "imageStickyPosition",
+      "label": "Image Sticky Position from Top",
+      "min": 10,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 100 
+    }
+  ],
+  "blocks": [
+      {
+        "type": "@app"
+      },
+      {
+          "type": "productPageCountdown",
+          "name": "Offer countdown",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "select",
+                "label": "Style",
+                "id": "style",
+                "default": "compact",
+                "options": [
+                  {"value": "compact", "label": "Compact"},
+                  {"value": "doublecolumn", "label": "Two columns"}
+                ]
+              },
+              {
+                "id": "title",
+                "label": "Countdown title",
+                "type": "text",
+                "default": "LIMITED TIME OFFER"
+              },
+              {
+                "id": "text",
+                "type": "text",
+                "label": "Warning text",
+                "default": "The price of this item will revert back to %price% at the end of this countdown.",
+                "info": "%price% will get replace by the products original price."
+              }
+          ]
+      },
+      {
+          "type": "productPageTitle",
+          "name": "Product title",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "header",
+                "content": "Style"
+              },
+              {
+                "id": "color",
+                "type": "color",
+                "label": "Custom color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "id": "fontFamily",
+                "label": "Font family",
+                "type": "select",
+                "options": [
+                  {"value": "base", "label": "Base"},
+                  {"value": "title", "label": "Title"}
+                ],
+                "default": "base"
+              },
+              {
+                "id": "fontSize",
+                "label": "Font size",
+                "type": "select",
+                "options": [
+                  {"value": "small", "label": "Small"},
+                  {"value": "base", "label": "Base"},
+                  {"value": "medium", "label": "Medium"},
+                  {"value": "big", "label": "Big"}
+                ],
+                "default": "medium"
+              }
+          ]
+      },
+      {
+          "type": "productPagePrice",
+          "name": "Product price",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "header",
+                "content": "Style"
+              },
+              {
+                "id": "color",
+                "type": "color",
+                "label": "Custom color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "id": "newPriceColor",
+                "type": "color",
+                "label": "Reduced price color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "id": "oldPriceColor",
+                "type": "color",
+                "label": "Old price color",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "id": "fontFamily",
+                "label": "Font family",
+                "type": "select",
+                "options": [
+                  {"value": "base", "label": "Base"},
+                  {"value": "title", "label": "Title"}
+                ],
+                "default": "base"
+              },
+              {
+                "id": "fontSize",
+                "type": "select",
+                "label": "Font size",
+                "options": [
+                  {"value": "small", "label": "Small"},
+                  {"value": "base", "label": "Base"},
+                  {"value": "medium", "label": "Medium"},
+                  {"value": "big", "label": "Big"}
+                ],
+                "default": "medium"
+              }
+          ]
+      },
+      {
+          "type": "productPageSwatch",
+          "name": "Product variants (*)",
+          "limit": 1,
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              }
+          ]
+      },
+      {
+        "type": "productPageBadge",
+        "name": "Image/Badges",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "noMargin",
+            "label": "Remove bottom space"
+          },
+          {
+            "type": "image_picker",
+            "label": "Badge image",
+            "id": "badge"
+          },
+          {
+              "type": "text",
+              "id": "imageAlt",
+              "label": "Image alt"
+          }
+        ]
+      },
+      {
+        "type": "productPageSKU",
+        "name": "Product SKU",
+        "settings": [
+            {
+              "type": "checkbox",
+              "id": "noMargin",
+              "label": "Remove bottom space"
+            }
+        ]
+      },
+      {
+          "type": "productPageStock",
+          "name": "Product stock",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "select",
+                "label": "Max product stock",
+                "id": "stockLeft",
+                "options": [
+                  {"value": "10", "label": "10"},
+                  {"value": "100", "label": "100"},
+                  {"value": "1000", "label": "1000"},
+                  {"value": "inventory", "label": "Use real stock"}
+                ],
+                "default": "10"
+              },
+              {
+                "type": "range",
+                "id": "reduce",
+                "label": "Reduce inventory every",
+                "min": 0,
+                "max": 30,
+                "step": 1,
+                "unit": "s",
+                "info": "If set above 0, the stock amount will be reduced by 1 in the set interval. Doesn't work with real stock inventory. If you want to disable it, set it to 0.",
+                "default": 8
+              }
+          ]
+      },
+      {
+          "type": "productPageLDelivery",
+          "name": "Localized Delivery",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "text",
+                "label": "Icon",
+                "info": "Icon name copied over from Unicons icon library. You can find the list over at [Unicons](https://iconscout.com/unicons/explore/line).",
+                "id": "icon"
+              },
+              {
+                "type": "color",
+                "id": "iconColor",
+                "label": "Icon Color (optional)",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "richtext",
+                "label": "Delivery text",
+                "default": "<p>Products will be delivered between %start% and %end%.</p>",
+                "id": "text"
+              },
+              {
+                "type": "text",
+                "label": "Start day offset",
+                "default": "1",
+                "id": "start"
+              },
+              {
+                "type": "text",
+                "label": "End day offset",
+                "default": "5",
+                "id": "end"
+              },
+              {
+                "type": "paragraph",
+                "content": "%start% and %end% will be replaced with the offset set above. Customers will see dates instead of numbers. (On 7/10/2022 with the start offset of 2, customers will see 7/12/2022)"
+              },
+              {
+                "type": "color",
+                "id": "textColor",
+                "label": "Text Color (optional)",
+                "default": "rgba(0,0,0,0)"
+              }
+          ]
+      },
+      {
+          "type": "productPageDelivery",
+          "name": "Icon + Text (Delivery)",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "text",
+                "label": "Icon",
+                "info": "Icon name copied over from Unicons icon library. You can find the list over at [Unicons](https://iconscout.com/unicons/explore/line).",
+                "id": "icon"
+              },
+              {
+                "type": "color",
+                "id": "iconColor",
+                "label": "Icon Color (optional)",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "richtext",
+                "label": "Delivery text",
+                "default": "<p>Products are usually delivered in 3-7 days.</p>",
+                "id": "text"
+              },
+              {
+                "type": "color",
+                "id": "textColor",
+                "label": "Text Color (optional)",
+                "default": "rgba(0,0,0,0)"
+              }
+          ]
+      },
+      {
+          "type": "productPageWatching",
+          "name": "Watching product",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "select",
+                "label": "Max people",
+                "id": "max",
+                "options": [
+                  {"value": "10", "label": "10"},
+                  {"value": "100", "label": "100"},
+                  {"value": "1000", "label": "1000"}
+                ],
+                "default": "100"
+              },
+              {
+                "type": "text",
+                "label": "Custom Max People",
+                "id": "customMax",
+                "info": "This MUST be a number. It is optional. If left blank, the above value will be used."
+              },
+              {
+                "type": "range",
+                "id": "interval",
+                "label": "Update the number every",
+                "min": 0,
+                "max": 30,
+                "step": 1,
+                "unit": "s",
+                "default": 8
+              },
+              {
+                "type": "color",
+                "id": "iconColor",
+                "label": "Icon Color (optional)",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "color",
+                "id": "textColor",
+                "label": "Text Color (optional)",
+                "default": "rgba(0,0,0,0)"
+              }
+          ]
+      },
+      {
+          "type": "productPageInCart",
+          "name": "Product in cart",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "select",
+                "label": "Max people",
+                "id": "max",
+                "options": [
+                  {"value": "10", "label": "10"},
+                  {"value": "100", "label": "100"},
+                  {"value": "1000", "label": "1000"}
+                ],
+                "default": "100"
+              },
+              {
+                "type": "text",
+                "label": "Custom Max People",
+                "id": "customMax",
+                "info": "This MUST be a number. It is optional. If left blank, the above value will be used."
+              },
+              {
+                "type": "range",
+                "id": "interval",
+                "label": "Update the number every",
+                "min": 0,
+                "max": 30,
+                "step": 1,
+                "unit": "s",
+                "default": 8
+              },
+              {
+                "type": "color",
+                "id": "iconColor",
+                "label": "Icon Color (optional)",
+                "default": "rgba(0,0,0,0)"
+              },
+              {
+                "type": "color",
+                "id": "textColor",
+                "label": "Text Color (optional)",
+                "default": "rgba(0,0,0,0)"
+              }
+          ]
+      },
+      {
+          "type": "productPageDescription",
+          "name": "Product description",
+          "settings": [
+            {
+              "id": "heading",
+              "label": "Description title",
+              "default": "Product description",
+              "type": "text"
+            },
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              }
+          ]
+      },
+      {
+          "type": "productPageAccordion",
+          "name": "Accordion",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "text",
+                "id": "heading",
+                "label": "Accordion heading",
+                "default": "Description"
+              },
+              {
+                "type": "radio",
+                "label": "Accordion content",
+                "id": "content",
+                "options": [
+                  {"value": "description", "label": "Description"},
+                  {"value": "reviews", "label": "Reviews"},
+                  {"value": "metafield", "label": "Metafield"},
+                  {"value":"page", "label": "Page"},
+                  {"value": "productPage", "label": "Product specific page"},
+                  {"value": "custom", "label": "Custom content"}
+                ],
+                "default": "description"
+              },
+              {
+                "type": "header",
+                "content": "Metafield"
+              },
+              {
+                "type": "text",
+                "id": "metafieldNS",
+                "label": "Metafield namespace",
+                "default": "global"
+              },
+              {
+                "type": "text",
+                "id": "metafieldKey",
+                "label": "Metafield key"
+              },
+              {
+                "type": "header",
+                "content": "Page"
+              },
+              {
+                "type": "page",
+                "label": "Page to show",
+                "id": "page"
+              },
+              {
+                "type": "header",
+                "content": "Custom content"
+              },
+              {
+                "type": "html",
+                "id": "customContent",
+                "label": "Custom content",
+                "default": "<p>Add custom content here!</p>"
+              }
+          ]
+      },
+      {
+          "type": "productPageTab",
+          "name": "Tab",
+          "settings": [
+              {
+                "type": "checkbox",
+                "label": "Show this tab inline",
+                "info": "Will place this tag on the side of the product, instead of below everything",
+                "default": false,
+                "id": "showInline"
+              },
+              {
+                "type": "text",
+                "id": "heading",
+                "label": "Tab heading",
+                "default": "Description"
+              },
+              {
+                "type": "radio",
+                "label": "Tab content",
+                "id": "content",
+                "options": [
+                  {"value": "description", "label": "Description"},
+                  {"value": "reviews", "label": "Reviews"},
+                  {"value": "metafield", "label": "Metafield"},
+                  {"value": "page", "label": "Page"},
+                  {"value": "productPage", "label": "Product specific page"},
+                  {"value": "custom", "label": "Custom content"}
+                ],
+                "default": "description"
+              },
+              {
+                "type": "header",
+                "content": "Metafield"
+              },
+              {
+                "type": "text",
+                "id": "metafieldNS",
+                "label": "Metafield namespace",
+                "default": "global"
+              },
+              {
+                "type": "text",
+                "id": "metafieldKey",
+                "label": "Metafield key"
+              },
+              {
+                "type": "header",
+                "content": "Page"
+              },
+              {
+                "type": "page",
+                "label": "Page to show",
+                "id": "page"
+              },
+              {
+                "type": "header",
+                "content": "Custom content"
+              },
+              {
+                "type": "html",
+                "id": "customContent",
+                "label": "Custom content",
+                "default": "<p>Add custom content here!</p>"
+              }
+          ]
+      },
+      {
+        "type": "productPageReviewStars",
+        "name": "Review stars",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "noMargin",
+            "label": "Remove bottom space"
+          },
+          {
+            "type": "paragraph",
+            "content": "Make sure to save the settings in order to initialize reviews."
+          }
+        ]
+      },
+      {
+        "type": "productPageTags",
+        "name": "Tags",
+        "settings": [
+          {
+            "type": "checkbox",
+            "id": "noMargin",
+            "label": "Remove bottom space"
+          },
+          {
+            "type": "select",
+            "id": "style",
+            "options": [
+              {"value": "swatch", "label": "Swatch"},
+              {"value": "text", "label": "Text"}
+            ],
+            "label": "Tag style"
+          },
+          {
+            "type": "textarea",
+            "label": "Tags to exclude",
+            "id": "exclude",
+            "info": "Comma (,) separated list of tags to exclude. bstr-tag-* tags are excluded automatically."
+          }
+        ]
+      },
+      {
+          "type": "productPageATC",
+          "name": "Add to cart (*)",
+          "limit": 1,
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              },
+              {
+                "type": "radio",
+                "id": "displayAtcFor",
+                "label": "Show sticky ATC on",
+                "options": [
+                  {"value": "display--both", "label": "All devices"},
+                  {"value": "hide-desktop", "label": "Mobile only"},
+                  {"value": "hide-mobile", "label": "Desktop only"}
+                ],
+                "default": "display--both"
+              },
+              {
+                "type": "select",
+                "id": "atcLayout",
+                "label": "Sticky ATC section layout",
+                "options": [
+                  {"value": "default", "label": "Global default"},
+                  {"value": "boxed", "label": "Boxed"},
+                  {"value": "stretchContent", "label": "Full width"}
+                ],
+                "default": "default"
+              },
+              {
+                "type": "select",
+                "id": "stickyATC",
+                "options": [
+                  {"value": "disabled", "label": "Don't show sticky ATC"},
+                  {"value": "scroll", "label": "Show sticky ATC after scrolling past original"},
+                  {"value": "always", "label": "Always show sticky ATC"}
+                ],
+                "default": "scroll",
+                "label": "Sticky ATC"
+              }
+          ]
+      },
+      {
+          "type": "productPageShopPay",
+          "name": "Shop Pay Banner",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              }
+          ]
+      },
+      {
+          "type": "productPageShare",
+          "name": "Social Media Share",
+          "settings": [
+              {
+                "type": "checkbox",
+                "id": "noMargin",
+                "label": "Remove bottom space"
+              }
+          ]
+      },
+      {
+          "type": "productOrderAttribute",
+          "name": "Order Attribute",
+          "limit": 1,
+          "settings": [
+            {
+              "type": "text",
+              "id": "customText",
+              "label": "Order Attribute Title",
+              "default": "Note",
+              "info": "Allow customers to add extra details to their orders using cart attributes."
+            },
+            {
+              "type": "text",
+              "id": "placeholder",
+              "label": "Order Attribute Placeholder",
+              "default": "Add your note here"
+            },
+            {
+              "type": "header",
+              "content": "Layout"
+            },
+            {
+              "id": "inputStyle",
+              "label": "Input style",
+              "type": "select",
+              "options": [
+                {"value": "inputText", "label": "Input Text"},
+                {"value": "textArea", "label": "Textarea"}
+              ],
+              "default": "inputText"
+            },
+            {
+              "type": "select",
+              "id": "layout",
+              "label": "Title input layout",
+              "options": [
+                {
+                  "value": "oneColumn",
+                  "label": "One column style"
+                },
+                {
+                  "value": "twoColumn",
+                  "label": "Two column style"
+                }
+              ],
+              "default": "oneColumn"
+            },
+            {
+              "type": "header",
+              "content": "Style"
+            },
+            {
+              "id": "color",
+              "type": "color",
+              "label": "Text color",
+              "default": "rgba(0,0,0,0)"
+            },
+            {
+              "id": "fontFamily",
+              "label": "Font family",
+              "type": "select",
+              "options": [
+                {"value": "base", "label": "Base"},
+                {"value": "title", "label": "Title"}
+              ],
+              "default": "base"
+            },
+            {
+              "id": "fontSize",
+              "label": "Font size",
+              "type": "select",
+              "options": [
+                {"value": "small", "label": "Small"},
+                {"value": "base", "label": "Base"},
+                {"value": "medium", "label": "Medium"},
+                {"value": "big", "label": "Big"}
+              ],
+              "default": "small"
+            }
+          ]
+      }
+    ]
+}
+{% endschema %}

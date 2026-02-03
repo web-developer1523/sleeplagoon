@@ -1,0 +1,66 @@
+{% if section.settings.cardDesktop == "default" %}
+{% assign desktop = settings.cardDesktop %}
+{% else %}
+{% assign desktop = section.settings.cardDesktop %}
+{% endif %}
+
+{% if section.settings.cardMobile == "default" %}
+{% assign mobile = settings.cardMobile %}
+{% else %}
+{% assign mobile = section.settings.cardMobile %}
+{% endif %}
+
+<div class="row row__collection-list max-width">
+{% paginate collections by section.settings.cardsPerPage %}
+  {% for collection in collections %}
+    <div class="col-{{mobile}} col-md-{{desktop}} card--holder{% if settings.easeIn %} ease-in{% endif %}">
+    {% render 'collection-card' with collection as collection %}
+    </div>
+  {% endfor %}
+  {% render 'pagination', paginate: paginate, type: 'links' %}
+{% endpaginate%}
+</div>
+
+{% schema %}
+{
+    "name": "Collection List",
+    "settings": [
+        {
+            "type": "header",
+            "content": "Layout"
+        },
+        {
+            "type": "select",
+            "id": "cardDesktop",
+            "label": "How many cards per row (Desktop)",
+            "options": [
+            {"value": "default", "label": "Global default"},
+            {"value": "1-5", "label": "5"},
+            {"value": "3", "label": "4"},
+            {"value": "4", "label": "3"}
+            ],
+            "default": "default"
+        },
+        {
+          "type": "select",
+          "id": "cardMobile",
+          "label": "How many cards per row (Mobile)",
+          "options": [
+            {"value": "default", "label": "Global default"},
+            {"value": "12", "label": "1"},
+            {"value": "6", "label": "2"}
+          ],
+          "default": "6"
+        },
+        {
+            "type": "range",
+            "label": "How many cards per page",
+            "id": "cardsPerPage",
+            "default": 15,
+            "min": 3,
+            "max": 50,
+            "step": 1
+        }
+    ]
+}
+{% endschema %}

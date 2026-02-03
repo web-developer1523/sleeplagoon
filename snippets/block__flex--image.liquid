@@ -1,0 +1,187 @@
+<style>
+.grid__block--image>a{
+    display: flex;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+.grid__block--image .slide__content .banner_blocks__flex_link{
+    color: inherit;
+    text-decoration: none;
+}
+
+#grid__block--{{-block.id}} img,
+#grid__block--{{-block.id}} a img {
+    object-fit: {{block.settings.backgroundSize}};
+}
+
+#grid__block--{{block.id}} .layout__content{
+    position: absolute; 
+    height: 100%; 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#grid__block--{{block.id}} img{
+    transition: all .4s ease;
+}
+
+#grid__block--{{block.id}}:hover img {
+    transform: scale(1.1);
+  }
+
+.grid__block--content p{
+    padding: 0;
+    margin: 0;
+}
+
+#grid__block--{{block.id}}.banner__block__anchor:hover{
+    cursor: pointer;
+}
+
+{% case block.settings.verticalAlignment %}
+    {% when 'top' %}
+        {% assign headingAlignment = 'start' %}
+    {% when 'middle' %}
+        {% assign headingAlignment = 'center' %}
+    {% when 'bottom' %}
+        {% assign headingAlignment = 'end' %}
+        
+{% endcase %}
+
+</style>
+{% if block.settings.url != blank %}
+<div id="grid__block--{{-block.id}}" class="grid__block center grid__block--image banner__block__anchor" data-banner-url="{{block.settings.url}}">
+    {% if block.settings.overlayOpacity > 0 %}
+        <div
+        class="overlay"
+        style="opacity: {{block.settings.overlayOpacity | times: 0.01}}; background-color: {{block.settings.overlayColor}};">
+        </div>
+    {% endif %}
+    {%- unless block.settings.backgroundImage == nil -%}
+        {% render 'image', src: block.settings.backgroundImage, size: '960x' %}
+    {% else %}
+    {% if settings.demo %}
+        <img data-src="https://source.unsplash.com/random/960x" loading="lazy" class="lazyload">
+    {% else %}
+        {{'image' | placeholder_svg_tag: 'svg__thumb'}}
+    {% endif %}
+    {%- endunless -%}
+    
+    <div class="slide__content {{block.settings.horizontalAlignment}} {{block.settings.verticalAlignment}} layout__content" style="padding: {{block.settings.padding}}px;"> 
+
+        {% unless block.settings.heading == blank %}
+            <h2
+            class="h-reset animate font__size--{{-block.settings.fontSize}} font__family--title {{ headingAlignment }}"
+            style="color: {% unless block.settings.headingColor contains 'rgba(0,0,0,0)' %}{{block.settings.headingColor}}{% else %}inherit{% endunless %};"
+            >
+                {{ block.settings.heading }}
+            </h2>
+        {% endunless %} 
+
+        {% unless block.settings.content == blank %}
+            <div
+                class="inherit animate grid__block--content"
+                style="color: {% unless block.settings.contentColor contains 'rgba(0,0,0,0)' %}{{block.settings.contentColor}}{% else %}inherit{% endunless %}; margin-bottom: 8px;"
+            >
+                {{ block.settings.content | replace: '<p>', '' | replace: '</p>', ''}}
+            </div> 
+        {% endunless %} 
+
+        {% unless block.settings.button1Text == blank %}
+            {% render 'button',
+                type: block.settings.button1Style,
+                buttonType: block.settings.button1Type,
+                url: block.settings.button1Link,
+                text: block.settings.button1Text,
+            %}
+        {% endunless %} 
+
+        {% unless block.settings.button2Text == blank %}
+            {% render 'button',
+                type: block.settings.button2Style,
+                buttonType: block.settings.button2Type,
+                url: block.settings.button2Link,
+                text: block.settings.button2Text,
+                class: 'animate slide__button'
+            %}
+        {% endunless %} 
+    </div>
+</div>
+{% else %}
+<div id="grid__block--{{-block.id}}" class="grid__block center grid__block--image">
+    {% if block.settings.overlayOpacity > 0 %}
+        <div
+        class="overlay"
+        style="opacity: {{block.settings.overlayOpacity | times: 0.01}}; background-color: {{block.settings.overlayColor}};">
+        </div>
+    {% endif %}
+    {%- unless block.settings.backgroundImage == nil -%}
+        {% render 'image', src: block.settings.backgroundImage, size: '960x' %}
+    {% else %}
+    {% if settings.demo %}
+        <img data-src="https://source.unsplash.com/random/960x" loading="lazy" class="lazyload">
+    {% else %}
+        {{'image' | placeholder_svg_tag: 'svg__thumb'}}
+    {% endif %}
+    {%- endunless -%}
+
+    <div class="slide__content {{block.settings.horizontalAlignment}} {{block.settings.verticalAlignment}} layout__content" style="padding: {{block.settings.padding}}px;"> 
+
+        {% unless block.settings.heading == blank %}
+            <h2
+            class="h-reset animate font__size--{{-block.settings.fontSize}} font__family--title"
+            style="color: {% unless block.settings.headingColor contains 'rgba(0,0,0,0)' %}{{block.settings.headingColor}}{% else %}inherit{% endunless %};"
+            >
+                {{ block.settings.heading }}
+            </h2>
+        {% endunless %} 
+
+        {% unless block.settings.content == blank %}
+            <div
+                class="inherit animate grid__block--content"
+                style="color: {% unless block.settings.contentColor contains 'rgba(0,0,0,0)' %}{{block.settings.contentColor}}{% else %}inherit{% endunless %}; margin-bottom: 8px;"
+            >
+                {{ block.settings.content | replace: '<p>', '' | replace: '</p>', ''}}
+            </div> 
+        {% endunless %} 
+
+        {% unless block.settings.button1Text == blank %}
+            {% render 'button',
+                type: block.settings.button1Style,
+                buttonType: block.settings.button1Type,
+                url: block.settings.button1Link,
+                text: block.settings.button1Text,
+            %}
+        {% endunless %} 
+
+        {% unless block.settings.button2Text == blank %}
+            {% render 'button',
+                type: block.settings.button2Style,
+                buttonType: block.settings.button2Type,
+                url: block.settings.button2Link,
+                text: block.settings.button2Text,
+                class: 'animate slide__button'
+            %}
+        {% endunless %} 
+    </div>
+</div>
+{% endif %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let bannerButton = document.querySelectorAll(".banner__block__anchor");
+        const host = window.location.host;
+
+        bannerButton.forEach((item)=>{
+            const dataBannerUrl = item.getAttribute("data-banner-url");
+            item.addEventListener("click", function(){
+                window.location.href = dataBannerUrl
+            })
+        })
+    });
+</script>

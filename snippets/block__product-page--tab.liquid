@@ -1,0 +1,34 @@
+<div class="product--tab__content {% if first %}tab--show{% endif %} {% if block.settings.content == 'description' or block.settings.content contains 'page' %}{% endif %}" id="tab--{{-block.id}}">
+    {%- case block.settings.content %}
+        {% when 'description' %}
+            {{product.description}}
+        {% when 'reviews' %}
+            {% if settings.reviewApp == "loox" %}
+                <div id="looxReviews" data-product-id="{{product.id}}" class="loox-reviews-default">{{ product.metafields.loox.reviews }}</div>
+            {% elsif settings.reviewApp == "shopifyReviews" %}
+                <div id="shopify-product-reviews" data-id="{{product.id}}">{{ product.metafields.spr.reviews }}</div>
+            {% elsif settings.reviewApp == "alireviews" %}
+                <div id="shopify-ali-review" product-id="{{ product.id }}"> {{ shop.metafields.review_collector.review_code }} </div>
+            {% endif %}
+        {% when 'custom' %}
+            {{block.settings.customContent}}
+        {% when 'metafield' %}
+            {% assign metafield = product.metafields[block.settings.metafieldNS][block.settings.metafieldKey] %}
+            {{metafield}}
+        {% when 'page' %}
+            {% assign page = pages[block.settings.page] %}
+            {{page.content}}
+        {% when 'productPage' %}
+            {% assign handle = 'content-' | append: product.handle %}
+            {% assign page = pages[handle] %}
+            {% assign price = product.price | money | strip_html %}
+            {% assign prediscount = product.compare_at_price_max | money | strip_html %}
+            {{page.content | replace: '%product%', product.title | replace: '%brand%', product.vendor | replace: '%price%', price | replace: '%prediscount%', prediscount}}
+    {% endcase %}
+</div>
+
+{% comment %}
+{% blockdef %}
+
+{% endblockdef %}
+{% endcomment %}

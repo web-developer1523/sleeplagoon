@@ -1,0 +1,96 @@
+<button onclick="topFunction()" id="scrollTopBtn"  class="button--{{settings.backTopBtnStyle}}{% unless settings.backTopBtnMobile %} hide-mobile{% endunless %}
+    {% if settings.floatingContact and settings.messengerID != 'Your page ID here' and settings.floatingContactPosition == 'left' and settings.messengerAlignment == 'left' %}
+        fcontact_msgr_left
+    {% elsif settings.floatingContact and settings.messengerID != 'Your page ID here' and settings.floatingContactPosition == 'left' %}
+        fcontact_left_msgr
+    {% elsif settings.floatingContact and settings.messengerID != 'Your page ID here' and settings.messenger %}
+        float_all
+    {% elsif settings.messengerID != 'Your page ID here' and settings.messenger %} 
+        float_msgr
+    {% elsif settings.floatingContact %} 
+        float_contact
+    {% endif %}
+    {% if settings.messengerID != 'Your page ID here' and settings.messenger and settings.messengerAlignment == 'left' and settings.floatingContact %}
+        float_all_msgr_left
+    {% elsif settings.messengerID != 'Your page ID here' and settings.messenger and settings.messengerAlignment == 'left' %} 
+        float_msgr_left
+    {% endif %}"  title="Go to top">
+    <svg height="18px" width="18px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 330 330" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path id="XMLID_224_" d="M325.606,229.393l-150.004-150C172.79,76.58,168.974,75,164.996,75c-3.979,0-7.794,1.581-10.607,4.394 l-149.996,150c-5.858,5.858-5.858,15.355,0,21.213c5.857,5.857,15.355,5.858,21.213,0l139.39-139.393l139.397,139.393 C307.322,253.536,311.161,255,315,255c3.839,0,7.678-1.464,10.607-4.394C331.464,244.748,331.464,235.251,325.606,229.393z"></path> </g></svg>
+</button>
+
+
+<style>
+    #scrollTopBtn {
+        display: none;
+        position: fixed;
+        bottom: 18px;
+        right: 18pt;
+        z-index: 99;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        height: 50px;
+        width: 50px;
+        font-size: 18px;
+        border-radius: {{settings.backTopBtnBorder}}px;
+        transition: all 1s ease;
+      }
+
+      .float_all{
+        bottom: 114pt !important;
+      }
+      
+      .float_msgr,
+      .float_contact{
+        bottom: 70pt !important;
+      }
+
+      .float_msgr_left{
+        bottom: 18pt !important;
+      }
+
+      .float_all_msgr_left,
+      .fcontact_left_msgr{
+        bottom: 70pt !important
+      }
+
+      .fcontact_msgr_left{
+        bottom: 18pt !important;
+      }
+
+      .button--custom{
+        background-color: {{settings.backTopBtnBcolor}};
+        color: {{settings.backTopBtnColor}};
+      }
+
+      .button--custom svg#Layer_1{
+        fill: {{settings.backTopBtnColor}};
+      }
+
+      .button--primary__filled svg#Layer_1{
+        fill:{{settings.primaryAccentText}};
+      }
+
+      .button--secondary__filled svg#Layer_1{
+        fill:{{settings.secondaryAccentText}};
+      }
+</style>
+
+
+<script>
+    let mybutton = document.getElementById("scrollTopBtn");
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          mybutton.style.display = "block";
+      } else {
+          mybutton.style.display = "none";
+      }
+    }
+
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+</script>

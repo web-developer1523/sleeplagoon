@@ -1,0 +1,6 @@
+<script>
+ if(window.location.href.includes("header_news")) {
+    document.write('<h3 class="newsletter-form__message newsletter-form__message--success form__message" tabindex="-1">{{ 'customer_area.forms.newsletter_success' | t }}</h3>');
+    document.querySelector(".newsletter-container").classList.add("fade-in");
+  }
+</script>

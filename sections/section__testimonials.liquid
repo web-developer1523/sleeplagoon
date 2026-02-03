@@ -1,0 +1,590 @@
+{% unless section.blocks.size == 0 %}
+  <style>
+    {% render 'common-css' with section as section %}
+
+    {% assign backgroundColor = section.settings.blockBackground %}
+    {% assign textColor = section.settings.blockText %}
+
+    #s--{{-section.id}} .testimonial--author-inside .testimonial__author--name {
+        color: {{textColor}};
+    }
+
+    #s--{{-section.id}} .testimonial--author-inside .testimonial__content--holder {
+      background: {{backgroundColor}};
+      padding: 16px;
+      text-align: {{section.settings.testimonialAlign}};
+    }
+
+    {% if textColor != "rgba(0,0,0,0)" %}
+      #s--{{-section.id}} .testimonial--author-inside .testimonial__content--holder,
+      #s--{{-section.id}} .testimonial--author-inside .testimonial__content--holder p {
+        color: {{textColor}};
+      }
+    {% endif %}
+
+    #s--{{-section.id}} .testimonial--author-below .testimonial__content {
+        background: {{backgroundColor}};
+        padding: 16px;
+        margin-bottom: 8px;
+        width: 100%;
+        color: {{textColor}};
+        text-align: {{section.settings.testimonialAlign}};
+    }
+
+    {% if textColor != "rgba(0,0,0,0)" %}
+      s--{{-section.id}} .testimonial--author-below .testimonial__content,
+      #s--{{-section.id}} .testimonial--author-below .testimonial__content p {
+        color: {{textColor}};
+      }
+    {% endif %}
+
+    #s--{{-section.id}} .testimonial--author-below .testimonial__author--name {
+        padding: 8px 12px;
+        background: {{section.settings.blockBottomBackground}};
+        color: {{section.settings.blockBottomText}};
+        text-align: left;
+        flex: 1;
+    }
+
+
+    {% if section.settings.roundedImages %}
+    #s--{{-section.id}} .testimonial__author--image {
+        border-radius: 50%;
+    }
+    {% endif %}
+
+
+    {% if section.settings.enableCarousel %}
+      #s--{{-section.id}} .swiper:not(.swiper-initialized) .testimonial-slider {
+        margin-right: {{ section.settings.spaceBetween }}px;
+      }
+
+      @media screen and (min-width: 0px) and (max-width: 767px) {
+        #s--{{ section.id }} .testimonial-slider {
+          {% if section.settings.productCardMobile >= section.blocks.size %}
+            width: 100% !important;
+          {% else %}
+            width: {{ 100 | divided_by: section.settings.productCardMobile | at_least: 20 }}%;
+          {% endif %}
+        }
+
+        {% if section.settings.productCardMobile >= section.blocks.size %}
+          #s--{{ section.id }} .testimonial-slider {
+            margin-right: 0 !important;
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+        {% endif %}
+      }
+
+      @media screen and (min-width: 768px) and (max-width: 1024px) {
+        #s--{{ section.id }} .testimonial-slider {
+          {% if section.settings.productCardTablet >= section.blocks.size %}
+            width: 33.33% !important;
+          {% else %}
+            width: {{ 100 | divided_by: section.settings.productCardTablet | at_least: 20 }}%;
+          {% endif %}
+        }
+
+        {% if section.settings.productCardTablet >= section.blocks.size %}
+          #s--{{ section.id }} .testimonial-slider {
+            margin-right: 0 !important;
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+        {% endif %}
+      }
+
+      @media screen and (min-width: 1025px) {
+        #s--{{ section.id }} .testimonial-slider {
+          {% if section.settings.productCardDesktop >= section.blocks.size %}
+            width: 33.33% !important;
+          {% else %}
+            width: {{ 100 | divided_by: section.settings.productCardDesktop | at_least: 20 }}%;
+          {% endif %}
+        }
+
+        {% if section.settings.productCardDesktop >= section.blocks.size %}
+          #s--{{ section.id }} .testimonial-slider {
+            margin-right: 0 !important;
+            padding-left: 12px;
+            padding-right: 12px;
+          }
+        {% endif %}
+      }
+    {% endif %}
+
+    .testimonials .slider__button {
+      top: 60%;
+    }
+  </style>
+
+  {% assign customID = section.settings.custom_id %}
+
+  {% if section.settings.blockStyle != 'slider-sync' %}
+    <div
+      id="s--{{-section.id}}"
+      class="{% render 'common-class', section: section, class: 'testimonials', bg: false, vAlign: false %}"
+      {% if section.settings.enableCarousel %}
+        data-bstr-carousel
+        data-bstr-carousel-options='
+          {
+            "slidesPerView": {{ section.settings.productCardMobile }},
+            "loop": true,
+            "allowTouchMove": {% if section.settings.enableDragging %}true{% else %}false{% endif %},
+            "loopFillGroupWithBlank": true,
+            "autoplay": {% if section.settings.enableAutoplay %}{ "delay": {{ section.settings.slideSpeed | times: 1000 }}, "disableOnInteraction": false }{% else %}false{% endif %},
+            "spaceBetween": {{ section.settings.spaceBetween }},
+            "autoHeight": {{ section.settings.enableAutoHeight }},
+            "breakpoints": {
+              "768": {"slidesPerView": {{ section.settings.productCardTablet }}},
+              "1025": {"slidesPerView": {{ section.settings.productCardDesktop }}}
+            }
+          }
+        '
+      {% endif %}
+    >
+      <div id="{{customID}}" class="row layout__content s__content">
+        {% render 'block__general--heading' with section as section %}
+        {% if section.settings.enableCarousel %}
+          <div class="swiper" data-bstr-carousel-items><div class="swiper-wrapper">
+        {% endif %}
+        {% case section.settings.blockStyle %}
+          {% when 'author-below' %}
+            {% render 'block__testimonial--author-below' with section as section %}
+          {% when 'author-below-image-overlap' %}
+            {% render 'block__testimonial--author-below-image-overlap' with section as section %}
+          {% when 'author-inside' %}
+            {% render 'block__testimonial--author-inside' with section as section %}
+        {% endcase %}
+        {% if section.settings.enableCarousel %}
+          </div>
+          
+          </div>
+          {% if section.blocks.size > 1 and section.settings.buttonDisplayFor != 'hide--both' %}
+            <button
+              data-bstr-slider-button="-"
+              class="slider__button {{ section.settings.buttonDisplayFor }}"
+              aria-label="Previous"
+              data-bstr-carousel-button-prev
+            >
+              <i class="uil uil-angle-left-b"></i>
+            </button>
+            <button
+              data-bstr-slider-button="+"
+              class="slider__button slider__button--next {{ section.settings.buttonDisplayFor }}"
+              aria-label="Next"
+              data-bstr-carousel-button-next
+            >
+              <i class="uil uil-angle-right-b"></i>
+            </button>
+          {% endif %}
+          {% if section.settings.enablePagination %}
+            <div class="swiper-pagination" data-bstr-carousel-pagination></div>
+          {% endif %}
+        {% endif %}
+      </div>
+    </div>
+  {% else %}
+    <div
+      id="s--{{-section.id}}"
+      class="{% render 'common-class', section: section, class: 'testimonials testimonial-slider-sync', bg: false, vAlign: false %}"
+      data-bstr-carousel
+      data-bstr-thumbs-carousel
+    >
+      <div id="{{customID}}" class="row layout__content s__content" style="overflow:hidden;gap:3rem;">
+        {% render 'block__general--heading' with section as section %}
+        {% render 'block__testimonial--slider-sync' with section as section %}
+      </div>
+    </div>
+  {% endif %}
+{% endunless %}
+
+{% schema %}
+{
+    "name": {
+        "en": "Testimonials"
+    },
+    "settings": [
+    {
+      "type": "header",
+      "content": "Section ID"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Add custom section ID"
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "radio",
+      "id": "displayFor",
+      "label": "Show this section on",
+      "options": [
+        { "value": "display--both", "label": "All devices" },
+        { "value": "hide-desktop", "label": "Mobile only" },
+        { "value": "hide-mobile", "label": "Desktop only" }
+      ],
+      "default": "display--both"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Section layout",
+      "options": [
+        { "value": "default", "label": "Global default" },
+        { "value": "boxed", "label": "Boxed" },
+        { "value": "stretchBg", "label": "Full width background" },
+        { "value": "stretchContent", "label": "Full width" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "checkbox",
+      "id": "nomargin",
+      "default": false,
+      "label": "Remove section's bottom margin"
+    },
+    {
+      "type": "textarea",
+      "id": "scopedCSS",
+      "label": "Section-scoped CSS",
+      "info": "Rules beginning with ##scoped will be scoped to this section. (Example: ##scoped h1 {color: blue})"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Minimum height",
+      "default": 0,
+      "min": 0,
+      "max": 800,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding",
+      "label": "Section padding",
+      "default": 0,
+      "min": 0,
+      "max": 50,
+      "step": 5,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "Section background"
+    },
+    {
+      "id": "backgroundColor",
+      "type": "color",
+      "default": "rgba(0,0,0,0)",
+      "label": "Background color"
+    },
+    {
+      "type": "header",
+      "content": "Section heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Section heading",
+      "default": "Check out this section's heading"
+    },
+    {
+      "type": "color",
+      "id": "headingColor",
+      "default": "rgba(0,0,0,0)",
+      "label": "Heading Color"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Section subheading",
+      "default": "THIS IS A SUBHEADING"
+    },
+    {
+      "type": "color",
+      "id": "subheadingColor",
+      "default": "rgba(0,0,0,0)",
+      "label": "Subheading Color"
+    },
+    {
+      "type": "select",
+      "id": "subheadingPosition",
+      "label": "Subheading position",
+      "options": [
+        { "value": "above", "label": "Above heading" },
+        { "value": "below", "label": "Below heading" }
+      ],
+      "default": "above"
+    },
+    {
+      "type": "select",
+      "id": "headingAlignment",
+      "label": "Heading alignment (left to right)",
+      "options": [
+        { "value": "start", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "end", "label": "Right" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial style"
+    },
+    {
+      "type": "select",
+      "id": "blockStyle",
+      "label": "Testimonial design",
+      "options": [
+        { "value": "author-below", "label": "Author information below" },
+        { "value": "author-below-image-overlap", "label": "Author information below, overlap image" },
+        { "value": "author-inside", "label": "Author information inside" },
+        { "value": "slider-sync", "label": "Slider syncing" }
+      ],
+      "default": "author-below"
+    },
+    {
+      "type": "color",
+      "id": "blockBackground",
+      "label": "Testimonial background",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "blockText",
+      "label": "Testimonial text",
+      "default": "#000"
+    },
+    {
+      "type": "select",
+      "id": "testimonialAlign",
+      "label": "Testimonial text align",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "header",
+      "content": "Bottom bar style"
+    },
+    {
+      "type": "paragraph",
+      "content": "Only applies to 'Author information below' testimonial design"
+    },
+    {
+      "type": "color",
+      "id": "blockBottomBackground",
+      "label": "Bottom background color",
+      "default": "#000"
+    },
+    {
+      "type": "color",
+      "id": "blockBottomText",
+      "default": "#FFF",
+      "label": "Bottom text color"
+    },
+    {
+      "type": "header",
+      "content": "Author information"
+    },
+    {
+      "type": "checkbox",
+      "label": "Use a stock image if there is no author image",
+      "default": true,
+      "id": "useFakeImages"
+    },
+    {
+      "type": "checkbox",
+      "label": "Make author pictures rounded",
+      "default": true,
+      "id": "roundedImages"
+    },
+    {
+      "type": "header",
+      "content": "Slider options"
+    },
+    {
+      "type": "checkbox",
+      "id": "enableCarousel",
+      "label": "Enable slider",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enableAutoplay",
+      "label": "Enable autoplay",
+      "info": "If checked, slider will automatically rotate between slides",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "slideSpeed",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "unit": "Sec",
+      "label": "Slide Speed",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "spaceBetween",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Space between slides",
+      "default": 30
+    },
+    {
+      "type": "checkbox",
+      "id": "enableDragging",
+      "label": "Enable dragging",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enablePagination",
+      "label": "Enable pagination",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enableAutoHeight",
+      "label": "Auto height",
+      "default": false,
+      "info": "Adjusts slider height to match the height of the current slide"
+    },
+    {
+      "type": "radio",
+      "id": "buttonDisplayFor",
+      "label": "Show Prev/Next button on",
+      "options": [
+        { "value": "display--both", "label": "All devices" },
+        { "value": "hide-desktop", "label": "Mobile only" },
+        { "value": "hide-mobile", "label": "Desktop only" },
+        { "value": "hide--both", "label": "Hide all devices" }
+      ],
+      "default": "hide-mobile"
+    },
+    {
+      "type": "range",
+      "id": "productCardDesktop",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "How many cards per row (Desktop)",
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "productCardTablet",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "label": "How many cards per row (Tablet)",
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "productCardMobile",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "label": "How many cards per row (Mobile)",
+      "default": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Testimonial"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Testimonial text",
+          "default": "<p>I love this product</p>"
+        },
+        {
+          "type": "header",
+          "content": "Author"
+        },
+        {
+          "type": "text",
+          "label": "Author name",
+          "default": "John Doe",
+          "id": "authorName"
+        },
+        {
+          "type": "select",
+          "id": "fakeImageSex",
+          "label": "Author gender (used for a stock image)",
+          "options": [
+            { "value": "men", "label": "Male" },
+            { "value": "women", "label": "Female" }
+          ],
+          "default": "men"
+        },
+        {
+          "type": "image_picker",
+          "label": "Author image",
+          "id": "authorImage"
+        },
+        {
+          "type": "text",
+          "id": "imageAlt",
+          "label": "Image alt",
+          "info": "If set to empty, it will use the author name as alt text"
+        },
+        {
+          "type": "range",
+          "id": "star_rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "unit": "st",
+          "label": "Star Rating",
+          "default": 5,
+          "info": "Only works for Slider syncing testimonial design"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "category": "Reviews",
+      "name": "Testimonials",
+      "settings": {
+        "heading": "Testimonials",
+        "subheading": "What others have to say",
+        "padding": 40
+      },
+      "blocks": [
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        },
+        {
+          "type": "testimonial"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

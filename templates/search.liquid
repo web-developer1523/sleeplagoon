@@ -1,0 +1,93 @@
+<div class="row max-width">
+
+{% assign mobile = settings.cardMobile %}
+{% assign desktop = settings.cardDesktop %}
+
+{% if search.performed %}
+  {% if search.results.size > 0 %}
+    {% paginate search.results by 15 %}
+
+    <h1 class="h-reset col-12 unflex searchpage__title">Search results for <span class="search__term">"{{search.terms}}"</span>:</h1>
+    {% assign products = search.results | where: 'object_type', 'product' %}
+    {% assign pages = search.results | where: 'object_type', 'page' %}
+    {% assign articles = search.results | where: 'object_type', 'article' %}
+
+    {% if products.size > 0 %}
+    {% assign mobile = settings.cardMobile %}
+    {% assign desktop = settings.cardDesktop %}
+    <div class="row no-gap col-12 searchpage__section">
+      <h2 class="h-reset col-12 font__family--base searchpage__subtitle">Products</h2>
+      {% for product in products %}
+      <div class="col-{{mobile}} col-md-{{-desktop}}">
+        {% render 'product-card-default', product: product, dsize: '3' %}
+      </div>
+      {% endfor %}
+    </div>
+    {% elsif settings.emptySearch != blank %}
+    <div class="row no-gap col-12 searchpage__section">
+      <h2 class="h-reset col-12 font__family--base searchpage__subtitle">Some products you may like</h2>
+      {% for product in collections[settings.emptySearch].products limit: 12 %}
+      <div class="col-{{mobile}} col-md-{{-desktop}}">
+        {% render 'product-card-default', product: product, dsize: '3' %}
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if pages.size > 0 %}
+    <div class="row no-gap col-12 searchpage__section">
+      <h2 class="h-reset col-12 font__family--base searchpage__subtitle">Pages</h2>
+      {% for page in pages %}
+      <div class="col-12">
+          <a href="{{page.url}}">{{page.title}}</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if articles.size > 0 %}
+    <div class="row no-gap col-12 searchpage__section">
+      <h2 class="h-reset col-12 font__family--base searchpage__subtitle">Articles</h2>
+      {% for article in articles %}
+      <div class="col-12">
+          <a href="{{article.url}}">{{article.title}}</a>
+      </div>  
+      {% endfor %}
+    </div>
+    {% endif %}
+
+    {% render 'pagination', paginate: paginate, type: 'links' %}
+    {% endpaginate %}
+  </div>
+  {% elsif settings.emptySearch != blank %}
+  <h1 class="h-reset col-12 unflex searchpage__title">Search results for <span class="search__term">"{{search.terms}}"</span>:</h1>
+    <div class="row no-gap col-12 searchpage__section">
+      <h2 class="h-reset col-12 font__family--base searchpage__subtitle">Some products you may like</h2>
+      {% for product in collections[settings.emptySearch].products limit: 15 %}
+      <div class="col-{{mobile}} col-md-{{-desktop}}">
+        {% render 'product-card-default', product: product, dsize: '3' %}
+      </div>
+      {% endfor %}
+    </div>
+  {% else %}
+  no results
+  {% endif %}
+{% else %}
+  <form class="col-12 wrap center searchpage__title" method="get" action="/search">
+    <h1 class="h-reset col-12 searchpage__input--title no-gap center">Enter your search term below</h1>
+    <input class="searchpage__input" placeholder="{{'general.search.placeholder' | t }}" name="q" type="search">
+    {% render 'submit-button', text: 'Search', type: 'primary' %}
+  </form>
+  {% if settings.emptySearch != blank %}
+    <div class="row no-gap col-12 searchpage__section">
+      <h2 class="h-reset col-12 font__family--base searchpage__subtitle">Some products you may like</h2>
+      {% for product in collections[settings.emptySearch].products limit: 15 %}
+      <div class="col-{{mobile}} col-md-{{-desktop}}">
+        {% render 'product-card-default', product: product, dsize: '3' %}
+      </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endif %}
+
+</div>

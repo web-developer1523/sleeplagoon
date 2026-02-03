@@ -1,0 +1,124 @@
+{% comment %}
+	GEMPAGES BUILDER (https://apps.shopify.com/gempages)
+
+	You SHOULD NOT modify source code in this file because
+	It is automatically generated from GEMPAGES BUILDER
+	Try to edit page with the live editor.
+{% endcomment %}
+<!doctype html>
+<html>
+  <head>
+<!--
+888888b.                              888                88888888888 888                                      
+888  "88b                             888                    888     888                                      
+888  .88P                             888                    888     888                                      
+8888888K.   .d88b.   .d88b.  .d8888b  888888 .d88b.  888d888 888     88888b.   .d88b.  88888b.d88b.   .d88b.  
+888  "Y88b d88""88b d88""88b 88K      888   d8P  Y8b 888P"   888     888 "88b d8P  Y8b 888 "888 "88b d8P  Y8b 
+888    888 888  888 888  888 "Y8888b. 888   88888888 888     888     888  888 88888888 888  888  888 88888888 
+888   d88P Y88..88P Y88..88P      X88 Y88b. Y8b.     888     888     888  888 Y8b.     888  888  888 Y8b.     
+8888888P"   "Y88P"   "Y88P"   88888P'  "Y888 "Y8888  888     888     888  888  "Y8888  888  888  888  "Y8888  
+-->
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-54KGZVZ');</script>
+<!-- End Google Tag Manager -->
+
+
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT-MZC9T9X"></script>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {%- if settings.favicon != blank -%}
+    <link rel="shortcut icon" href="{{ settings.favicon | img_url: '32x32' }}" type="image/png">
+  {%- endif -%}
+
+  {%- capture seo_title -%}
+    {%- if request.page_type == 'search' and search.performed == true -%}
+      {{ 'search.heading' | t: count: search.results_count }}: {{ 'search.results_with_count' | t: terms: search.terms, count: search.results_count }}
+    {%- else -%}
+      {{ page_title }}
+    {%- endif -%}
+    {%- if current_tags -%}
+      {%- assign meta_tags = current_tags | join: ', ' -%} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+    {%- endif -%}
+    {%- if current_page != 1 -%}
+      &ndash; {{ 'general.meta.page' | t: page: current_page }}
+    {%- endif -%}
+    {%- assign escaped_page_title = page_title | escape -%}
+    {%- unless escaped_page_title contains shop.name -%}
+      &ndash; {{ shop.name }}
+    {%- endunless -%}
+  {%- endcapture -%}
+  {%- comment smartseo_integration_begin_meta_data -%}<title>{{ seo_title | strip }}</title>{%- endcomment smartseo_integration_end_meta_data -%}
+
+  {%- if page_description -%}
+    {%- comment smartseo_integration_begin_meta_data -%}<meta name="description" content="{{ page_description | escape }}">{%- endcomment smartseo_integration_end_meta_data -%}
+  {%- endif -%}
+
+
+<script>
+    (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:2608071,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+  <script src="https://apis.google.com/js/platform.js?onload=renderOptIn" async defer></script>
+
+<script>
+    <title>
+      {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags |
+      join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{
+      current_page }}{% endif %}{% unless page_title contains shop.name %}
+      &ndash; {{ shop.name }}{% endunless %}
+    </title>
+    {% if page_description %}
+    <meta name="description" content="{{ page_description | escape }}" />
+    {% endif %}
+    <link rel="canonical" href="{{ canonical_url }}" />
+    <link href="https://static.boostertheme.co" rel="preconnect" crossorigin>
+    <link rel="dns-prefetch" href="//static.boostertheme.co">
+    <link href="https://theme.boostertheme.com" rel="preconnect" crossorigin>
+    <link rel="dns-prefetch" href="//theme.boostertheme.com">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+
+    {% render 'layout__favicon' %}
+
+    {{ content_for_header }}
+
+    <style>
+      {% render 'global-scss' %}
+
+      #preview-bar-iframe{
+        display:none!important;
+      }
+    </style>
+    {% unless settings.headHTML == blank %}
+      {{settings.headHTML}}
+    {% endunless %}
+    {% unless settings.headJS == blank %}
+      <script>
+      {{settings.headJS}}
+      </script>
+    {% endunless %}
+    {% render 'layout__custom-code--head' %}
+    {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+    {{ 'swiper-bundle.min.js' | asset_url | script_tag }}
+  </head>
+  <body>
+<div class="gem-container">
+	{{ content_for_layout }}
+</div><!-- end .gem-container --></body>
+</html>

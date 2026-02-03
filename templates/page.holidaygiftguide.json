@@ -1,0 +1,1041 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "banner--page",
+      "disabled": true,
+      "settings": {
+        "layout": "default",
+        "height": 10,
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "fontSize": "medium",
+        "contentColor": "rgba(0,0,0,0)",
+        "fillColor": "rgba(0,0,0,0)",
+        "overlayOpacity": 0,
+        "overlayColor": "#000000"
+      }
+    },
+    "content": {
+      "type": "page",
+      "settings": {
+        "layout": "default",
+        "enableShortcodes": false
+      }
+    },
+    "section_cta_f6VYMN": {
+      "type": "section__cta",
+      "blocks": {
+        "rich_text_pPGtHU": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>🎄<strong> Expedited Holiday Shipping Available. </strong></p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "small"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_pPGtHU"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "#efefef",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "#003e52",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "6f60fa07-b2b3-4a5b-9743-7d52416ffafe": {
+      "type": "section__cta",
+      "blocks": {
+        "rich_text_mgj4AB": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>🎄 HOLIDAY SALE IS ON!</p>",
+            "detectLists": true,
+            "textColor": "#ffffff",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14510002274433__6f60fa07-b2b3-4a5b-9743-7d52416ffafe-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "GIVE THE GIFT OF DEEP SLEEP",
+            "textColor": "#ffffff",
+            "fontFamily": "title",
+            "fontSize": "big"
+          }
+        },
+        "template--14510002274433__6f60fa07-b2b3-4a5b-9743-7d52416ffafe-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>The only gift they’ll use for 8 hours, every night.</p>",
+            "detectLists": true,
+            "textColor": "#ffffff",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "rich_text_f4aF9w": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>🎁 $20 OFF EVERY PILLOW | UP TO $160 OFF BUNDLES</p><p>*OFFERS APPLIED IN CART</p>",
+            "detectLists": true,
+            "textColor": "#ffffff",
+            "fontFamily": "base",
+            "fontSize": "small"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_mgj4AB",
+        "template--14510002274433__6f60fa07-b2b3-4a5b-9743-7d52416ffafe-title-1",
+        "template--14510002274433__6f60fa07-b2b3-4a5b-9743-7d52416ffafe-richText-1",
+        "rich_text_f4aF9w"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "hide-mobile",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 500,
+        "padding": 50,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImage": "shopify://shop_images/Clean_Website_Hero_Images_1_bada1be3-732a-41cb-8daa-2cb98bc6244b.png",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "top",
+        "backgroundFilter": "none",
+        "backdropIntensity": 0,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "end",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 50,
+        "heading": "",
+        "headingColor": "#ffffff",
+        "subheading": "",
+        "subheadingColor": "#ffffff",
+        "subheadingPosition": "below",
+        "headingAlignment": "center"
+      }
+    },
+    "section_cta_d4L4Cf": {
+      "type": "section__cta",
+      "blocks": {
+        "rich_text_ihGyRg": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>🎁  HOLIDAY SALE IS ON!</p>",
+            "detectLists": true,
+            "textColor": "#ffffff",
+            "fontFamily": "base",
+            "fontSize": "small"
+          }
+        },
+        "title_wwXyWy": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "GIVE THE GIFT OF DEEP SLEEP",
+            "textColor": "#ffffff",
+            "fontFamily": "title",
+            "fontSize": "big"
+          }
+        },
+        "rich_text_KyFa4h": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>The only gift they’ll use for 8 hours, every night.</p>",
+            "detectLists": true,
+            "textColor": "#ffffff",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "rich_text_ihGyRg",
+        "title_wwXyWy",
+        "rich_text_KyFa4h"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "hide-desktop",
+        "layout": "boxed",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 400,
+        "padding": 10,
+        "lineMargin": 0,
+        "backgroundColor": "#dae1ea",
+        "backgroundImage": "shopify://shop_images/Website_-_Product_Page_Images_-_Square_-_Updated_2025_1.png",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 25,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 50,
+        "heading": "",
+        "headingColor": "#ffffff",
+        "subheading": "",
+        "subheadingColor": "#ffffff",
+        "subheadingPosition": "below",
+        "headingAlignment": "center"
+      }
+    },
+    "section_cta_QLc9aa": {
+      "type": "section__cta",
+      "blocks": {
+        "title_UEepTw": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "🎁 PICK THE PERFECT PILLOW",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "big"
+          }
+        },
+        "rich_text_yRxFai": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>$20 off every pillow, $60 off any pair, </p><p>$160 off a 4 pack.  Mix and match!</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "separator_yaDyDr": {
+          "type": "separator",
+          "settings": {
+            "height": 25,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "title_UEepTw",
+        "rich_text_yRxFai",
+        "separator_yaDyDr"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 140,
+        "padding": 25,
+        "lineMargin": 0,
+        "backgroundColor": "#ffffff",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_6z6hkG": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "Pick #1 - The Best Seller",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "❄️ Perfect for hot sleepers and side  sleepers ❄️",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "the-otter",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_xeG78a": {
+      "type": "section__cta",
+      "blocks": {
+        "separator_JG8ieb": {
+          "type": "separator",
+          "settings": {
+            "height": 50,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "separator_JG8ieb"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_VYLPnb": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "Pick #2 - The Most Versatile",
+        "headingColor": "#003e52",
+        "subheading": "🦊 Perfect for combo sleepers + guest rooms 🛏️",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "the-fox",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_zimgBP": {
+      "type": "section__cta",
+      "blocks": {
+        "separator_mymPLT": {
+          "type": "separator",
+          "settings": {
+            "height": 50,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "separator_mymPLT"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_GCYynw": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "Pick #3 - The Softest Pillow Ever",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "☁️ Perfect for stomach sleepers + luxury lovers ♥️",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "the-chinchilla",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_zjdnwR": {
+      "type": "section__cta",
+      "blocks": {
+        "separator_UNRVxw": {
+          "type": "separator",
+          "settings": {
+            "height": 50,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "separator_UNRVxw"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_7kHDGF": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "Pick #4 - The New Arrival",
+        "headingColor": "#003e52",
+        "subheading": "🎁 Perfect for side sleepers + those who love big, supportive pillows 🐻‍❄️",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "the-polar-bear-reversible-adjustable-cooling-pillow",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_3CDJzP": {
+      "type": "section__cta",
+      "blocks": {
+        "title_twfMBt": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "🎁 PICK THE ACCESSORIES",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "big"
+          }
+        },
+        "rich_text_kJGezH": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>$20 off pillowcases & travel pillows</p><p>Shop Night Bites or a new travel bag!</p>",
+            "detectLists": true,
+            "textColor": "#000000",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "separator_qdtAhj": {
+          "type": "separator",
+          "settings": {
+            "height": 25,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "title_twfMBt",
+        "rich_text_kJGezH",
+        "separator_qdtAhj"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 140,
+        "padding": 25,
+        "lineMargin": 0,
+        "backgroundColor": "#ffffff",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_aWYbC7": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "New Arrival | Limited Stock!",
+        "headingColor": "#003e52",
+        "subheading": "Perfect for hot sleepers",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "cooling-flex-performance-pillowcase",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_ANpMh8": {
+      "type": "section__cta",
+      "blocks": {
+        "separator_QC7wwp": {
+          "type": "separator",
+          "settings": {
+            "height": 50,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "separator_QC7wwp"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_Rd89UD": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "Sleep in Luxury",
+        "headingColor": "#003e52",
+        "subheading": "Perfect for skin and hair care",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "100-mulberry-silk-performance-cooling-pillow-case",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_fyMtDG": {
+      "type": "section__cta",
+      "blocks": {
+        "separator_N3NhQR": {
+          "type": "separator",
+          "settings": {
+            "height": 50,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "separator_N3NhQR"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_zY4hmB": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "The Fox in Travel Size!",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "The perfect travel companion",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "fox-travel-pillow-cooling-pillowcase-kid-friendly-sized-pillow",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_GmG9fY": {
+      "type": "section__cta",
+      "blocks": {
+        "separator_pDm6rP": {
+          "type": "separator",
+          "settings": {
+            "height": 50,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "separator_pDm6rP"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_EhgTQk": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "The Otter in Travel Size!",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "The perfect travel companion",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "travel-pillow-cooling-pillowcase-kid-friendly-sized-pillow",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_JCUAG8": {
+      "type": "section__cta",
+      "blocks": {
+        "separator_JQ9Ahm": {
+          "type": "separator",
+          "settings": {
+            "height": 50,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "separator_JQ9Ahm"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_NJTCjz": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "boxed",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#dae1ea",
+        "heading": "Travel with Your Full-Size Pillow",
+        "headingColor": "#003e52",
+        "subheading": "Roll, pack & add to your carry-on",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "pillow-travel-compression-bag-for-full-size-pillows",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    },
+    "section_cta_facCwk": {
+      "type": "section__cta",
+      "blocks": {
+        "separator_kgGVGW": {
+          "type": "separator",
+          "settings": {
+            "height": 50,
+            "dividerHeight": 1,
+            "dividerWidth": 50,
+            "dividerColor": "#efefef",
+            "position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "separator_kgGVGW"
+      ],
+      "name": "Call to action",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "section_featured_product_eWweW6": {
+      "type": "section__featured-product",
+      "name": "Featured product",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "heading": "Delicious Chocolate Before Bed",
+        "headingColor": "#003e52",
+        "subheading": "200 mgs magnesium and 200 mgs L-Theanine",
+        "subheadingColor": "#000000",
+        "subheadingPosition": "below",
+        "headingAlignment": "center",
+        "product": "night-bites-sample-pack-dark-chocolate-cherry-chocolate-almonds-chocolate",
+        "showDescription": true,
+        "video_loop": true,
+        "video_autoplay": true
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "content",
+    "section_cta_f6VYMN",
+    "6f60fa07-b2b3-4a5b-9743-7d52416ffafe",
+    "section_cta_d4L4Cf",
+    "section_cta_QLc9aa",
+    "section_featured_product_6z6hkG",
+    "section_cta_xeG78a",
+    "section_featured_product_VYLPnb",
+    "section_cta_zimgBP",
+    "section_featured_product_GCYynw",
+    "section_cta_zjdnwR",
+    "section_featured_product_7kHDGF",
+    "section_cta_3CDJzP",
+    "section_featured_product_aWYbC7",
+    "section_cta_ANpMh8",
+    "section_featured_product_Rd89UD",
+    "section_cta_fyMtDG",
+    "section_featured_product_zY4hmB",
+    "section_cta_GmG9fY",
+    "section_featured_product_EhgTQk",
+    "section_cta_JCUAG8",
+    "section_featured_product_NJTCjz",
+    "section_cta_facCwk",
+    "section_featured_product_eWweW6"
+  ]
+}

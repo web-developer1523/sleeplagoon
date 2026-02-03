@@ -1,0 +1,190 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div.row.row--product-list",
+  "sections": {
+    "750ccdb2-295c-417d-bb12-fcbdb6ab66c9": {
+      "type": "section__slider--responsive",
+      "blocks": {
+        "template--14509164757121__750ccdb2-295c-417d-bb12-fcbdb6ab66c9-imageSlideResponsive-1": {
+          "type": "imageSlideResponsive",
+          "settings": {
+            "horizontalAlignment": "center",
+            "verticalAlignment": "top",
+            "padding": 0,
+            "contentSpacing": 0,
+            "backgroundColor": "rgba(0,0,0,0)",
+            "backgroundImage": "{{ collection.metafields.custom.collection_image_desktop.value }}",
+            "backgroundImageMobile": "{{ collection.image }}",
+            "backgroundPosition": "middle",
+            "overlayOpacity": 0,
+            "overlayColor": "#000000",
+            "slideURL": "",
+            "heading": "",
+            "headingColor": "#f6f7f8",
+            "content": "",
+            "contentColor": "#f6f7f8",
+            "button1Text": "",
+            "button1Link": "",
+            "button1Style": "primary",
+            "button1Type": "default",
+            "button2Text": "",
+            "button2Link": "",
+            "button2Style": "secondary",
+            "button2Type": "default"
+          }
+        }
+      },
+      "block_order": [
+        "template--14509164757121__750ccdb2-295c-417d-bb12-fcbdb6ab66c9-imageSlideResponsive-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "hide-mobile",
+        "layout": "default",
+        "nomargin": true,
+        "height": 0,
+        "contentColor": "rgba(0,0,0,0)",
+        "autoplay": true,
+        "slideSpeed": 3,
+        "animation": "none",
+        "delayAnimation": false
+      }
+    },
+    "b323a5d1-23fd-4d99-ab0f-89e14b18d1c5": {
+      "type": "section__slider--responsive",
+      "blocks": {
+        "4872f127-30de-4a7c-8fad-17ac045a0e63": {
+          "type": "imageSlideResponsive",
+          "settings": {
+            "horizontalAlignment": "start",
+            "verticalAlignment": "middle",
+            "padding": 0,
+            "contentSpacing": 0,
+            "backgroundColor": "rgba(0,0,0,0)",
+            "backgroundImage": "{{ collection.metafields.custom.collection_image_mobile.value }}",
+            "backgroundImageMobile": "{{ collection.metafields.custom.collection_image_mobile.value }}",
+            "backgroundPosition": "middle",
+            "overlayOpacity": 0,
+            "overlayColor": "#000000",
+            "slideURL": "",
+            "heading": "",
+            "headingColor": "#f6f7f8",
+            "content": "",
+            "contentColor": "#f6f7f8",
+            "button1Text": "",
+            "button1Link": "",
+            "button1Style": "primary",
+            "button1Type": "default",
+            "button2Text": "",
+            "button2Link": "",
+            "button2Style": "secondary",
+            "button2Type": "default"
+          }
+        }
+      },
+      "block_order": [
+        "4872f127-30de-4a7c-8fad-17ac045a0e63"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "hide-desktop",
+        "layout": "default",
+        "nomargin": false,
+        "height": 360,
+        "contentColor": "rgba(0,0,0,0)",
+        "autoplay": true,
+        "slideSpeed": 3,
+        "animation": "none",
+        "delayAnimation": false
+      }
+    },
+    "banner": {
+      "type": "banner--collection",
+      "settings": {
+        "layout": "default",
+        "height": 0,
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "showTitle": true,
+        "showNumber": false,
+        "fontSize": "big",
+        "showDescription": false,
+        "truncateReadMore": true,
+        "truncateDesc": 0,
+        "contentColor": "rgba(0,0,0,0)",
+        "fillColor": "rgba(0,0,0,0)",
+        "useCollectionImage": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000"
+      }
+    },
+    "sort": {
+      "type": "sort",
+      "settings": {}
+    },
+    "filters": {
+      "type": "product-list__filters",
+      "blocks": {
+        "filter-01": {
+          "type": "filter",
+          "disabled": true,
+          "settings": {
+            "hideDisabled": true,
+            "expanded": true,
+            "useSwatch": true,
+            "useSwatchList": "color, colour"
+          }
+        }
+      },
+      "block_order": [
+        "filter-01"
+      ],
+      "disabled": true,
+      "settings": {
+        "filter": false
+      }
+    },
+    "content": {
+      "type": "product-list",
+      "settings": {}
+    },
+    "banner-bottom": {
+      "type": "banner--collection__desc",
+      "settings": {
+        "enabled": false,
+        "layout": "default",
+        "height": 300,
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "showTitle": false,
+        "showNumber": true,
+        "fontSize": "medium",
+        "showDescription": true,
+        "truncateReadMore": true,
+        "truncateDesc": 0,
+        "contentColor": "rgba(0,0,0,0)",
+        "fillColor": "rgba(0,0,0,0)",
+        "useCollectionImage": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000"
+      }
+    }
+  },
+  "order": [
+    "750ccdb2-295c-417d-bb12-fcbdb6ab66c9",
+    "b323a5d1-23fd-4d99-ab0f-89e14b18d1c5",
+    "banner",
+    "sort",
+    "filters",
+    "content",
+    "banner-bottom"
+  ]
+}

@@ -1,0 +1,82 @@
+<style>
+  .subfooter-i18n__holder{
+      display: flex;
+      gap: 8px;
+  }
+
+  .subfooter-i18n__holder select{
+      padding: 0 0.5rem;
+      background-color: {{section.settings.fillColor}};
+      color: {% unless section.settings.contentColor contains 'rgba(0,0,0,0)' %}{{section.settings.contentColor}}{% else %}initial{% endunless %};
+  }
+</style>
+
+<div class="{{block.settings.horizontalAlignment-}}{% if settings.easeIn %} ease-in{% endif %}">
+  {% if settings.shopCurrency != 'none'
+    and mobile != true
+    or shop.enabled_locales.size > 1
+    and settings.multilanguage
+    and mobile != true
+  %}
+    <div class="subfooter-i18n__holder">
+      {% if shop.enabled_locales.size > 1 and settings.multilanguage %}
+        <div>{{ 'i18n.language' | t }}</div>
+        <select onchange="BoosterTheme.ELEMENTS.languageChange(this)" data-language-selector>
+          {% for locale in shop.enabled_locales %}
+            <option
+              {% unless locale.primary %}
+                value="{{locale.root_url}}"
+              {% else %}
+                value="{{locale.root_url}}"
+              {% endunless %}
+              data-locale="{{locale.iso_code}}"
+              {% if locale.iso_code == request.locale.iso_code %}
+                selected
+              {% endif %}
+            >
+              {{ locale.name }}
+            </option>
+          {% endfor %}
+        </select>
+      {% endif %}
+      {% unless settings.shopCurrency == 'none' %}
+        <div>{{ 'i18n.currency' | t }}</div>
+        {% if settings.shopCurrency == 'convert' %}
+          <select
+            data-currency-selector
+            onchange="BoosterTheme.ELEMENTS.convertCurrencyChange(this)"
+            style="width: 100%"
+          >
+            {% assign currencyArr = settings.enabledCurrencies | upcase | replace: ' ', '' | split: ',' %}
+            {% unless currencyArr contains shop.currency %}
+              <option value="{{shop.currency}}">
+                {{ shop.currency }}
+              </option>
+            {% endunless %}
+            {% for currency in currencyArr %}
+              <option value="{{currency}}">
+                {{ currency }}
+              </option>
+            {% endfor %}
+          </select>
+        {% else %}
+          {% form 'currency' %}
+            <input class="hide" name="currency" id="setCurrency">
+            <select onchange="BoosterTheme.ELEMENTS.submitCurrencyChange(this)" style="width: 100%">
+              {% for currency in shop.enabled_currencies %}
+                <option
+                  value="{{currency.iso_code}}"
+                  {% if currency == cart.currency %}
+                    selected
+                  {% endif %}
+                >
+                  {{ currency.iso_code }} ({{ currency.symbol }})
+                </option>
+              {% endfor %}
+            </select>
+          {% endform %}
+        {% endif %}
+      {% endunless %}
+    </div>
+  {% endif %}
+</div>

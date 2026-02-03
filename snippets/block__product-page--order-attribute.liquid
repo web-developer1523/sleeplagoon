@@ -1,0 +1,15 @@
+{%- if block.settings.color != "rgba(0,0,0,0)" -%}
+<style>
+.order-attr__label {
+    color: {{block.settings.color}};
+}
+</style>
+{%- endif -%}
+<div class="order-attr__box {{ block.settings.layout }}">
+    <label class="h-reset order-attr__label font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontSize}}" for="order-attr__text">{{ block.settings.customText }}</label>
+    {% if block.settings.inputStyle == 'inputText' %}
+        <input type="text" id="order-attr__text" name="properties[{% if block.settings.customText != blank %}{{ block.settings.customText }}{% else %}Note{% endif %}]" placeholder="{{ block.settings.placeholder }}">
+    {% else %}
+        <textarea id="order-attr__text" name="properties[{% if block.settings.customText != blank %}{{ block.settings.customText }}{% else %}Note{% endif %}]" placeholder="{{ block.settings.placeholder }}" rows="4"></textarea>
+    {% endif %}
+</div>

@@ -1,0 +1,39 @@
+{% assign title = link.title | downcase | replace: ' ', '-' %}
+
+{% if section.blocks.size > 0 %}
+  {% assign megamenu = false %}
+
+  {% if megamenus contains title %}
+    {% assign megamenu = true %}
+  {% endif %}
+
+  {% unless megamenu %}
+    <div class="nav__submenu nav__submenu--regular fancy-scroll">
+    {% for sub_link in link.links %}
+      <span class="nav__link__holder {% if sub_link.active or sub_link.child_active %}nav__link--active{% endif %}">
+        <a href="{{sub_link.url}}" class="nav__link">
+          {% render 'header--link-elements' with sub_link.title as text %}
+        </a>
+        {% if sub_link.links.size > 0 %}
+          {% render 'header--link-submenu', link: sub_link, section: section %}
+        {% endif %}
+      </span>
+    {% endfor %}
+  </div>
+  {% else %}
+    {% render 'header--megamenu', section: section, link: link, title: title %}
+  {% endunless %}
+{% else %}
+  <div class="nav__submenu nav__submenu--regular fancy-scroll">
+    {% for sub_link in link.links %}
+      <span class="nav__link__holder {% if sub_link.active or sub_link.child_active %}nav__link--active{% endif %}">
+        <a href="{{sub_link.url}}" class="nav__link">
+          {% render 'header--link-elements' with sub_link.title as text %}
+        </a>
+        {% if sub_link.links.size > 0 %}
+          {% render 'header--link-submenu', link: sub_link, section: section %}
+        {% endif %}
+      </span>
+    {% endfor %}
+  </div>
+{% endif %}

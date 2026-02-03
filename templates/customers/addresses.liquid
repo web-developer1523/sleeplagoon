@@ -1,0 +1,301 @@
+<!-- /templates/customers/addresses.liquid -->
+
+{% section 'banner--account' %} {% comment %} order.attributes
+order.billing_address order.cancelled order.cancelled_at order.cancel_reason
+order.cancel_reason_label order.cart_level_discount_applications order.customer
+order.customer_url order.discount_applications order.email order.line_items
+order.line_items_subtotal_price order.location order.note order.order_number
+order.order_status_url order.phone order.shipping_address order.shipping_methods
+order.shipping_price order.subtotal_price order.tags order.tax_lines
+order.tax_price order.total_discounts order.total_net_amount
+order.total_refunded_amount order.transactions order.financial_status
+order.financial_status_label order.fulfillment_status
+order.fulfillment_status_label order.name order.created_at order.total_price {%
+endcomment %} {% if customer.default_address %} {% assign daddy = true %} {%
+else %} {% assign daddy = false %} {% endif %}
+
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const checkbox = document.getElementById("form__toggle");
+    const editButton = document.querySelectorAll('.address__edit__toggle');
+    const closeButton = document.querySelectorAll('.address__close__toggle');
+    const allEditCoutries = document.querySelectorAll('.address__country-select select');
+
+    checkbox.addEventListener("change", function () {
+      const allForms = document.querySelectorAll('.customer__form');
+      const customer__form = document.querySelector(".customer__form--add");
+
+      allForms.forEach(item => item.classList.add('hide'));
+
+      if (this.checked) {
+        customer__form.classList.remove('hide')
+      } else {
+        customer__form.classList.add('hide')
+      }
+    });
+
+    editButton.forEach(button => button.addEventListener('click', editForm))
+    closeButton.forEach(button => button.addEventListener('click', closeForm))
+
+    allEditCoutries.forEach(country => {
+      for (var i = 0; i < country.options.length; i++) {
+          if (country.options[i].value === country.dataset.default) {
+              country.selectedIndex = i;
+              break;
+          }
+      }
+    })
+  });
+
+  function editForm() {
+    const allForms = document.querySelectorAll('.customer__form');
+    let addressId = this.dataset.addressId;
+    let form = document.querySelector(`.customer__form--mobile-edit--${addressId}`);
+
+    allForms.forEach(item => item.classList.add('hide'));
+
+    if (window.innerWidth > 767) form = document.querySelector(`.customer__form--desktop-edit--${addressId}`);
+
+    if (form) {
+      form.classList.toggle('hide');
+      document.getElementById("form__toggle").checked = false;
+    }
+  }
+
+  function closeForm() {
+    let addressId = this.dataset.addressId;
+    let form = document.querySelector(`.customer__form--mobile-edit--${addressId}`);
+
+    if (window.innerWidth > 767) form = document.querySelector(`.customer__form--desktop-edit--${addressId}`);
+
+    if (form) {
+      form.classList.add('hide');
+    }
+  }
+
+  function confirmDelete(e) {
+    if (!window.confirm("Are you sure you want to delete this address?")) {
+      e.preventDefault();
+    }
+  }
+</script>
+
+<div class="account__page row">
+  <div clas="col-12">
+    <input id="form__toggle" type="checkbox" class="form__toggle col-12" />
+    <div class="col-12">
+      <label
+        class="button button--primary button--filled button--primary__filled form__toggle__label"
+        for="form__toggle"
+      >Add a new address</label>
+    </div>
+  </div>
+
+  <div class="account__page--contents row">
+    <div class="account__addresses unflex col-12 col-md-6">
+      {% for addy in customer.addresses %}
+      <div
+        data-state="disabled"
+        class="address__form row"
+      >
+        <div class="address__info">
+          {% if addy == customer.default_address %}
+          <div class="default-address-tag primaryCombo">Default Address</div>
+          {% endif %}
+
+          <h2 class="address__customer-name">
+            {{ addy.first_name }} {{ addy.last_name }}
+          </h2>
+
+          <p class="address__company">
+            {{ addy.company }}
+          </p>
+
+          <p class="address__address">
+            {{ addy.address1 }}, {{ addy.city }}, {{ addy.province }},
+            {{ addy.country }}, {{ addy.zip }}
+          </p>
+
+          <p class="address__phone">
+            {{ addy.phone }}
+          </p>
+        </div>
+
+        <div class="address__action-buttons">
+          <button
+            type="button"
+            class="button button--icon address__action__toggle address__edit__toggle"
+            aria-label="Edit {{ forloop.index }}"
+            aria-controls="EditAddress_{{ addy.id }}"
+            aria-expanded="false"
+            data-address-id="{{ addy.id }}"
+          >
+            {% render 'get-icon', icon: 'pencilFill' %}
+          </button>
+          <form method="post" action="/account/addresses/{{ addy.id }}">
+            <input type="hidden" name="_method" value="delete" />
+            <button
+              type="submit"
+              class="button button--icon address__action__toggle"
+              aria-label="Delete {{ forloop.index }}"
+              data-target="{{ addy.url }}"
+              data-confirm-message="Are you sure you wish to delete this address?"
+              onclick="confirmDelete(event)"
+            >
+              {% render 'get-icon', icon: 'deleteBinLine' %}
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="customer__form customer__form--edit customer__form--mobile-edit--{{addy.id}} hide">
+        {% render 'address__edit-form', addy: addy %}
+      </div>
+      {% else %}
+      <h2 class="h-reset">{{ "customer_area.account.no_addy" | t }}</h2>
+      {% endfor %}
+    </div>
+    <div class="account__addresses--form col-12 col-md-6 wrap top">
+      {% for addy in customer.addresses %}
+      <div class="customer__form customer__form--edit customer__form--desktop-edit--{{addy.id}} hide">
+        {% render 'address__edit-form', addy: addy %}
+      </div>
+      {% endfor %}
+
+      <div class="customer__form customer__form--add col-12 center hide">
+        {% render 'address__new-form' %}
+      </div>
+      {% if errors != blank %}
+      <div style="margin-left: auto" class="unflex end">
+        You need to correct the following errors:
+        {{ errors }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<style>
+  .account__page .customer__form {
+    max-width: 100%;
+    border: 1px solid #e1e1e1;
+    margin-left: 0;
+    padding: 40px 18px;
+  }
+
+  .account__page .address__form {
+    border: 1px solid #e1e1e1;
+    padding: 20px;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  .account__page .address__info {
+    width: 80%
+  }
+
+  .account__page .address__action-buttons {
+    width: 20%;
+    text-align: right;
+  }
+
+  .account__page .address__info p {
+    margin-bottom: 10px;
+    margin-top: 0;
+  }
+
+  .account__page .address__info p:last-child {
+    margin-bottom: 0;
+  }
+
+  .account__page .default-address-tag {
+    display: inline-block;
+    padding: 4px 6px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: var(--borderRadiusSmall);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .account__page .address__customer-name {
+    margin-top: 0;
+  }
+
+  .account__page .address__action__toggle {
+    margin-left: 0;
+    border-radius: var(--borderRadiusSmall);
+    padding: 0;
+  }
+
+  .account__page .address__action__toggle:hover {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e1e1e1;
+  }
+
+  .account__page .address__set-default-field {
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    margin-right: 10px;
+  }
+
+  .account__page .address__set-default-field input,
+  .account__page .address__set-default-field label {
+    display: inline;
+    width: auto;
+    margin: 0;
+  }
+
+  .account__page .address__form-submit {
+    margin-top: 2rem;
+  }
+
+  .account__page .address__form-submit .button {
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+
+  .account__page .account__addresses--new-address-heading {
+    margin-top: 0;
+    text-align: left;
+  }
+
+  .account__page .address__action-buttons form {
+    display: inline-block;
+  }
+
+  .account__page .customer__form--edit {
+    margin-bottom: 24px;
+  }
+
+  .account__page .address__country-select select {
+    max-width: 100%;
+  }
+
+  @media screen and (max-width: 767px) {
+    .account__page {
+      justify-content: center;
+    }
+
+    .account__page .form__toggle__label {
+      margin-bottom: 0 !important;
+    }
+
+    .account__page .account__addresses {
+      order: 2;
+      margin-top: 24px;
+    }
+
+    .account__page .customer__form {
+      margin-top: 24px;
+      padding: 20px 8px;
+    }
+
+    .account__page .account__addresses--new-address-heading {
+      text-align: center;
+    } 
+  }
+</style>

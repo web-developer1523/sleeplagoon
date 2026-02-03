@@ -1,0 +1,4 @@
+<div class="product__description {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}{% if settings.easeIn %} ease-in{% endif %}" {{block.shopify_attributes}}>
+<span class="product__description--title">{{block.settings.heading}}</span>
+<div>{{ product.description }}</div>
+</div>

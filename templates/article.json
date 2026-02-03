@@ -1,0 +1,131 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "article": {
+      "type": "article",
+      "settings": {
+      }
+    },
+    "70939e65-af18-4dc1-a001-5be2bceb0ae6": {
+      "type": "section__blog",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 20,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#ffffff",
+        "contentColor": "#ffffff",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "heading": "More Sleep & Fitness News",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "KEEP READING",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center",
+        "blog": "news",
+        "maxCards": 3
+      }
+    },
+    "ea308d0d-22c2-43bc-8523-d11f50951488": {
+      "type": "section__image-text",
+      "blocks": {
+        "template--14509164658817__ea308d0d-22c2-43bc-8523-d11f50951488-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Optimize Your Sleep Today!",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509164658817__ea308d0d-22c2-43bc-8523-d11f50951488-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>Take this 2 minute sleep quiz to find your perfect pillow.  Experience the life-changing effects of more deep, restorative sleep.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14509164658817__ea308d0d-22c2-43bc-8523-d11f50951488-button-1": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Get Started!",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "template--14509164658817__ea308d0d-22c2-43bc-8523-d11f50951488-title-1",
+        "template--14509164658817__ea308d0d-22c2-43bc-8523-d11f50951488-richText-1",
+        "template--14509164658817__ea308d0d-22c2-43bc-8523-d11f50951488-button-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 12,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/Mobile_Carousel_-_Runner_Story_Homepage_45.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    }
+  },
+  "order": [
+    "article",
+    "70939e65-af18-4dc1-a001-5be2bceb0ae6",
+    "ea308d0d-22c2-43bc-8523-d11f50951488"
+  ]
+}
+

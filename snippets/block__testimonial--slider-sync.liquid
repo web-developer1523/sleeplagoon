@@ -1,0 +1,228 @@
+<style>
+  #s--{{-section.id}} .swiper:not(.swiper-initialized) .testimonial__item {
+    margin-right: {{ section.settings.spaceBetween }}px;
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 767px) {
+    #s--{{ section.id }} .testimonial__item {
+      {% if section.settings.productCardMobile >= section.blocks.size %}
+        width: 100% !important;
+      {% else %}
+        width: {{ 100 | divided_by: section.settings.productCardMobile | at_least: 20 }}%;
+      {% endif %}
+    }
+
+    {% if section.settings.productCardMobile >= section.blocks.size %}
+      #s--{{ section.id }} .testimonial__item {
+        margin-right: 0 !important;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    {% endif %}
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    #s--{{ section.id }} .testimonial__item {
+      {% if section.settings.productCardTablet >= section.blocks.size %}
+        width: 33.33% !important;
+      {% else %}
+        width: {{ 100 | divided_by: section.settings.productCardTablet | at_least: 20 }}%;
+      {% endif %}
+    }
+
+    {% if section.settings.productCardTablet >= section.blocks.size %}
+      #s--{{ section.id }} .testimonial__item {
+        margin-right: 0 !important;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    {% endif %}
+  }
+
+  @media screen and (min-width: 1025px) {
+    #s--{{ section.id }} .testimonial__item {
+      {% if section.settings.productCardDesktop >= section.blocks.size %}
+        width: 33.33% !important;
+      {% else %}
+        width: {{ 100 | divided_by: section.settings.productCardDesktop | at_least: 20 }}%;
+      {% endif %}
+    }
+
+    {% if section.settings.productCardDesktop >= section.blocks.size %}
+      #s--{{ section.id }} .testimonial__item {
+        margin-right: 0 !important;
+        padding-left: 12px;
+        padding-right: 12px;
+      }
+    {% endif %}
+  }
+
+  #s--{{-section.id}}.testimonial-slider-sync .thumbs-swiper {
+    overflow: visible;
+  }
+
+  #s--{{-section.id}}.testimonial-slider-sync .testimonial__image {
+    opacity: 0.6;
+    max-width: 5rem;
+    margin: auto;
+    width: 50px;
+    transition: .25s ease;
+  }
+
+  #s--{{-section.id}}.testimonial-slider-sync .testimonial__item.swiper-slide-prev,
+  #s--{{-section.id}}.testimonial-slider-sync .testimonial__item.swiper-slide-next {
+    transform: scale(1.4);
+  }
+
+  #s--{{-section.id}}.testimonial-slider-sync .testimonial__item.swiper-slide-prev .testimonial__image,
+  #s--{{-section.id}}.testimonial-slider-sync .testimonial__item.swiper-slide-next .testimonial__image {
+    opacity: 0.8;
+  }
+
+  #s--{{-section.id}}.testimonial-slider-sync .testimonial__item.swiper-slide-active .testimonial__image {
+    transform: scale(2.4);
+    opacity: 1;
+  }
+
+  #s--{{-section.id}}.testimonial-slider-sync .testimonial__author {
+      font-style: normal;
+      display: block;
+      margin-top: 1.5rem;
+      font-style: italic;
+      font-size: 16px;
+  }
+
+  #s--{{-section.id}}.testimonial-slider-sync blockquote {
+      background: {{ section.settings.blockBackground }};
+      border-left: unset;
+      width: 100%;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      width: 100%;
+      text-align: {{section.settings.testimonialAlign}};
+  }
+
+  {% if section.settings.blockText != "rgba(0,0,0,0)" %}
+    #s--{{-section.id}}.testimonial-slider-sync blockquote,
+    #s--{{-section.id}}.testimonial-slider-sync blockquote p {
+      color: {{ section.settings.blockText }};
+    }
+  {% endif %}
+
+  #s--{{-section.id}}.testimonial-slider-sync .rating-star {
+      font-size: 22px;
+      background: linear-gradient(90deg, #ffb503, calc(( 5 / 5 + 0 * 1.8 / ( 5 * ( .2 + 1.8 ))) * 100%) ,rgba(33, 35, 38,.15) calc(( 5 / 5 + 0 * 1.8 / ( 5 * ( .2 + 1.8 ))) * 100%));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .thumbs-swiper .slider__button { display: none; }
+  }
+</style>
+
+{% if section.settings.useFakeImages %}
+  {% assign imageCntr = 1 %}
+{% endif %}
+
+<div
+  class="swiper thumbs-swiper"
+  data-bstr-carousel-items
+  data-bstr-carousel-options='
+    {
+      "slidesPerView": {{ section.settings.productCardMobile }},
+      "allowTouchMove": {% if section.settings.enableDragging %}true{% else %}false{% endif %},
+      "loop": true,
+      "spaceBetween": {{ section.settings.spaceBetween }},
+      "centeredSlides": true,
+      "slideToClickedSlide": true,
+      "breakpoints": {
+        "768": {"slidesPerView": {{ section.settings.productCardTablet }}},
+        "1025": {"slidesPerView": {{ section.settings.productCardDesktop }}}
+      }
+    }
+  '
+>
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <div class="testimonial__item swiper-slide">
+        <div class="testimonial__image media-wrapper media-wrapper--small">
+          <div class="media media--square">
+            {% unless block.settings.authorImage == null %}
+              {% render 'image',
+                src: block.settings.authorImage,
+                size: '140x140',
+                class: 'testimonial__author--image'
+              %}
+            {% elsif section.settings.useFakeImages %}
+              <img
+                loading="lazy"
+                class="lazyload testimonial__author--image"
+                src="https://randomuser.me/api/portraits/thumb/{{-block.settings.fakeImageSex-}}/{{imageCntr}}.jpg"
+                data-src="https://randomuser.me/api/portraits/{{-block.settings.fakeImageSex-}}/{{imageCntr}}.jpg"
+              >
+              {% assign imageCntr = imageCntr | plus: 1 %}
+            {% endunless %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if section.blocks.size > 1 and section.settings.buttonDisplayFor != 'hide--both' %}
+    <button
+      data-bstr-slider-button="-"
+      class="slider__button {{ section.settings.buttonDisplayFor }}"
+      aria-label="Previous"
+      data-bstr-carousel-button-prev
+    >
+      <i class="uil uil-angle-left-b"></i>
+    </button>
+    <button
+      data-bstr-slider-button="+"
+      class="slider__button slider__button--next {{ section.settings.buttonDisplayFor }}"
+      aria-label="Next"
+      data-bstr-carousel-button-next
+    >
+      <i class="uil uil-angle-right-b"></i>
+    </button>
+  {% endif %}
+</div>
+
+<div
+  class="swiper main-swiper"
+  data-bstr-carousel-items
+  data-bstr-carousel-options='
+    {
+      "loop": true,
+      "allowTouchMove": {% if section.settings.enableDragging %}true{% else %}false{% endif %},
+      "autoplay": {% if section.settings.enableAutoplay %}{ "delay": {{ section.settings.slideSpeed | times: 1000 }}, "disableOnInteraction": false }{% else %}false{% endif %},
+      "spaceBetween": {{ section.settings.spaceBetween }}
+    }
+  '
+>
+  <div class="swiper-wrapper">
+    {% for block in section.blocks %}
+      <blockquote class="testimonial__blockquote swiper-slide">
+        {% assign starCount = block.settings.star_rating %}
+        {% assign star = '' %}
+        {% capture starTotalCount %}
+                    {% for starCount in (1..starCount) %}\2605{% endfor %}
+                {% endcapture %}
+        <style>
+          .rating-star--{{forloop.index}}:before {
+              content:"{{starTotalCount | replace: " ", "" | strip}}";
+          }
+        </style>
+        <div class="rating" role="img">
+          <span aria-hidden="true" class="rating-star rating-star--{{forloop.index}}"> </span>
+        </div>
+        <div>
+          {{ block.settings.text }}
+        </div>
+
+        <cite class="testimonial__author">—&nbsp;{{ block.settings.authorName }}</cite>
+      </blockquote>
+    {% endfor %}
+  </div>
+</div>

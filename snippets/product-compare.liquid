@@ -1,0 +1,26 @@
+<div class="product-compare__wrapper hide" >
+    <script type="application/json" data-product-compare-data="" data-product-compare-id="{{ product.id }}">
+      {
+        "id": {{ product.id | json }},
+        "title": {{ product.title | json }},
+        "handle": {{ product.handle | json }},
+        "image": {{ product | image_url: width: 50 | json}},
+        "price": {{ product.price | money | json }},
+        "compare_at_price": {{ product.compare_at_price | money | json }},
+        "url": {{ product.url  | json }},
+        "description": {{ product.description | json }},
+        "vendor" : {{ product.vendor | json }},
+        "availability" : {{ product.first_available_variant.inventory_quantity | json }}
+      }
+    </script>
+  
+  <div class="product-compare__item" data-compare-item>
+    <input class="product-compare__item--checkbox" value="{{ product.id }}" id="product-compare__item--checkbox--{{ product.id }}" type="checkbox" data-compare-checkbox>
+    <label class="product-compare__item--checkbox-label" for="product-compare__item--checkbox--{{ product.id }}">
+      <span class="productitem__compare-checkbox-text">
+        Compare
+      </span>
+    </label>
+  </div>
+  
+  </div>

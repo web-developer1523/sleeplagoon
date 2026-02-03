@@ -1,0 +1,444 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "banner--page",
+      "disabled": true,
+      "settings": {
+        "layout": "default",
+        "height": 300,
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "fontSize": "medium",
+        "contentColor": "rgba(0,0,0,0)",
+        "fillColor": "rgba(0,0,0,0)",
+        "overlayOpacity": 0,
+        "overlayColor": "#000000"
+      }
+    },
+    "content": {
+      "type": "page",
+      "settings": {
+        "layout": "default",
+        "enableShortcodes": false
+      }
+    },
+    "76ef5d73-9fa6-43f7-838e-9f66bc13e392": {
+      "type": "section__image-text",
+      "blocks": {
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Optimizing Sleep with Lagoon & the Rambling Runner Podcast",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>Lagoon & the Rambling Runner Pod are excited to partner together to highlight the importance of optimal rest & recovery.</p><p>Join \"the Pack\" and grab the pillow that will help you fall asleep & stay asleep.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-button-1": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Take the Quiz",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-title-1",
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-richText-1",
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-button-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/49.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "26ad0319-5d72-4d54-b88e-068b29eb3564": {
+      "type": "section__content",
+      "blocks": {
+        "d6ea91b6-02a8-4fce-ade7-c79fc2df4a6d": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-4",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/1_858b54de-a775-428d-8338-c28aa80ad7f8.png"
+          }
+        },
+        "d8d1c7dc-3391-4c47-831e-c0c92ed6987e": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-4",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/2_dc18dfa3-ecb7-400a-bf6b-0a282700da5c.png"
+          }
+        },
+        "dadf383c-67d5-40a4-b92e-70ad9ba409ef": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-3",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/4_bcb6007a-ff93-47f0-a066-44555d6831c1.png"
+          }
+        }
+      },
+      "block_order": [
+        "d6ea91b6-02a8-4fce-ade7-c79fc2df4a6d",
+        "d8d1c7dc-3391-4c47-831e-c0c92ed6987e",
+        "dadf383c-67d5-40a4-b92e-70ad9ba409ef"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 12,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle"
+      }
+    },
+    "1e8b67d7-3621-48a5-b900-9bbb6b5cbae4": {
+      "type": "section__image-text",
+      "blocks": {
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Unlock more deep, <br> restorative sleep",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>Caitlin Keen is a US Olympic Trials qualifying marathon runner, who's working on optimizing her rest and recovery to keep taking time of her best marathon.</p><p>Cait matched with the Fox pillow, and immediately fell in love with it.  Her sleep scores gave her even more reason to swoon, when she checked her sleep scores on her Whoop band and found that in the first week using the Fox, her average deep, restorative sleep improved by an average 52 minutes per night. </p><p>Lagoon helps you improve your restorative sleep by allowing you to fall asleep easier and stay asleep on the pillow most comfortable for you.  Find your match by taking the 2 minute sleep quiz.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-button-1": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Take the Quiz!",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-title-1",
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-richText-1",
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-button-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/Website_Carousel_-_How_Pillows_Improve_Performance_22.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "8ba1108f-baac-4c62-97b8-ef05583aa436": {
+      "type": "section__image-text",
+      "blocks": {
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Superior Quality Pillows",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>All of our pillows are expertly crafted with the best materials from around the world to provide the unique comfort you're looking for.  We've carefully constructed our pillows to ensure that you can enjoy them for years to come.</p><p>Our memory foam is CertiPUS US certified, and and our eco-friendly line of pillows is designed specifically with natural and sustainable materials.  Our plan is to create quality products that will last for a long time, and reduce the amount of waste spent on replenishing poor quality pillows.  </p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-button-1": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Take the Quiz",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-title-1",
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-richText-1",
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-button-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "end",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/Superior_Quality_Pillows.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "79e64851-5963-401e-9fb6-8ff7bbe36e39": {
+      "type": "section__image-text",
+      "blocks": {
+        "654e5f28-c29c-496f-bd5d-9e224433a14b": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Our Mission: <br> Deliver Optimal Rest",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "649db4f2-11c8-4a16-9fea-58a0d3a8f87c": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>We founded Lagoon in Minneapolis in 2012, to help others feel prepared to pursue their daily goals.</p><p>We do this by delivering our own line of high-quality pillows - designed to meet the needs of every type of sleeper. We've also created the best online shopping experience to match people with the pillow that's constructed to meet their specific needs.</p><p>Thanks for checking out our brand, we hope you love our pillows as much as we do.</p><p>OWN YOUR REST™️</p><p>Ryan</p><p></p><p></p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "6ed2500c-a618-4e14-a456-5a92315362d2": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Take the Quiz!",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "654e5f28-c29c-496f-bd5d-9e224433a14b",
+        "649db4f2-11c8-4a16-9fea-58a0d3a8f87c",
+        "6ed2500c-a618-4e14-a456-5a92315362d2"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "#dae1ea",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/Website_Carousel_-_How_Pillows_Improve_Performance_11_3f2212e1-9a0a-41fa-bd37-b8c974985975.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "ae3cae93-5f1e-4a51-b874-3877b3019339": {
+      "type": "section__blog",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#ffffff",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#ffffff",
+        "contentColor": "#ffffff",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "heading": "Sleep + Fitness News",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "LAGOON'S",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center",
+        "blog": "news",
+        "maxCards": 3
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "content",
+    "76ef5d73-9fa6-43f7-838e-9f66bc13e392",
+    "26ad0319-5d72-4d54-b88e-068b29eb3564",
+    "1e8b67d7-3621-48a5-b900-9bbb6b5cbae4",
+    "8ba1108f-baac-4c62-97b8-ef05583aa436",
+    "79e64851-5963-401e-9fb6-8ff7bbe36e39",
+    "ae3cae93-5f1e-4a51-b874-3877b3019339"
+  ]
+}

@@ -1,0 +1,57 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "wrapper": "div.row",
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "disabled": true,
+      "settings": {}
+    },
+    "content": {
+      "type": "cart-page",
+      "settings": {
+        "discount": "money",
+        "featured": "our-pillows"
+      }
+    },
+    "5a13a0bb-5285-4f12-9a82-59cf8bcc0d58": {
+      "type": "section__heading",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 15,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "heading": "Free Shipping. 100 Nights Risk-Free. Free Returns.",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "HAPPINESS GUARENTEED",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "content",
+    "5a13a0bb-5285-4f12-9a82-59cf8bcc0d58"
+  ]
+}

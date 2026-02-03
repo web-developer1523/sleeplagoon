@@ -1,0 +1,379 @@
+{% assign threshold = 128 %} {%- comment -%}this will be used for determining if color is dark or light, for dynamic text color{%- endcomment -%}
+
+<style>
+  {% render 'common-css', section: section %}
+  #s--{{-section.id}} .scrolling-text {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    white-space: nowrap;
+    background-color: {% if section.settings.bgColor != "rgba(0,0,0,0)" %}{{ section.settings.bgColor }}{% else %}var(--accentColor){% endif %};
+    padding: 1rem 0;
+    min-height: {{section.settings.height}}px;
+    gap: 4rem;
+  }
+
+  #s--{{-section.id}} .scrolling-text__inner {
+    display: flex;
+    flex-shrink: 0;
+    gap: 4rem;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    font-weight: 700;
+    min-width: 100%;
+  }
+
+  #s--{{-section.id}} .marquee--is-animated .scrolling-text__inner {
+    animation: normal scroll {{ section.settings.scrollSpeed }}s linear infinite;
+
+    {% if section.settings.scrollDirection == 'fromLeft' %}
+      animation-direction: reverse;
+    {% endif %}
+  }
+
+  {% if section.settings.hoverPause %}
+    #s--{{-section.id}} .scrolling-text:hover .scrolling-text__inner {
+      -webkit-animation-play-state:paused;
+      -moz-animation-play-state:paused;
+      -o-animation-play-state:paused;
+      animation-play-state:paused;
+      cursor: pointer;
+    }
+  {% endif %}
+
+  #s--{{-section.id}} .scrolling-text__inner__box {
+    color: {% if section.settings.fontColor != "rgba(0,0,0,0)" %}
+      {{ section.settings.fontColor }}
+      {% else %}
+        {% assign bgColor = settings.primaryAccentBackground %}
+        {% if section.settings.bgColor != "rgba(0,0,0,0)" %}
+          {% assign bgColor = section.settings.bgColor %}
+        {% endif %}
+
+        {% assign brightness = bgColor | color_brightness %}
+
+        {% if brightness < threshold %}
+          #FFF
+        {% else %}
+          #000
+        {% endif %}
+    {% endif %};
+    display: flex;
+    flex: none;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .iconLeft {
+    flex-direction: row-reverse;
+  }
+
+  #s--{{-section.id}} .scrolling-text--span {
+    color: inherit;
+  }
+
+  #s--{{-section.id}} .icon__size--small {
+    height: var(--smallFontSize);
+    width: auto;
+  }
+
+  #s--{{-section.id}} .icon__size--base {
+    height: var(--baseFontSize);
+    width: auto;
+  }
+
+  #s--{{-section.id}} .icon__size--medium {
+    height: var(--mediumFontSize);
+    width: auto;
+  }
+
+  #s--{{-section.id}} .icon__size--big {
+    height: var(--bigFontSize);
+    width: auto;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translate(0);
+    }
+    to {
+      transform: translate(-100%);
+    }
+  }
+
+  @media only screen and (max-width: 767px) {
+    #s--{{-section.id}} .font__size_m--small {
+      font-size: var(--smallFontSize)
+    }
+
+    #s--{{-section.id}} .font__size_m--base {
+      font-size: var(--baseFontSize)
+    }
+
+    #s--{{-section.id}} .font__size_m--medium {
+      font-size: var(--mediumFontSize)
+    }
+
+    #s--{{-section.id}} .font__size_m--big {
+      font-size: var(--bigFontSize)
+    }
+
+    #s--{{-section.id}} .icon__size_m--small{
+      height: var(--smallFontSize);
+      width: auto;
+
+    }
+    #s--{{-section.id}} .icon__size_m--base {
+      height: var(--baseFontSize);
+      width: auto;
+    }
+
+    #s--{{-section.id}} .icon__size_m--medium {
+      height: var(--mediumFontSize);
+      width: auto;
+    }
+
+    #s--{{-section.id}} .icon__size_m--big {
+      height: var(--bigFontSize);
+      width: auto;
+    }
+  }
+</style>
+
+{% assign customID = section.settings.custom_id %}
+<div
+  id="s--{{-section.id}}"
+  {% unless section.settings.backgroundImage == null -%}
+    {% render 'background', image: section.settings.backgroundImage %}
+  {%- endunless %}
+  class="{% if settings.easeIn %}ease-in{% endif %}{% if section.settings.backgroundImageUrl != nil %} background_image--link {% endif %} {% render 'common-class', section: section, class: 'row', bg: true %}"
+  {% if section.settings.backgroundImageUrl != null %}
+    data-background-image-url="{{section.settings.backgroundImageUrl}}"
+  {% endif %}
+  data-scroll-text-section
+>
+  <div id="{{customID}}" class="scrolling-text" data-marquee>
+    <div
+      class="scrolling-text__inner font__size--{{section.settings.font_size}} font__size_m--{{section.settings.font_size_m}}"
+      data-marquee-items
+    >
+      {% for block in section.blocks %}
+        <div class="s--{{block.id}} scrolling-text__inner__box {{ block.settings.iconPosition }}" data-marquee-item>
+          <span class="scrolling-text--span">{{ block.settings.text }}</span>
+          {% if block.settings.icon != blank -%}
+            <img
+              class="scrolling-text--icon icon__size--{{section.settings.font_size}} icon__size_m--{{section.settings.font_size_m}}"
+              src="{{ block.settings.icon | img_url: 'master' }}"
+            >
+          {%- endif %}
+        </div>
+      {% endfor %}
+    </div>
+    <div
+      class="scrolling-text__inner font__size--{{section.settings.font_size}} font__size_m--{{section.settings.font_size_m}}"
+      data-marquee-items
+    >
+      {% for block in section.blocks %}
+        <div class="s--{{block.id}} scrolling-text__inner__box {{ block.settings.iconPosition }}" data-marquee-item>
+          <span class="scrolling-text--span">{{ block.settings.text }}</span>
+          {% if block.settings.icon != blank -%}
+            <img
+              class="scrolling-text--icon icon__size--{{section.settings.font_size}} icon__size_m--{{section.settings.font_size_m}}"
+              src="{{ block.settings.icon | img_url: 'master' }}"
+            >
+          {%- endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Scrolling Text",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section ID"
+    },
+    {
+      "type": "text",
+      "id": "custom_id",
+      "label": "Add custom section ID"
+    },
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "radio",
+      "id": "displayFor",
+      "label": "Show this section on",
+      "options": [
+        { "value": "display--both", "label": "All devices" },
+        { "value": "hide-desktop", "label": "Mobile only" },
+        { "value": "hide-mobile", "label": "Desktop only" }
+      ],
+      "default": "display--both"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Section layout",
+      "options": [
+        { "value": "default", "label": "Global default" },
+        { "value": "boxed", "label": "Boxed" },
+        { "value": "stretchBg", "label": "Full width background" },
+        { "value": "stretchContent", "label": "Full width" }
+      ],
+      "default": "default"
+    },
+    {
+      "type": "checkbox",
+      "id": "nomargin",
+      "default": false,
+      "label": "Remove section's bottom margin"
+    },
+    {
+      "type": "textarea",
+      "id": "scopedCSS",
+      "label": "Section-scoped CSS",
+      "info": "Rules beginning with ##scoped will be scoped to this section. (Example: ##scoped h1 {color: blue})"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Minimum height",
+      "default": 0,
+      "min": 0,
+      "max": 800,
+      "step": 10,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "scrollSpeed",
+      "min": 10,
+      "max": 90,
+      "step": 1,
+      "unit": "s",
+      "label": "Scroll Duration",
+      "default": 50,
+      "info": "The time it takes to complete the scroll cycle. This depends on how many blocks you added."
+    },
+    {
+      "type": "select",
+      "id": "scrollDirection",
+      "label": "Scroll direction",
+      "options": [
+        {
+          "value": "fromLeft",
+          "label": "Left to right"
+        },
+        {
+          "value": "fromRight",
+          "label": "Right to left"
+        }
+      ],
+      "default": "fromRight"
+    },
+    {
+      "type": "select",
+      "id": "font_size",
+      "label": "Font size",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "base", "label": "Base" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "big", "label": "Big" }
+      ],
+      "default": "base"
+    },
+    {
+      "type": "select",
+      "id": "font_size_m",
+      "label": "Font size (Mobile)",
+      "options": [
+        { "value": "small", "label": "Small" },
+        { "value": "base", "label": "Base" },
+        { "value": "medium", "label": "Medium" },
+        { "value": "big", "label": "Big" }
+      ],
+      "default": "base"
+    },
+    {
+      "type": "checkbox",
+      "id": "hoverPause",
+      "label": "Pause scrolling on hover",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "fontColor",
+      "label": "Text Color",
+      "default": "rgba(0,0,0,0)"
+    },
+    {
+      "type": "color",
+      "id": "bgColor",
+      "label": "Background Color",
+      "default": "rgba(0,0,0,0)"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Scrolling Text",
+      "type": "scrollingText",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "select",
+          "id": "iconPosition",
+          "label": "Icon position",
+          "options": [
+            {
+              "value": "iconLeft",
+              "label": "Icon left"
+            },
+            {
+              "value": "iconRight",
+              "label": "Icon right"
+            }
+          ],
+          "default": "iconLeft"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Text",
+      "blocks": [
+        {
+          "type": "scrollingText",
+          "settings": {
+            "text": "Lorem ipsum dolor sit ⭐️"
+          }
+        },
+        {
+          "type": "scrollingText",
+          "settings": {
+            "text": "Aspernatur iste eaque reiciendis 👍"
+          }
+        },
+      ]
+    }
+  ]
+}
+{% endschema %}

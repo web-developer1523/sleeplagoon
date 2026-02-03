@@ -1,0 +1,18 @@
+<div class="row max-width error404__page middle">
+    <div class="col-12 unflex">
+        <h1 class="h-reset">{{ 'general.404.title' | t }}</h1>
+        <p class="p-reset" style="margin-bottom: 24px;">{{ 'general.404.subtext_html' | t }}</p>
+        {% assign back2products = 'general.404.backToProducts' | t %}
+        {% assign backhome = 'general.404.backHome' | t %}
+        {% liquid
+            assign backProducts = ''
+            if settings.back_to_products != blank 
+                assign backProducts = settings.back_to_products 
+            else 
+                assign backProducts = routes.all_products_collection_url 
+            endif
+        %}
+        {% render 'button', type: 'primary', url: backProducts, text: back2products %}
+        {% render 'button', type: 'secondary', url: routes.root_url, text: backhome %}
+    </div>
+</div>

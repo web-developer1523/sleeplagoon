@@ -1,0 +1,17 @@
+<div class="nav__submenu--mobile">
+    {% for sub_link in link.links %}
+        <span class="nav__link__holder">
+            <a href="{{sub_link.url}}" class="nav__link {% if sub_link.active or sub_link.child_active %}nav__link--active{% endif %}">
+                {% render 'header--link-elements', text: sub_link.title, textOnly: true %}
+            </a><!--
+            {% if sub_link.links.size > 0 %}
+            {% assign ix = ix | append: '-' | append: forloop.index0 %}
+                --><input type="checkbox" style="display: none" id="mobile-submenu-{{ix}}"><!--
+                --><label class="mobile__submenu__toggle" for="mobile-submenu-{{ix}}"><i class="uil uil-plus"></i><i class="uil uil-minus"></i></label>
+            {% render 'header--link-submenu--mobile', link: sub_link, ix: ix %}
+            {% else %}
+            -->
+            {% endif %}
+        </span>
+    {% endfor %}
+</div>

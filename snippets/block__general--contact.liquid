@@ -1,0 +1,88 @@
+<style>
+.s__block--blockContact{
+    width: 100%;
+    display: flex !important;
+    justify-content: center !important;
+}
+
+.s__block--blockContact form{
+    width: 100%;
+  }
+
+  .s__block--blockContact .contact__form--cta {
+    text-align: left;
+}
+
+#contact--{{-block.id}} .contact-input-group{
+    display: flex;
+    flex-direction: column;
+}
+
+{% unless block.settings.textOrder == 0%}
+    #contact--{{-block.id}} .contact__block-text{
+        order: {{block.settings.textOrder}};
+    }
+{% endunless %}
+
+{% unless block.settings.emailOrder == 0%}
+    #contact--{{-block.id}} .contact__block-email{
+        order: {{block.settings.emailOrder}};
+    }
+{% endunless %}
+
+{% unless block.settings.textareaOrder == 0%}
+    #contact--{{-block.id}} .contact__block-textarea{
+        order: {{block.settings.textareaOrder}};
+    }
+{% endunless %}
+
+@media only screen and (min-width: 769px)  {
+    #contact--{{-block.id}} {
+        max-width: {{block.settings.maxBWidth -}}%;
+    }
+}
+</style>
+
+<div id="contact--{{-block.id}}" class="row max-width unflex contact__form contact__form--cta">
+{% form 'contact' %}
+    {% if form.posted_successfully? %}
+      <style>
+        .contact__form h2 {
+          margin-bottom: 24px;
+        }
+
+        .s__block--blockContact .contact__form--cta {
+          text-align: center;
+        }
+      </style>
+      <h2 class="h-reset">{{ block.settings.success_text }}</h2>
+    {% endif %}
+    {{ form.errors | default_errors }}
+    {% unless form.posted_successfully? %}
+        {% if block.settings.enableRedirect %}
+            <input type="hidden" name="return_to" value="{{block.settings.urlRedirect}}"/>
+        {% endif %}
+        <div class="contact-input-group">
+            <div class="contact__block contact__block-text{% if block.settings.disableText %} hide{% endif %}">
+                <label class="contact__text blockContact__text" for="{{block.id}}">{{block.settings.nameText}} {% unless block.settings.requiredText %}(optional){% endunless -%}</label>
+                <input {%if block.settings.requiredText%}required{%endif%} id="{{block.id}}" name="contact[{{block.settings.nameText | handleize}}]" type="{{block.settings.type}}" placeholder="{{block.settings.placeholderText}}"{% if block.settings.disableText %} disabled{% endif %}>
+            </div>
+    
+            <div class="contact__block contact__block-email{% if block.settings.disableEmail %} hide{% endif %}">
+                <label class="contact__text blockContact__text" for="{{block.id}}">{{block.settings.nameEmail}}</label>
+                <input required id="{{block.id}}" name="contact[email]" type="email" placeholder="{{block.settings.placeholderEmail}}"{% if block.settings.disableEmail %} disabled{% endif %}>
+            </div>
+    
+            <div class="contact__block contact__block-textarea{% if block.settings.disableTextarea %} hide{% endif %}">
+                <label class="contact__textarea blockContact__textarea" for="{{block.id}}">{{block.settings.nameTextarea}} {% unless block.settings.requiredTextarea %}(optional){% endunless -%}</label>
+                <textarea {%if block.settings.requiredTextarea%}required{%endif%} id="{{block.id}}" name="contact[{{block.settings.nameTextarea | handleize}}]" rows="5" placeholder="{{block.settings.placeholderTextarea}}"{% if block.settings.disableTextarea %} disabled{% endif %}></textarea>
+            </div>
+        </div>
+            
+        <div class="contact__block">
+        {% assign submitText = 'contact.buttons.submit' | t %}
+        {% render 'submit-button', text: submitText, type: 'primary' %}
+      </div>
+    {% endunless %}
+  {% endform %}
+</div>

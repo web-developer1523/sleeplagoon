@@ -1,0 +1,1017 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "order": [
+    "breadcrumbs",
+    "223bb395-a3ad-455a-ae81-dbb6f67c7af1",
+    "page",
+    "acb2ea8c-5f14-4985-9b7e-60c9a967d6ca",
+    "ef52d75d-1af1-4801-baf6-3f26c281f4b4",
+    "1662013698d71cf3f4",
+    "b425f4c3-b261-4e2e-a16a-87c0b64f5860",
+    "2e459c99-1c68-4a51-9cf9-90f5b1c69ee3",
+    "16621133103e8d932a",
+    "166201067934ce47d9",
+    "38e23686-7f5e-4127-86dc-822179775d95",
+    "3f660c84-61bc-4b12-b078-20e8b786c007",
+    "section_content_MdjGz7",
+    "upsell",
+    "recommended"
+  ],
+  "sections": {
+    "166201067934ce47d9": {
+      "block_order": [
+        "1662010678a46e47b8-0",
+        "1662010678a46e47b8-1",
+        "1662010678a46e47b8-2"
+      ],
+      "blocks": {
+        "1662010678a46e47b8-0": {
+          "settings": {
+            "content": "{{ product.metafields.custom.fill_description_section_head.value }}",
+            "fontFamily": "title",
+            "fontSize": "medium",
+            "fullWidth": true,
+            "textColor": "#003e52"
+          },
+          "type": "title"
+        },
+        "1662010678a46e47b8-1": {
+          "settings": {
+            "content": "<p>{{ product.metafields.custom.fill_description | metafield_tag }}</p>",
+            "detectLists": true,
+            "fontFamily": "base",
+            "fontSize": "base",
+            "fullWidth": true,
+            "maxBWidth": 80,
+            "textColor": "rgba(0,0,0,0)"
+          },
+          "type": "richText"
+        },
+        "1662010678a46e47b8-2": {
+          "disabled": true,
+          "settings": {
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontFamily": "base",
+            "fontSize": "base",
+            "fullWidth": true,
+            "icon": "",
+            "iconPosition": "icon--left",
+            "text": "Get this now!",
+            "url": "",
+            "wideButton": false
+          },
+          "type": "button"
+        }
+      },
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundFilter": "none",
+        "backgroundPattern": false,
+        "backgroundPosition": "middle",
+        "contentColor": "rgba(0,0,0,0)",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "height": 0,
+        "horPaddingAccord": 0,
+        "horizontalAlignment": "start",
+        "image": "{{ product.metafields.custom.fill_icon.value }}",
+        "imageOverlayColor": "#000000",
+        "imageOverlayOpacity": 0,
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image_url": "",
+        "layout": "default",
+        "lineMargin": 13,
+        "nomargin": true,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 25,
+        "parallax": false,
+        "scopedCSS": "",
+        "vertPaddingAccord": 12,
+        "verticalAlignment": "middle"
+      },
+      "type": "section__image-text"
+    },
+    "1662013698d71cf3f4": {
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundFilter": "none",
+        "backgroundImageUrl": "",
+        "backgroundPattern": false,
+        "backgroundPosition": "middle",
+        "contentColor": "rgba(0,0,0,0)",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "heading": "",
+        "headingAlignment": "center",
+        "headingColor": "rgba(0,0,0,0)",
+        "height": 0,
+        "horizontalAlignment": "center",
+        "layout": "default",
+        "lineMargin": 0,
+        "maxContentWidth": 100,
+        "nomargin": false,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 0,
+        "parallax": false,
+        "scopedCSS": "",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "verticalAlignment": "middle"
+      },
+      "type": "section__cta"
+    },
+    "16621133103e8d932a": {
+      "block_order": [
+        "f8a454ac-86ab-4a9f-a904-3ef9b0a99560",
+        "c3d4a8f7-e9b2-4f30-b41d-17b23cb4b1ff",
+        "a5829c39-7643-423e-8205-99c24634b78a"
+      ],
+      "blocks": {
+        "a5829c39-7643-423e-8205-99c24634b78a": {
+          "settings": {
+            "blockWidth": "col-md-4",
+            "horAlign": "center",
+            "horPadding": 20,
+            "image": "shopify://shop_images/Breathe_Easier_b8ffd569-9f4c-45ce-a1b3-72823fccb2e2.png",
+            "vertAlign": "middle",
+            "vertPadding": 20
+          },
+          "type": "image"
+        },
+        "c3d4a8f7-e9b2-4f30-b41d-17b23cb4b1ff": {
+          "settings": {
+            "blockWidth": "col-md-4",
+            "horAlign": "center",
+            "horPadding": 20,
+            "image": "shopify://shop_images/Relieve_Pressure_4e113364-31f6-40ca-aa2c-8f36815085ef.png",
+            "vertAlign": "middle",
+            "vertPadding": 20
+          },
+          "type": "image"
+        },
+        "f8a454ac-86ab-4a9f-a904-3ef9b0a99560": {
+          "settings": {
+            "blockWidth": "col-md-4",
+            "horAlign": "center",
+            "horPadding": 20,
+            "image": "shopify://shop_images/Sleep_Cooler_b03f2b76-745b-4a21-9ad1-5d9e728eb085.png",
+            "vertAlign": "middle",
+            "vertPadding": 20
+          },
+          "type": "image"
+        }
+      },
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundFilter": "none",
+        "backgroundPattern": false,
+        "backgroundPosition": "middle",
+        "contentColor": "rgba(0,0,0,0)",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "height": 0,
+        "horPaddingAccord": 4,
+        "horizontalAlignment": "center",
+        "layout": "default",
+        "lineMargin": 12,
+        "nomargin": true,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 0,
+        "parallax": false,
+        "scopedCSS": "",
+        "vertPaddingAccord": 12,
+        "verticalAlignment": "middle"
+      },
+      "type": "section__content"
+    },
+    "223bb395-a3ad-455a-ae81-dbb6f67c7af1": {
+      "block_order": [
+        "template--14509164986497__223bb395-a3ad-455a-ae81-dbb6f67c7af1-title-1",
+        "template--14509164986497__223bb395-a3ad-455a-ae81-dbb6f67c7af1-richText-1",
+        "97c0031a-b7b9-416a-b180-46ac8efa35ea"
+      ],
+      "blocks": {
+        "97c0031a-b7b9-416a-b180-46ac8efa35ea": {
+          "settings": {
+            "dividerColor": "#686363",
+            "dividerHeight": 1,
+            "dividerWidth": 40,
+            "height": 50,
+            "position": "center"
+          },
+          "type": "separator"
+        },
+        "template--14509164986497__223bb395-a3ad-455a-ae81-dbb6f67c7af1-richText-1": {
+          "settings": {
+            "content": "<p>We've assessed results from thousands of sleepers to bring you this personalized recommendation.</p>",
+            "detectLists": true,
+            "fontFamily": "base",
+            "fontSize": "base",
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "textColor": "rgba(0,0,0,0)"
+          },
+          "type": "richText"
+        },
+        "template--14509164986497__223bb395-a3ad-455a-ae81-dbb6f67c7af1-title-1": {
+          "settings": {
+            "content": "Here's Your Perfect Lagoon Pillow",
+            "fontFamily": "title",
+            "fontSize": "big",
+            "fullWidth": true,
+            "textColor": "#00746a"
+          },
+          "type": "title"
+        }
+      },
+      "disabled": true,
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundFilter": "none",
+        "backgroundImageUrl": "",
+        "backgroundPattern": false,
+        "backgroundPosition": "middle",
+        "contentColor": "rgba(0,0,0,0)",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "heading": "",
+        "headingAlignment": "center",
+        "headingColor": "rgba(0,0,0,0)",
+        "height": 0,
+        "horizontalAlignment": "center",
+        "layout": "default",
+        "lineMargin": 0,
+        "maxContentWidth": 100,
+        "nomargin": true,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 20,
+        "parallax": false,
+        "scopedCSS": "",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "verticalAlignment": "middle"
+      },
+      "type": "section__cta"
+    },
+    "2e459c99-1c68-4a51-9cf9-90f5b1c69ee3": {
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "#ffffff",
+        "backgroundFilter": "none",
+        "backgroundPattern": false,
+        "backgroundPosition": "bottom",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "heading": "{{ product.metafields.custom.product_benefits_section_heading.value }}",
+        "headingAlignment": "center",
+        "headingColor": "#003e52",
+        "height": 0,
+        "layout": "default",
+        "nomargin": true,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 0,
+        "parallax": false,
+        "scopedCSS": "",
+        "subheading": "WAKE UP FEELING GREAT",
+        "subheadingColor": "#686363",
+        "subheadingPosition": "above"
+      },
+      "type": "section__heading"
+    },
+    "38e23686-7f5e-4127-86dc-822179775d95": {
+      "block_order": [
+        "69518e9a-ead4-48c1-bdd4-b552bd0e8fc2",
+        "template--14509164986497__38e23686-7f5e-4127-86dc-822179775d95-title-1",
+        "template--14509164986497__38e23686-7f5e-4127-86dc-822179775d95-richText-1"
+      ],
+      "blocks": {
+        "69518e9a-ead4-48c1-bdd4-b552bd0e8fc2": {
+          "settings": {
+            "content": "{{ product.metafields.custom.product_feature_2_subheader.value }}",
+            "fontFamily": "base",
+            "fontSize": "base",
+            "fullWidth": true,
+            "textColor": "rgba(0,0,0,0)"
+          },
+          "type": "title"
+        },
+        "template--14509164986497__38e23686-7f5e-4127-86dc-822179775d95-richText-1": {
+          "settings": {
+            "content": "<p>{{ product.metafields.custom.team_leader | metafield_tag }}</p>",
+            "detectLists": true,
+            "fontFamily": "base",
+            "fontSize": "base",
+            "fullWidth": true,
+            "maxBWidth": 85,
+            "textColor": "rgba(0,0,0,0)"
+          },
+          "type": "richText"
+        },
+        "template--14509164986497__38e23686-7f5e-4127-86dc-822179775d95-title-1": {
+          "settings": {
+            "content": "{{ product.metafields.custom.influencer_section_header.value }}",
+            "fontFamily": "title",
+            "fontSize": "medium",
+            "fullWidth": true,
+            "textColor": "#003e52"
+          },
+          "type": "title"
+        }
+      },
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundFilter": "none",
+        "backgroundPattern": false,
+        "backgroundPosition": "middle",
+        "contentColor": "rgba(0,0,0,0)",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "height": 0,
+        "horPaddingAccord": 4,
+        "horizontalAlignment": "start",
+        "image": "{{ product.metafields.custom.influencer_image.value }}",
+        "imageOverlayColor": "#000000",
+        "imageOverlayOpacity": 0,
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image_url": "",
+        "layout": "default",
+        "lineMargin": 12,
+        "nomargin": false,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 25,
+        "parallax": false,
+        "scopedCSS": "",
+        "vertPaddingAccord": 12,
+        "verticalAlignment": "middle"
+      },
+      "type": "section__image-text"
+    },
+    "3f660c84-61bc-4b12-b078-20e8b786c007": {
+      "block_order": [
+        "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-1",
+        "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-2",
+        "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-3"
+      ],
+      "blocks": {
+        "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-1": {
+          "settings": {
+            "authorImage": "shopify://shop_images/297340410_117405890922697_4430776124317636482_n.jpg",
+            "authorName": "Matt Brownstead <br> NCAA Champion Swimmer",
+            "fakeImageSex": "men",
+            "imageAlt": "",
+            "star_rating": 5,
+            "text": "<p>As a collegiate swimmer, training and recovery go hand in hand. The most important form of recovery is sleep and with my<a href=\"https://www.instagram.com/lagoonsleep/\">@lagoonsleep </a>pillows I fall asleep faster and wake up feeling stronger and more recovered. Their customized survey determined the pillow that would fit my style best. I am looking forward to getting more amazing sleep, thanks<a href=\"https://www.instagram.com/lagoonsleep/\">@lagoonsleep</a>!</p>"
+          },
+          "type": "testimonial"
+        },
+        "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-2": {
+          "settings": {
+            "authorImage": "shopify://shop_images/296074272_1034686520584905_5878095345769014686_n.jpg",
+            "authorName": "Shayna Powless  <br>USA Cycling Champion",
+            "fakeImageSex": "women",
+            "imageAlt": "",
+            "star_rating": 5,
+            "text": "<p>Genuinely excited to sleep every night with this new <a href=\"https://www.instagram.com/lagoonsleep/\">@lagoonsleep </a>pillow 😴 It’s honestly the comfiest pillow and I’ve already noticed my sleep improve since I’ve started using it. As an athlete, sleep is high on my priority list since better sleep = better performance, and I can safely say that my energy levels and performance have been stellar lately 🤩</p>"
+          },
+          "type": "testimonial"
+        },
+        "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-3": {
+          "settings": {
+            "authorImage": "shopify://shop_images/32.png",
+            "authorName": "Katie Izzo <br> PRO TRACK ATHLETE",
+            "fakeImageSex": "women",
+            "imageAlt": "",
+            "star_rating": 5,
+            "text": "<p>When I started getting consistent, solid sleep is when my running career took off... As a new pro runner, I had been looking for a pillow that would allow me to get even better sleep to maximize my performance and recovery. I took the pillow quiz on @lagoonsleep that addressed my personal sleep goals and preferences... and I've already been getting deeper sleep and waking up feeling more refreshed.</p>"
+          },
+          "type": "testimonial"
+        }
+      },
+      "settings": {
+        "backgroundColor": "#003e52",
+        "blockBackground": "#ffffff",
+        "blockBottomBackground": "#003e52",
+        "blockBottomText": "#ffffff",
+        "blockStyle": "author-below",
+        "blockText": "#003e52",
+        "buttonDisplayFor": "hide-mobile",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "enableAutoHeight": false,
+        "enableAutoplay": true,
+        "enableCarousel": false,
+        "enableDragging": true,
+        "enablePagination": true,
+        "heading": "REVIEWS FROM LAGOON'S PRO ATHLETES",
+        "headingAlignment": "center",
+        "headingColor": "#ffffff",
+        "height": 0,
+        "layout": "default",
+        "nomargin": true,
+        "padding": 20,
+        "productCardDesktop": 4,
+        "productCardMobile": 1,
+        "productCardTablet": 2,
+        "roundedImages": true,
+        "scopedCSS": "",
+        "slideSpeed": 3,
+        "spaceBetween": 30,
+        "subheading": "SLEEP TO PERFORM",
+        "subheadingColor": "#ffffff",
+        "subheadingPosition": "above",
+        "testimonialAlign": "left",
+        "useFakeImages": true
+      },
+      "type": "section__testimonials"
+    },
+    "acb2ea8c-5f14-4985-9b7e-60c9a967d6ca": {
+      "disabled": true,
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "#ffffff",
+        "backgroundFilter": "none",
+        "backgroundPattern": false,
+        "backgroundPosition": "bottom",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "heading": "Lagoon's Customer Guarantees",
+        "headingAlignment": "center",
+        "headingColor": "#003e52",
+        "height": 0,
+        "layout": "default",
+        "nomargin": true,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 20,
+        "parallax": false,
+        "scopedCSS": "",
+        "subheading": "SHOP WITH CONFIDENCE",
+        "subheadingColor": "#686363",
+        "subheadingPosition": "above"
+      },
+      "type": "section__heading"
+    },
+    "b425f4c3-b261-4e2e-a16a-87c0b64f5860": {
+      "block_order": [
+        "b52a584e-b907-4760-bf7d-69aa407d308c",
+        "9a9fe0f7-f845-4874-88e8-985683da4ec1",
+        "aac72e52-ff86-4c1f-87ec-a28382d4b7c0",
+        "e1402b35-3619-406b-87ba-1e65a4eff9eb",
+        "44fae4ab-0a7b-4d77-a9d6-5e510b8d2f56",
+        "c9915f04-1e87-4dce-bea1-582a6ace039b"
+      ],
+      "blocks": {
+        "44fae4ab-0a7b-4d77-a9d6-5e510b8d2f56": {
+          "settings": {
+            "buttonStyle": "secondary",
+            "buttonText": "",
+            "buttonType": "filled",
+            "buttonURL": "",
+            "content": "",
+            "heading": "",
+            "image": "{{ product.metafields.custom.product_features_image_5.value }}",
+            "imageSize": 100,
+            "openTab": false
+          },
+          "type": "columnImage"
+        },
+        "9a9fe0f7-f845-4874-88e8-985683da4ec1": {
+          "settings": {
+            "buttonStyle": "secondary",
+            "buttonText": "",
+            "buttonType": "filled",
+            "buttonURL": "",
+            "content": "",
+            "heading": "",
+            "image": "{{ product.metafields.custom.product_features_image_2.value }}",
+            "imageSize": 100,
+            "openTab": false
+          },
+          "type": "columnImage"
+        },
+        "aac72e52-ff86-4c1f-87ec-a28382d4b7c0": {
+          "settings": {
+            "buttonStyle": "secondary",
+            "buttonText": "",
+            "buttonType": "filled",
+            "buttonURL": "",
+            "content": "",
+            "heading": "",
+            "image": "{{ product.metafields.custom.product_features_image_3.value }}",
+            "imageSize": 100,
+            "openTab": false
+          },
+          "type": "columnImage"
+        },
+        "b52a584e-b907-4760-bf7d-69aa407d308c": {
+          "settings": {
+            "buttonStyle": "secondary",
+            "buttonText": "",
+            "buttonType": "filled",
+            "buttonURL": "",
+            "content": "",
+            "heading": "",
+            "image": "{{ product.metafields.custom.product_features_image_1.value }}",
+            "imageSize": 100,
+            "openTab": false
+          },
+          "type": "columnImage"
+        },
+        "c9915f04-1e87-4dce-bea1-582a6ace039b": {
+          "settings": {
+            "buttonStyle": "secondary",
+            "buttonText": "",
+            "buttonType": "filled",
+            "buttonURL": "",
+            "content": "",
+            "heading": "",
+            "image": "{{ product.metafields.custom.product_features_image_6.value }}",
+            "imageSize": 100,
+            "openTab": false
+          },
+          "type": "columnImage"
+        },
+        "e1402b35-3619-406b-87ba-1e65a4eff9eb": {
+          "settings": {
+            "buttonStyle": "secondary",
+            "buttonText": "",
+            "buttonType": "filled",
+            "buttonURL": "",
+            "content": "",
+            "heading": "",
+            "image": "{{ product.metafields.custom.product_features_image_4.value }}",
+            "imageSize": 100,
+            "openTab": false
+          },
+          "type": "columnImage"
+        }
+      },
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundFilter": "none",
+        "backgroundPattern": false,
+        "backgroundPosition": "middle",
+        "buttonDisplayFor": "hide-mobile",
+        "colCount": "col-md-4",
+        "colGap": 20,
+        "colHeight": 240,
+        "contentAlign": "top",
+        "contentColor": "rgba(0,0,0,0)",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "enableAutoHeight": false,
+        "enableAutoplay": true,
+        "enableCarousel": false,
+        "enableDragging": true,
+        "enablePagination": true,
+        "heading": "{{ product.metafields.custom.product_features_section_heading.value }}",
+        "headingAlignment": "center",
+        "headingColor": "rgba(0,0,0,0)",
+        "height": 0,
+        "horizontalAlignment": "center",
+        "layout": "default",
+        "lineMargin": 0,
+        "nomargin": false,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 25,
+        "parallax": false,
+        "productCardDesktop": 4,
+        "productCardMobile": 1,
+        "productCardTablet": 2,
+        "scopedCSS": "",
+        "slideSpeed": 3,
+        "spaceBetween": 30,
+        "subheading": "DESIGNED FOR OPTIMAL SLEEP",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "textAlign": "center",
+        "verticalAlignment": "middle"
+      },
+      "type": "section__columns"
+    },
+    "breadcrumbs": {
+      "settings": {},
+      "type": "breadcrumbs"
+    },
+    "ef52d75d-1af1-4801-baf6-3f26c281f4b4": {
+      "block_order": [
+        "rich_text_nWBCJF",
+        "c7b3283b-802a-40f2-9c56-d266fa793d3f",
+        "730341d8-91e6-4444-a96e-78e7a2ced64f",
+        "462f4731-43b9-4e10-8471-86470b43fee9"
+      ],
+      "blocks": {
+        "462f4731-43b9-4e10-8471-86470b43fee9": {
+          "settings": {
+            "blockWidth": "col-md-4",
+            "horAlign": "center",
+            "horPadding": 4,
+            "image": "{{ product.metafields.custom.consumer_confidence_image_3.value }}",
+            "vertAlign": "middle",
+            "vertPadding": 12
+          },
+          "type": "image"
+        },
+        "730341d8-91e6-4444-a96e-78e7a2ced64f": {
+          "settings": {
+            "blockWidth": "col-md-4",
+            "horAlign": "center",
+            "horPadding": 4,
+            "image": "{{ product.metafields.custom.consumer_confidence_image_2.value }}",
+            "vertAlign": "middle",
+            "vertPadding": 12
+          },
+          "type": "image"
+        },
+        "c7b3283b-802a-40f2-9c56-d266fa793d3f": {
+          "settings": {
+            "blockWidth": "col-md-4",
+            "horAlign": "center",
+            "horPadding": 0,
+            "image": "{{ product.metafields.custom.consumer_confidence_image_1.value }}",
+            "vertAlign": "middle",
+            "vertPadding": 0
+          },
+          "type": "image"
+        },
+        "rich_text_nWBCJF": {
+          "settings": {
+            "blockWidth": "col-md-12",
+            "content": "<p>LAGOON'S CUSTOMER GUARANTEES</p>",
+            "detectLists": true,
+            "fontFamily": "title",
+            "fontSize": "medium",
+            "horAlign": "center",
+            "horPadding": 4,
+            "maxBWidth": 100,
+            "textColor": "#ffffff",
+            "vertAlign": "middle",
+            "vertPadding": 12
+          },
+          "type": "richText"
+        }
+      },
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "#003e52",
+        "backgroundFilter": "none",
+        "backgroundPattern": false,
+        "backgroundPosition": "middle",
+        "contentColor": "#ffffff",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "height": 0,
+        "horPaddingAccord": 0,
+        "horizontalAlignment": "center",
+        "layout": "default",
+        "lineMargin": 0,
+        "nomargin": true,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 0,
+        "parallax": false,
+        "scopedCSS": "",
+        "vertPaddingAccord": 0,
+        "verticalAlignment": "middle"
+      },
+      "type": "section__content"
+    },
+    "page": {
+      "block_order": [
+        "ppTitle",
+        "486d61dc-1b84-4a82-b6e8-2e33d25c0763",
+        "ppPrice",
+        "product_page_delivery_e6hzUK",
+        "ppSwatch",
+        "d51931f3-fb03-4431-9a8b-9d626c1cb0e3",
+        "8d51fd58-688e-4e9f-b47a-e6f7398631b0",
+        "daa7adb0-dd8a-41aa-9d2d-fc37c356ba77",
+        "4eafbd1e-54ff-4c01-8b8e-610066a089ac",
+        "loop_subscriptions_loop_widget_irPCEW",
+        "ppATC",
+        "7738da07-c92b-4bc6-94de-5f0c2ef97815",
+        "ppStock",
+        "75a1c1d4-4737-49e3-afe3-a5cfcd5763ab",
+        "d9d8409c-3b78-4854-97bf-17ace3af4039",
+        "b75a3889-aeb2-4337-a7cb-6d2e4f6acb83",
+        "5394be81-7fbd-4a0d-a5b5-cec4814a1995",
+        "6a6e984c-0e45-43ac-bf3d-8f6092b6820e",
+        "selleasy_lb_upsell_fbt_block_3pmmRy",
+        "selleasy_lb_upsell_addon_block_YgJ4JM"
+      ],
+      "blocks": {
+        "486d61dc-1b84-4a82-b6e8-2e33d25c0763": {
+          "settings": {
+            "noMargin": true
+          },
+          "type": "productPageReviewStars"
+        },
+        "4eafbd1e-54ff-4c01-8b8e-610066a089ac": {
+          "disabled": true,
+          "settings": {
+            "noMargin": true,
+            "style": "compact",
+            "text": "The price of this item will revert back to %price% at the end of this countdown.",
+            "title": "LIMITED TIME OFFER"
+          },
+          "type": "productPageCountdown"
+        },
+        "5394be81-7fbd-4a0d-a5b5-cec4814a1995": {
+          "settings": {
+            "content": "metafield",
+            "customContent": "<p>Add custom content here!</p>",
+            "heading": "The Details",
+            "metafieldKey": "the_details",
+            "metafieldNS": "custom",
+            "noMargin": true,
+            "page": ""
+          },
+          "type": "productPageAccordion"
+        },
+        "6a6e984c-0e45-43ac-bf3d-8f6092b6820e": {
+          "settings": {
+            "content": "metafield",
+            "customContent": "Care Instructions\n<br>Regularly fluff pillows to maintain shape. Every six months insert pillow into the dryer and run on low for 10-15 minutes.\n\n<br><br>Wash Instructions\n<br>Pillow Cover\n<br>Wash in cold water on low/gentle cycle. Tumble dry on low. Ensure cover is completely dry before use.\n\n<br><br>Inner Pillow\n<br>For stains, spot clean with a wet cloth and soap. To wash, secure zipper with a closed safety pin to ensure the fill is secure. Wash in cold water on low/gentle cycle. Tumble dry on low. Ensure cover is completely dry before use. Do not wash more than one time per year.",
+            "heading": "Care Instructions",
+            "metafieldKey": "care_instructions",
+            "metafieldNS": "custom",
+            "noMargin": false,
+            "page": ""
+          },
+          "type": "productPageAccordion"
+        },
+        "75a1c1d4-4737-49e3-afe3-a5cfcd5763ab": {
+          "disabled": true,
+          "settings": {
+            "imageAlt": "",
+            "noMargin": false
+          },
+          "type": "productPageBadge"
+        },
+        "7738da07-c92b-4bc6-94de-5f0c2ef97815": {
+          "settings": {
+            "noMargin": false
+          },
+          "type": "productPageShopPay"
+        },
+        "8d51fd58-688e-4e9f-b47a-e6f7398631b0": {
+          "disabled": true,
+          "settings": {
+            "customMax": "",
+            "iconColor": "rgba(0,0,0,0)",
+            "interval": 8,
+            "max": "100",
+            "noMargin": true,
+            "textColor": "rgba(0,0,0,0)"
+          },
+          "type": "productPageWatching"
+        },
+        "b75a3889-aeb2-4337-a7cb-6d2e4f6acb83": {
+          "settings": {
+            "heading": "About the {{ product.metafields.custom.product_name_short.value }}",
+            "noMargin": true
+          },
+          "type": "productPageDescription"
+        },
+        "d51931f3-fb03-4431-9a8b-9d626c1cb0e3": {
+          "disabled": true,
+          "settings": {
+            "customMax": "",
+            "iconColor": "rgba(0,0,0,0)",
+            "interval": 8,
+            "max": "100",
+            "noMargin": true,
+            "textColor": "rgba(0,0,0,0)"
+          },
+          "type": "productPageInCart"
+        },
+        "d9d8409c-3b78-4854-97bf-17ace3af4039": {
+          "disabled": true,
+          "settings": {
+            "noMargin": false
+          },
+          "type": "productPageShare"
+        },
+        "daa7adb0-dd8a-41aa-9d2d-fc37c356ba77": {
+          "disabled": true,
+          "settings": {
+            "end": "5",
+            "icon": "null",
+            "iconColor": "rgba(0,0,0,0)",
+            "noMargin": true,
+            "start": "1",
+            "text": "<p>Delivered between %start% and %end%.</p>",
+            "textColor": "rgba(0,0,0,0)"
+          },
+          "type": "productPageLDelivery"
+        },
+        "loop_subscriptions_loop_widget_irPCEW": {
+          "settings": {},
+          "type": "shopify://apps/loop-subscriptions/blocks/loop_widget/267a7c64-5cb3-4552-b817-5485165f0a0b"
+        },
+        "ppATC": {
+          "settings": {
+            "atcLayout": "boxed",
+            "displayAtcFor": "display--both",
+            "noMargin": true,
+            "stickyATC": "scroll"
+          },
+          "type": "productPageATC"
+        },
+        "ppPrice": {
+          "settings": {
+            "color": "#000000",
+            "fontFamily": "base",
+            "fontSize": "base",
+            "newPriceColor": "rgba(0,0,0,0)",
+            "noMargin": true,
+            "oldPriceColor": "#686363"
+          },
+          "type": "productPagePrice"
+        },
+        "ppStock": {
+          "disabled": true,
+          "settings": {
+            "noMargin": false,
+            "reduce": 8,
+            "stockLeft": "10"
+          },
+          "type": "productPageStock"
+        },
+        "ppSwatch": {
+          "settings": {
+            "noMargin": true
+          },
+          "type": "productPageSwatch"
+        },
+        "ppTitle": {
+          "settings": {
+            "color": "rgba(0,0,0,0)",
+            "fontFamily": "title",
+            "fontSize": "medium",
+            "noMargin": true
+          },
+          "type": "productPageTitle"
+        },
+        "product_page_delivery_e6hzUK": {
+          "disabled": true,
+          "settings": {
+            "icon": "gift",
+            "iconColor": "#000000",
+            "noMargin": true,
+            "text": "",
+            "textColor": "#000000"
+          },
+          "type": "productPageDelivery"
+        },
+        "selleasy_lb_upsell_addon_block_YgJ4JM": {
+          "settings": {},
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-addon-block/790c1a03-a71f-4bc1-9869-00dad526d3c2"
+        },
+        "selleasy_lb_upsell_fbt_block_3pmmRy": {
+          "settings": {},
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-fbt-block/790c1a03-a71f-4bc1-9869-00dad526d3c2"
+        }
+      },
+      "settings": {
+        "autoChange": false,
+        "autoZoom": true,
+        "galleryImageFit": "cover",
+        "galleryImageGap": 16,
+        "galleryPosition": "left",
+        "galleryStyle": "default",
+        "imageSticky": true,
+        "imageStickyPosition": 120,
+        "layout": "max-width",
+        "productMainImageSize": "crop",
+        "productNavigation": false,
+        "video_autoplay": true,
+        "video_loop": true,
+        "view": "default"
+      },
+      "type": "product-page__product"
+    },
+    "recommended": {
+      "disabled": true,
+      "settings": {
+        "cardDesktop": "default",
+        "cardMobile": "default",
+        "defaultCollection": "",
+        "enabled": true,
+        "heading": "Explore other designs",
+        "layout": "max-width",
+        "personalizedOffers": true,
+        "subheading": "Recommended for you",
+        "subheadingPosition": "above",
+        "textAlignment": "start"
+      },
+      "type": "product-page__recommended"
+    },
+    "section_content_MdjGz7": {
+      "block_order": [
+        "liquid_block_63YKXG"
+      ],
+      "blocks": {
+        "liquid_block_63YKXG": {
+          "settings": {
+            "blockWidth": "col-md-12",
+            "customCSS": ".block__liquid {\nwidth: 100%;\n}\n\n.fera h1 {\n    color: #003e52 !important;\n}",
+            "horAlign": "start",
+            "horPadding": 0,
+            "liquid": "<div data-fera-widget='product_reviews' data-fera-id='fwid_30WevjS' data-product-id='{{ product.id }}'></div>",
+            "vertAlign": "middle",
+            "vertPadding": 0
+          },
+          "type": "liquidBlock"
+        }
+      },
+      "settings": {
+        "backdropIntensity": 50,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundFilter": "none",
+        "backgroundPattern": false,
+        "backgroundPosition": "middle",
+        "contentColor": "rgba(0,0,0,0)",
+        "custom_id": "",
+        "displayFor": "display--both",
+        "height": 0,
+        "horPaddingAccord": 12,
+        "horizontalAlignment": "center",
+        "layout": "default",
+        "lineMargin": 12,
+        "nomargin": false,
+        "overlayColor": "#000000",
+        "overlayOpacity": 0,
+        "padding": 15,
+        "parallax": false,
+        "scopedCSS": "",
+        "vertPaddingAccord": 12,
+        "verticalAlignment": "middle"
+      },
+      "type": "section__content"
+    },
+    "upsell": {
+      "block_order": [
+        "cb4a94d2-871e-4ee9-ad72-12b68def03ab",
+        "29f9b463-6af2-4bd6-814a-e0c1d9e6c252"
+      ],
+      "blocks": {
+        "29f9b463-6af2-4bd6-814a-e0c1d9e6c252": {
+          "settings": {
+            "handle": "the-otter",
+            "heading": "Frequently Bought Together",
+            "subheading": "",
+            "upsellProduct1": "the-fox",
+            "upsellProduct2": "",
+            "upsellProduct3": ""
+          },
+          "type": "productSpecific"
+        },
+        "cb4a94d2-871e-4ee9-ad72-12b68def03ab": {
+          "settings": {
+            "condition": "10",
+            "conditionType": "mt",
+            "heading": "The Perfect Travel Companion",
+            "subheading": "Shop smart and save.",
+            "upsellProduct1": "pillow-compression-travel-bag-vacuum-sealed-no-pump-or-vacuum-needed-tear-resistant",
+            "upsellProduct2": "check-in-medium",
+            "upsellProduct3": ""
+          },
+          "type": "priceSpecific"
+        }
+      },
+      "disabled": true,
+      "settings": {},
+      "type": "api__upsell--inline"
+    }
+  }
+}

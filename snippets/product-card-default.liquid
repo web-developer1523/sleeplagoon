@@ -1,0 +1,170 @@
+<div class="card--default {% unless product.available %}card--soldout{% endunless %} card--{{settings.cardStyle}}" data-product-card-default>
+{% if settings.productCompare %}
+  {% render 'product-compare' product: product %}
+{% endif %}
+<a class="card__img--container" href="{{ product.url | within: collection }}" data-product-card-swatch-id="{{product.id}}">
+<div class="card__img--ratio">
+  <div class="card__img" {% if settings.cardShowGallery %}data-booster-slider data-current-slide=0 data-total-slides={{product.images.size}}{% endif %}>
+    {% if settings.tagEnabled %}
+      <div class="card__tags">
+        {% if product.available == false and settings.tagSoldOut %}
+          <span class="tag tag--soldout">{{'general.buttons.sold_out' | t}}</span>
+        {% endif %}
+        {% if product.compare_at_price_min > 0 and settings.tagSale %}
+          {% if product.price_varies %}
+            <span class="tag tag--sale">{{'general.tags.sale' | t}}</span>
+          {% else %}
+            {% unless product.price >= product.compare_at_price %}
+              {% assign s_type = settings.saleType | default: 'percent' %}
+
+              <span class="tag tag--sale">
+              {%- case s_type %}
+                {% when 'percent' %}
+                    {{ product.price | minus: product.compare_at_price_max | times: 100 | divided_by: product.compare_at_price_max }}%  {{'general.tags.sale' | t}}
+                {% when 'amount' %}
+                    {{ product.compare_at_price | minus: product.price | money | strip_html }} {{'general.tags.sale' | t}}
+                {% when 'text' %}
+                    {{'general.tags.sale' | t}}
+                {%- endcase -%}
+            </span>
+            {% endunless %}
+            {% endif %}
+        {% endif %}
+        {% for tag in product.tags %}
+          {% if tag contains 'bstr-tag-' %} {% comment %} this needs to be an if not unless  {% endcomment %}
+              <span class="tag tag--custom">{{ tag | remove_first: 'bstr-tag-' | replace: '-', ' ' }} </span>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% unless settings.cardShowGallery %}
+      {% render 'card-image', image: product.featured_image.src, alt: product.featured_image.alt, desktop: dsize %}
+      {% unless product.images.size < 2 or settings.cardShowSecondary == false %}
+        {% assign secondaryImage = product.images[1] %}
+        {% render 'card-image', image: secondaryImage.src, alt: secondaryImage.alt, desktop: dsize, class: 'card__img--secondary' %}
+      {% endunless %}
+    {% else %}
+    <div class="card__slider__parent" data-bstr-slider="product-card-{{product.id}}" data-bstr-ppslider="{{product.id}}">
+      <div class="card__slider" data-bstr-slider-orientation="horizontal" data-bstr-slide-holder="1" data-bstr-slider-current="1" data-bstr-slider-id="product-card-{{product.id}}">
+          {% for image in product.images %}
+            <div data-bstr-slide class="card__img--gallery" data-card-product-id="{{ product.id }}" data-variants="|{% for var in image.variants %}{{var.options| join: '#' | escape}}|{% endfor %}">
+            {% render 'card-image', image: image.src, alt: image.alt, desktop: dsize %}
+            </div>
+          {% endfor %}
+      </div>
+      {% if product.images.size > 1 %}
+        <button data-bstr-slider-button="-" class="slider__button hide-mobile" aria-label="Previous"><i class="uil uil-angle-left-b"></i></button>
+        <button data-bstr-slider-button="+" class="slider__button slider__button--next hide-mobile" aria-label="Next"><i class="uil uil-angle-right-b"></i></button>
+      {% endif %}
+    </div>
+    {% endunless %}
+    {% if product.compare_at_price_min > 0 and settings.countdownCard and settings.countdown %}
+    <div data-countdown data-ct-key="{{product.id}}" class="countdown">
+      <span class="countdown__holder"><span class="days">00</span><br>DAYS</span>
+      <span class="countdown__holder"><span class="hours">00</span><br>HRS</span>
+      <span class="countdown__holder"><span class="minutes">00</span><br>MIN</span>
+      <span class="countdown__holder"><span class="seconds">00</span><br>SEC</span>
+    </div>
+    {% endif %}
+  </div>
+</div>
+</a>
+
+{% if settings.cardShowSwatches and settings.cardShowGallery %}
+  {% render 'product-card-swatches' product: product%}
+{% endif %}
+
+
+{% unless settings.cardStyle == 'catalog' %}
+<div class="card__info">
+{% if settings.cardShowBrand %}
+<a class="card__brand" href="{{ product.vendor | url_for_vendor }}">
+{{product.vendor}}
+</a>
+{% endif %}
+{% if settings.cardShowRating %}
+{% render 'product-card__review-stars' with product as product %}
+{% endif %}
+{% if settings.cardNameLimit == "words" %}
+  {% assign truncatedProductTitle = product.title | truncatewords: settings.cardNameLimitAmount %}
+{% elsif settings.cardNameLimit == 'chars' %}
+  {% assign truncatedProductTitle = product.title | truncate: settings.cardNameLimitAmount %}
+{% endif %}
+<a 
+  class="card__title" 
+  href="{{ product.url | within: collection }}" 
+  data-product-card-swatch-id="{{product.id}}" 
+  data-original-text="{{ product.title }}"
+  data-truncated-text="{{ truncatedProductTitle }}">
+{% unless settings.cardNameLimit != "none" %}
+{{ product.title }}
+{% else %}
+{% if settings.cardNameLimit == "words" %}
+{{ product.title | truncatewords: settings.cardNameLimitAmount }}
+{% else %}
+{{ product.title | truncate: settings.cardNameLimitAmount }}
+{% endif %}
+{% endunless %}
+</a>
+  <div data-fera-container="442844" data-product_id="{{ product.id }}"></div>
+  <div data-fera-widget='product_collection_rating' data-fera-id='fwid_30WfsUC' data-rating-count='{{ product.metafields.reviews.rating_count }}' data-rating-average='{{ product.metafields.reviews.rating.value }}' data-rating-count='{{ product.metafields.reviews.rating_count }}' data-rating-average='{{ product.metafields.reviews.rating.value }}' data-product-id='{{ product.id }}'></div>
+{% if product.compare_at_price_min > 0 %}
+{% assign sale = true %}
+{% endif %}
+<span class="card__price {% if sale == true %}card__price--sale{% endif %}">
+{% if product.price_varies %}
+{{'product_page.card.from'|t}} <span class="jsPrice">{{ product.price_min | money | strip_html }}</span>
+{% else %}
+<span class="jsPrice">{{ product.price | money | strip_html }}</span>
+{% endif %}
+{% unless product.price == product.compare_at_price %}
+{% if sale == true %}
+{% unless product.price >= product.compare_at_price %}
+<span class="card__price--old jsPrice">
+{{product.compare_at_price | money | strip_html}}
+</span>
+{% endunless %}
+{% endif %}
+{% endunless %}
+</span>
+
+<div class="card__description ">
+{{product.description | strip_html}}
+</div>
+
+{% unless settings.cardStyle == "noButton" %}
+<div class="card__buttons">
+{% assign var = product.first_available_variant %}
+
+{% if product.available %}
+  {% if settings.quickShop %}
+    {% assign button_text = 'general.buttons.quick_shop' | t %}
+    {% assign btnType = 'quickShop' %}
+    {% render 'quick-buy-button', href: product.url, price: product.price, product_id: product.id, text: button_text, btnType: btnType %}
+  {% endif %}
+  {% if product.has_only_default_variant or product.variants.size == 1 %}
+    {% form 'product', product %}
+      <input name="id" type="hidden" value="{{var.id}}">
+      {% render 'add-to-cart-button', variant: var.id, quantity: 1, price: product.price %}
+    {% endform %}
+  {% else %}
+    {% if product.variants.size > 1 %}
+      {% if settings.quickShop %}
+      {% assign button_text = 'general.buttons.see_options' | t %}
+      {% endif %}
+      {% assign btnType = 'quickBuy' %}
+      {% render 'quick-buy-button', href: product.url, price: product.price, product_id: product.id, text: button_text, btnType: btnType %}
+    {% else %}
+      {% render 'quick-buy-button', href: product.url, price: product.price, product_id: product.id %}
+    {% endif %}
+  {% endif %}
+{% else %}
+  {% render 'sold-out-button', disabled: 'disabled' %}
+{% endif %}
+</div>
+{%endunless%}
+</div>
+{% endunless %}
+
+
+</div>

@@ -1,0 +1,85 @@
+<style>
+  {% unless block.settings.animation == "none" %}
+  #button--{{block.id}} {
+      animation-duration: {{block.settings.animationDuration}}ms;
+      {% if block.settings.animationInfinite %}animation-iteration-count: infinite;{% endif %};
+  }
+  {% endunless %}
+
+  #button--{{-block.id}}{
+    background: none;
+    outline: none;
+    border-radius: {{ block.settings.buttonRadius }}px;
+    margin-left: 8px;
+    {% if block.settings.subColorCombo == 'sectionColors' %}
+
+      {% case section.settings.colorCombo %}
+        {% when 'primaryCombo' %}
+          border: 1px solid var(--accentTextColor);
+        {% when 'secondaryCombo' %}
+          border: 1px solid var(--secondaryAccentTextColor);
+        {% else %}
+          border: 1px solid {{ section.settings.customContentColor }};
+      {% endcase %}
+
+    {% else %}
+
+      {% unless block.settings.subColor == nil %}
+        background: {{ block.settings.subColor }};
+      {% endunless %}
+
+      {% unless block.settings.subBorder == nil %}
+        border: 1px solid {{ block.settings.subBorder }};
+      {% endunless %}
+
+    {% endif %}
+
+    {% unless block.settings.subPaddingX == nil %}
+      padding-left: {{ block.settings.subPaddingX }}px;
+      padding-right: {{ block.settings.subPaddingX }}px;
+    {% endunless %}
+
+    {% unless block.settings.subPaddingY == nil %}
+      padding-top: {{ block.settings.subPaddingY }}px;
+      padding-bottom: {{ block.settings.subPaddingY }}px;
+    {% endunless %}
+
+    {% unless block.settings.subMargin == nil %}
+      margin-top: {{ block.settings.subMargin }}px;
+      margin-bottom: {{ block.settings.subMargin }}px;
+    {% endunless %}
+  }
+
+  #button--{{-block.id}} span{
+  color: {% if block.settings.textColor != 'rgba(0,0,0,0)'  %}{{block.settings.textColor}}{% else %}inherit{% endif %};
+  }
+</style>
+
+<a
+  id="button--{{block.id}}"
+  class="
+    button top-button
+    font__size--{{-block.settings.fontSize}} font__family--{{block.settings.fontFamily}}
+    button__animation--{{-block.settings.animation}}
+    {%if block.settings.wideButton%}button--full-width{%endif%}
+    {% unless block.settings.icon == blank %}button--icon {{block.settings.iconPosition}}{% endunless %}
+  "
+  {% if block.settings.linkRedirect != '_new' %}
+    href="{{- block.settings.url -}}" target="{{block.settings.linkRedirect}}"
+  {% endif %}
+  {% if block.settings.linkRedirect == '_new' %}
+    href="#" onclick="openNewWindow()"
+  {% endif %}
+  {{ block.shopify_attributes }}
+>
+  {% unless block.settings.icon == blank %}
+    {% render 'get-icon' with block.settings.icon as icon %}
+  {% endunless %}
+  <span>{{- block.settings.text -}}</span>
+</a>
+{% if block.settings.linkRedirect == '_new' %}
+  <script>
+    const openNewWindow = () =>
+      window.open('{{block.settings.url}}', '_blank', `width=${screen.availWidth},height=${screen.availHeight}`);
+  </script>
+{% endif %}

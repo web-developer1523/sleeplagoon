@@ -1,0 +1,247 @@
+<!--
+  LOGO FOR PUBLISHER
+  IMAGE SRC ABSOLUTE URL
+  AUTHOR META
+-->
+
+<style>
+  {% case settings.blogDisplayFor %}
+  {% when 'hide-desktop' %}
+  @media screen and (min-width: 768px){
+    .article__max-width--image{
+      display: none !important;
+    }
+  }
+  {% when 'hide-mobile' %}
+  @media screen and (max-width: 767px){
+    .article__max-width--image{
+      display: none !important;
+    }
+  }
+  {% endcase %}
+
+  .article__max-width--image{
+    padding: {{ settings.articleVertPadding }}px {{ settings.articleHorPadding }}px;
+  }
+
+  .article__max-width--image img {
+    {% if settings.articleHeight == 0 %}
+      display: none;
+    {% endif %}
+    height: {{settings.articleHeight}}px;
+    object-fit: cover;
+  }
+
+  .article_sidebar {
+    margin-top: {% if settings.showArticleArrow %}6rem{% else %}2.3rem{% endif %};
+    width: 25%;
+    position: sticky;
+    top: 0;
+  }
+
+  .article__title {
+    text-decoration: none;
+  }
+
+  .recent_article_container:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .recent_article_date { font-size: var(--smallFontSize) }
+
+  {% unless settings.showRecentPost %}
+    .article_contents { width: 100%; }
+  {% endunless %}
+
+  @media screen and (max-width: 992px) {
+    .article_sidebar {
+      width: 40%;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .article_sidebar {
+      width: 100%;
+      margin-top: 0;
+    }
+  }
+</style>
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{article.title|escape}}",
+    "image": "{{article.image.src}}",
+    "publisher": {
+      "@type": "Organization",
+      "name": "{{shop.name|escape}}"
+    },
+    "keywords": "{{article.tags | join: ', ' |escape}}",
+    "url": "{{ shop.secure_url }}{{article.url}}",
+    "datePublished": "{{ article.published_at | date: '%Y-%m-%d' }}",
+    "dateCreated": "{{ article.published_at | date: '%Y-%m-%d' }}",
+    "dateModified": "{{ article.published_at | date: '%Y-%m-%d' }}",
+    "description": "{{article.excerpt | strip_html |escape}}",
+    "articleBody": "{{article.content | strip_html |escape}}",
+    "author": {
+      "@type": "Person",
+      "name": "{{article.author |escape}}"
+    }
+  }
+</script>
+
+{% assign number_of_comments = article.comments_count %}
+{% if comment and comment.created_at %}
+  {% assign number_of_comments = article.comments_count %}
+{% endif %}
+
+<div class="row article__row">
+  <div class="row breadcrumbs__wrapper">
+    <div class="layout__content breadcrumbs--default col-12">{% render 'breadcrumbs' %}</div>
+  </div>
+  
+  <div class="{%- if settings.articleLayout == 'default' -%} layout__{{settings.baseLayout}} {%- else -%} layout__{{settings.articleLayout}} {%- endif -%} col-12">
+    {% if settings.showRecentPost %}
+      <div class="article_sidebar hide-mobile">
+        <h3>RECENT POSTS</h3>
+        {% assign article_url = article.url %}
+        {% for article in blog.articles limit: 4 %}
+          <div class="recent_article_container">
+            {% if article.url != article_url %}
+              <a href="{{ article.url }}" class="article__title recent_article h-reset">{{ article.title }}</a>
+              <p class="recent_article recent_article_date h-reset">{% if settings.showArticleDate %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%m/%d/%Y' }}</time>{% endif %}</p>
+            {% endif %}
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <div class="article_contents">  
+      {% unless article.image == null %}
+        <div class="unflex article__max-width--image">
+          {% if settings.showArticleArrow %}
+            <div class="article__max-width unflex">
+              {% render 'block__article--next__prev_alt' %}
+            </div>
+            {% endif %}
+          <img
+            loading="lazy"
+            data-src="{{article.image | img_url: '10x'}}"
+            height="{{article.image.height}}"
+            width="{{article.image.width}}"
+            class="article__featured--shadow lazyload"
+          >
+          {% render 'ratio-image',
+            ratioType: 'vw',
+            image: article.image,
+            alt: article.image.alt,
+            class: 'article__featured',
+            mratio: 100,
+            dratio: 100
+          %}
+        </div>
+      {% endunless %}
+  
+      <div class="article__max-width unflex">
+        <h1 class="article__title h-reset">{{ article.title }}</h1>
+        {% capture date %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%m/%d/%Y' }}</time>{% endcapture %}
+        <div class="unflex article__meta">
+          {{ article.author }}
+          {% if settings.showArticleDate %}on {{ date }}{% endif %}
+        </div>
+        {% unless article.excerpt == blank %}
+          <div class="article__excerpt">{{ article.excerpt }}</div>
+        {% endunless %}
+  
+        <div class="unflex article__content">
+          <article>
+            {{ article.content }}
+          </article>
+        </div>
+        
+        {% unless article.tags.size == 0 %}
+          <div class="col-12 article__max-width article__tags">
+            <span>{{ 'general.tags.tags' | t }}: </span>
+            {% for tag in article.tags %}
+              <a href="{{blog.url}}/tagged/{{tag|handleize}}" class="article__tags--tag">{{ tag }}</a>
+            {% endfor %}
+          </div>
+        {% endunless %}
+  
+        {% if settings.showArticleArrow %}
+          {% render 'block__article--next__prev' %}
+        {% endif %}
+        
+        {% if settings.showRecentPost %}
+          <div class="article_sidebar hide-desktop">
+            <h3>RECENT POSTS</h3>
+            {% assign article_url = article.url %}
+            {% for article in blog.articles limit: 4 %}
+              <div class="recent_article_container">
+                {% if article.url != article_url %}
+                  <a href="{{ article.url }}" class="article__title recent_article h-reset">{{ article.title }}</a>
+                  <p class="recent_article recent_article_date h-reset">{% if settings.showArticleDate %}<time datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%m/%d/%Y' }}</time>{% endif %}</p>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if blog.comments_enabled? %}
+  <div class="article__max-width">
+    <h2>{{ number_of_comments }} comments</h2>
+    {% paginate article.comments by 5 %}
+      {% for comment in article.comments %}
+        <div>
+          <h4>{{ comment.author }} @ {{ comment.created_at | date: '%a, %b %d, %y' }}</h4>
+          <div>{{ comment.content }}</div>
+        </div>
+      {% endfor %}
+      {% if paginate.pages > 1 %}
+        {{ paginate | default_pagination }}
+      {% endif %}
+    {% endpaginate %}
+  </div>
+
+  <div class="article__max-width ">
+    {% form 'new_comment', article %}
+      {{ form.errors | default_errors }}
+      <div class="article_form--group">
+        <label for="CommentAuthor">Name</label>
+        <input
+          type="text"
+          name="comment[author]"
+          id="CommentAuthor"
+          placeholder="Name"
+          value="{{ form.author }}"
+          autocapitalize="words"
+        >
+      </div>
+
+      <div class="article_form--group">
+        <label for="CommentEmail">Email</label>
+        <input
+          type="email"
+          name="comment[email]"
+          id="CommentEmail"
+          placeholder="Email"
+          value="{{ form.email }}"
+          autocorrect="off"
+          autocapitalize="off"
+        >
+      </div>
+
+      <div class="article_form--group">
+        <label for="CommentBody">Message</label>
+        <textarea name="comment[body]" rows="4" id="CommentBody" placeholder="Message">{{ form.body }}</textarea>
+      </div>
+
+      <input type="submit" value="Submit" class="article_form--submit">
+    {% endform %}
+  </div>
+{% endif %}

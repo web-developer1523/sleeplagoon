@@ -1,0 +1,535 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "banner--page",
+      "disabled": true,
+      "settings": {
+        "layout": "default",
+        "height": 300,
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "fontSize": "medium",
+        "contentColor": "rgba(0,0,0,0)",
+        "fillColor": "rgba(0,0,0,0)",
+        "overlayOpacity": 0,
+        "overlayColor": "#000000"
+      }
+    },
+    "content": {
+      "type": "page",
+      "settings": {
+        "layout": "default",
+        "enableShortcodes": false
+      }
+    },
+    "section_slider_adaptive_Gx6Baz": {
+      "type": "section__slider--adaptive",
+      "blocks": {
+        "image_slide_adaptive_MinGXR": {
+          "type": "imageSlideAdaptive",
+          "settings": {
+            "horizontalAlignment": "center",
+            "verticalAlignment": "middle",
+            "padding": 16,
+            "contentSpacing": 12,
+            "backgroundColor": "rgba(0,0,0,0)",
+            "backgroundImage": "shopify://shop_images/Clean_Website_Hero_Images_39.png",
+            "backgroundImageMobile": "shopify://shop_images/Website_Hero_Images_-_Mobile_5.png",
+            "backgroundPosition": "middle",
+            "overlayOpacity": 0,
+            "overlayColor": "#000000",
+            "slideURL": "",
+            "heading": "",
+            "headingColor": "rgba(0,0,0,0)",
+            "content": "",
+            "contentColor": "rgba(0,0,0,0)",
+            "button1Text": "",
+            "button1Link": "",
+            "button1Style": "secondary",
+            "button1Type": "default",
+            "button2Text": "",
+            "button2Link": "",
+            "button2Style": "secondary",
+            "button2Type": "default"
+          }
+        }
+      },
+      "block_order": [
+        "image_slide_adaptive_MinGXR"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "height": 0,
+        "contentColor": "rgba(0,0,0,0)",
+        "autoplay": true,
+        "slideSpeed": 3,
+        "animation": "none",
+        "delayAnimation": false
+      }
+    },
+    "6f60fa07-b2b3-4a5b-9743-7d52416ffafe": {
+      "type": "section__cta",
+      "blocks": {
+        "template--14510002274433__6f60fa07-b2b3-4a5b-9743-7d52416ffafe-title-1": {
+          "type": "title",
+          "disabled": true,
+          "settings": {
+            "fullWidth": true,
+            "content": "Which Team Should You Join?",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "big"
+          }
+        },
+        "template--14510002274433__6f60fa07-b2b3-4a5b-9743-7d52416ffafe-richText-1": {
+          "type": "richText",
+          "disabled": true,
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>Check out our team leaders below to see who's profile and sleep style most resembles yours.  </p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "medium"
+          }
+        },
+        "block_image_GyCdY9": {
+          "type": "blockImage",
+          "settings": {
+            "fullWidth": true,
+            "image": "shopify://shop_images/2_dc18dfa3-ecb7-400a-bf6b-0a282700da5c.png",
+            "maxBWidth": 100,
+            "borderRadius": 0
+          }
+        }
+      },
+      "block_order": [
+        "template--14510002274433__6f60fa07-b2b3-4a5b-9743-7d52416ffafe-title-1",
+        "template--14510002274433__6f60fa07-b2b3-4a5b-9743-7d52416ffafe-richText-1",
+        "block_image_GyCdY9"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 10,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 50,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "1e8b67d7-3621-48a5-b900-9bbb6b5cbae4": {
+      "type": "section__image-text",
+      "blocks": {
+        "a065111d-fd06-42fc-af24-85b62b3c0079": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "WHERE TO START?",
+            "textColor": "#003e52",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Take this Pillow Quiz",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>When you have the perfect pillow - you fall asleep faster and stay asleep.  This means fuller sleep cycles and more deep and REM sleep each night.</p><p>To find the pillow that's perfectly matched to your unique sleep needs, take our 2 minute sleep quiz now.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "fc7e8177-bf02-4139-8dec-2c7c1a89eb66": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Take the Sleep Quiz",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "a065111d-fd06-42fc-af24-85b62b3c0079",
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-title-1",
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-richText-1",
+        "fc7e8177-bf02-4139-8dec-2c7c1a89eb66"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/ProductPage-LifestyleImages_12_7c0b3993-5f88-4401-9b58-cf9005013349.gif",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "section_columns_xNeazW": {
+      "type": "section__columns",
+      "blocks": {
+        "column_image_XcYdk9": {
+          "type": "columnImage",
+          "settings": {
+            "image": "shopify://shop_images/Relieve_Pressure_b39b9350-2b66-4666-a993-65b3ab5d5b7e.png",
+            "imageSize": 100,
+            "heading": "",
+            "content": "",
+            "buttonText": "",
+            "buttonURL": "",
+            "openTab": false,
+            "buttonStyle": "secondary",
+            "buttonType": "filled"
+          }
+        },
+        "column_image_ptgCai": {
+          "type": "columnImage",
+          "settings": {
+            "image": "shopify://shop_images/Sleep_Cooler_914e391f-0e9e-425d-8681-8c1f4e63737b.png",
+            "imageSize": 100,
+            "heading": "",
+            "content": "",
+            "buttonText": "",
+            "buttonURL": "",
+            "openTab": false,
+            "buttonStyle": "secondary",
+            "buttonType": "filled"
+          }
+        },
+        "column_image_tFMn3b": {
+          "type": "columnImage",
+          "settings": {
+            "image": "shopify://shop_images/Breathe_Easier_deaee74c-72b8-4cf6-a7f9-5d067f457a25.png",
+            "imageSize": 100,
+            "heading": "",
+            "content": "",
+            "buttonText": "",
+            "buttonURL": "",
+            "openTab": false,
+            "buttonStyle": "secondary",
+            "buttonType": "filled"
+          }
+        }
+      },
+      "block_order": [
+        "column_image_XcYdk9",
+        "column_image_ptgCai",
+        "column_image_tFMn3b"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 15,
+        "lineMargin": 12,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "heading": "What Lagoon Pillows Do For You",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "WAKE UP FEELING GREAT",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center",
+        "colHeight": 240,
+        "colGap": 20,
+        "textAlign": "center",
+        "contentAlign": "top",
+        "colCount": "col-md-4"
+      }
+    },
+    "section_image_text_m7Wp9g": {
+      "type": "section__image-text",
+      "blocks": {
+        "title_wGDadB": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "TEAM OTTER",
+            "textColor": "#003e52",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "title_ipcx9Y": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Emma Bates",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "rich_text_TrHFdR": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>Emma is one of the fastest marathoners in the world, posting some of the most impressive performances ever by an American in the past year, including the fastest US finisher at the 2023 Boston Marathon.</p><p>Emma matched with the Otter pillow, since she is a versatile sleeper - meaning she’ll sleep on her side, back and stomach.  She loves that the cover on her Otter is machine washable, and she paired her pillow with our travel compression bag, so she can bring it with her to all of her races.</p><p>The Otter has a medium soft feel that’s both supportive and super cozy.  Since it’s adjustable - meaning you can add or remove fill - it’s a great option for all body types and sleep positions.  On top of that, the gel-infused memory foam helps draw heat from the body throughout the night. No surprise it’s our best seller!</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "button_cLRzey": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Shop the Otter",
+            "url": "shopify://products/the-otter",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "title_wGDadB",
+        "title_ipcx9Y",
+        "rich_text_TrHFdR",
+        "button_cLRzey"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/127.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "fc1f46a0-0aae-4118-a220-955fd93f40f0": {
+      "type": "section__image-text",
+      "blocks": {
+        "77221d27-7fe4-4a46-8a77-76351096518d": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "TEAM KOALA",
+            "textColor": "#003e52",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "1346427d-a1c1-4b5c-85a9-6743f8d125f3": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Ben Blankenship",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "d84d0c73-b2a5-4bda-9b84-13031271d960": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>After competing in the 1500m at the 2016 Rio Olympics and internationally for the USA in 2018 and 2019, Ben Blankenship has made the massive leap to now train for the marathon.  He’s being coached by Ryan Hall - the holder of the fastest marathon time ever for an American.  </p><p>“As the mileage creeps up, my coach has made it clear that outside of running, my job is to sleep. That is the only way my body will truly recover and absorb the training load the marathon requires,” said Ben.  “Which is where Lagoon comes in. I took the <a href=\"https://lagoonsleep.com?utm_source=SMM&utm_medium=Newsletter&utm_campaign=1.11.23\"><span style=\"text-decoration:underline\">online test</span></a>, [found my match], and had one of the best night’s sleep of my life the first time using it. Then the same thing happened the next night. And the next.\"</p><p>If you like a low-profile, thinner pillow that’s made with all 100% Australian wool fill, check out the Koala now. </p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "e3729256-36e1-4b9f-9155-1464eea2d312": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Shop the Koala",
+            "url": "shopify://products/the-koala",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "77221d27-7fe4-4a46-8a77-76351096518d",
+        "1346427d-a1c1-4b5c-85a9-6743f8d125f3",
+        "d84d0c73-b2a5-4bda-9b84-13031271d960",
+        "e3729256-36e1-4b9f-9155-1464eea2d312"
+      ],
+      "disabled": true,
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/129.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "section_featured_collection_B7HAUh": {
+      "type": "section__featured-collection",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 390,
+        "padding": 35,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "heading": "The Perfect Pillow for Any Type of Sleeper",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "SHOP BESTSELLERS",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center",
+        "collection": "best-sellers",
+        "productCount": 6,
+        "showMore": true,
+        "showMoreText": "",
+        "showMoreAlignment": "center"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "content",
+    "section_slider_adaptive_Gx6Baz",
+    "6f60fa07-b2b3-4a5b-9743-7d52416ffafe",
+    "1e8b67d7-3621-48a5-b900-9bbb6b5cbae4",
+    "section_columns_xNeazW",
+    "section_image_text_m7Wp9g",
+    "fc1f46a0-0aae-4118-a220-955fd93f40f0",
+    "section_featured_collection_B7HAUh"
+  ]
+}

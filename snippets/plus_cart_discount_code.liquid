@@ -1,0 +1,106 @@
+{% if settings.enable_discount_code %}
+  <span id="applied-discount-code">
+    Discount Code:
+    <span class="applied-discount-code-wrapper">
+      <span class="applied-discount-code-value"></span>
+      <button id="clear-discount-btn">{% render 'get-icon', icon: 'close' %}</button>
+    </span>
+  </span>
+  <div class="cart-sidebar-discount">
+    <input type="text" id="discount-code-input" autocomplete="off" value="" name="discount">
+    <button class="button button--primary button--filled  button--primary__filled button--full-width" id="apply-discount-btn">Apply</button>
+  </div>
+  <div id="discount-code-error"></div>
+
+  <style>
+    #discount-code-input {
+      display: block;
+      padding: 10px;
+      font-size: var(--baseFontSize);
+      line-height: var(--baseFontSize);
+      border: 1px solid #e2e2e2;
+      border-radius: var(--borderRadiusSmall);
+      width: 100%;
+    }
+
+    .cart-sidebar-discount {
+      display: flex;
+      margin: 8px auto;
+      gap: 1rem;
+    }
+    #applied-discount-code{
+      display: flex;
+      justify-content: flex-end;
+      align-items: end;
+      gap: 8px;
+    }
+    #apply-discount-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: auto;
+    }
+    span.applied-discount-code-value > small {
+      background: #eee;
+      padding: 0px 10px;
+      color: #000;
+      font-weight: bold;
+      border-radius: 20px;
+    }
+    .discountLoader {
+      display:block;
+      width: 18px;
+      height: 18px;
+      border: 3px solid #FFF;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+    }
+  
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+        100% {
+            transform: rotate(360deg);
+        }
+    } 
+    #discount-code-error {
+      color: #e22120;
+      padding: 8px 0;
+      padding-top: 0;
+      font-size: 13px;
+      line-height: 1;
+      text-align: left;
+    }
+    .applied-discount-code-wrapper {
+      display: none;
+      background: #ddd;
+      padding: 5px 15px;
+      border-radius: 25px;
+      gap: 5px;
+    }
+    .applied-discount-code-value {
+      font-size: 13px;
+      text-transform: uppercase;
+    }
+    #clear-discount-btn{
+      background: none;
+      border: none;
+      padding: 0;
+    }
+    #discount-code-error:empty {
+      display: none;
+    }
+    .applied-discount-code-value:empty + button {
+      display: none;
+    }
+
+    @media only screen and (max-width: 425px){
+      .cart-sidebar-discount{
+        gap: 8px;
+      }
+    }
+  </style>
+{% endif %}

@@ -1,0 +1,32 @@
+<div class="product-compare-drawer" data-product-compare-drawer>
+     <div class="product-compare-drawer__header"> 
+        <div class="product-compare-drawer__header--heading">
+            <p class="product-compare-drawer__title"> {{ settings.productCompareHeading }}</p>
+            <p class="product-compare-drawer__notification" data-product-compare-drawer-notification> Select 2 or 3 items to compare </p>
+        </div>
+        
+        <div class="product-compare-drawer__header--trigger">
+            <span class="product-compare-drawer__trigger" data-product-compare-trigger>
+                <svg aria-hidden="true" focusable="false" role="presentation" width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path class="icon-chevron-down-left" d="M7 6.75L12.5 1.25" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"></path>
+                <path class="icon-chevron-down-right" d="M7 6.75L1.5 1.25" stroke="currentColor" stroke-width="1.75" stroke-linecap="square"></path>
+                </svg>
+              </span>
+        </div>
+    </div>
+
+ 
+    <div class="product-compare-drawer__container"> 
+        <div class="product-compare-items" product-compare-items> 
+        
+        </div>
+        <div class="product-compare-drawer__actions">
+            <button class="button button--primary button--filled  button--primary__filled " data-product-view-compare href="" >Compare</button>
+        
+            <a class="product-compare-drawer__clear-all" data-product-compare-clear-all="">
+                Clear all
+            </a>
+        </div>
+    </div>
+    
+</div>

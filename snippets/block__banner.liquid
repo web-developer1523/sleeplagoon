@@ -1,0 +1,110 @@
+<style>
+    .banner-block{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .banner-block--{{block.id}}{
+        padding: {{block.settings.padding}}px;
+        gap: {{block.settings.contentSpacing}}px;
+        z-index: 2;
+    }
+
+    .banner-block--{{block.id}} h2,
+    .banner-block--{{block.id}} > div *{
+        margin: 0;
+    }
+</style>
+
+<div class="card__img--container">
+    <div class="banner--card__img--ratio card__img--ratio">
+        <div class="card__img" {% if settings.cardShowGallery %}data-booster-slider data-current-slide=0 data-total-slides={{product.images.size}}{% endif %}>
+            {% assign image = block.settings.backgroundImage %}
+            {% assign desktop = section.settings.colCount %}
+            {%- assign sizes = '375,410,520,576,768,992,1024,1280' | split: ',' -%}
+            {%- assign max = maxWidth | default: 1280 -%}
+            {%- capture bgset -%}
+            {%- for size in sizes -%}
+            {%- assign intsize = size | plus: 0 -%}
+            {%- if intsize > max -%}
+            {%- break -%}
+            {%- endif -%}
+            {%- assign xvalue = size | append: 'x' -%}
+            {{image | img_url: xvalue}} {{size}}w,
+            {%- endfor -%}
+            {%- endcapture -%}
+            {%- assign bgset = bgset | strip_newlines | strip -%}
+            {%- assign strlen = bgset.size | minus: 1 -%}
+
+            {%- assign mobile = mobile | default: settings.cardMobile -%}
+
+            {%- if mobile == "6" -%}
+            {%- assign mobileSize = "50vw" -%}
+            {%- else -%}
+            {%- assign mobileSize = "100vw" -%}
+            {%- endif -%}
+
+            {%- assign desktop = desktop | default: settings.cardDesktop -%}
+
+            {%- case desktop -%}
+            {%- when '1-5' -%}
+            {%- assign desktopSize = "20vw" -%}
+            {%- when '3' -%}
+            {%- assign desktopSize = "25vw" -%}
+            {%- when '4' -%}
+            {%- assign desktopSize = "33vw" -%}
+            {%- endcase -%}
+
+            <div class="banner-block--{{block.id}} banner-block {{block.shopify_attributes}}"
+            style="background-color: {{block.settings.backgroundColor}}; align-items: {{block.settings.horizontalAlignment}};justify-content:{{block.settings.verticalAlignment}};text-align:{% if block.settings.horizontalAlignment == 'flex-start' %} left {% elsif block.settings.horizontalAlignment == 'center' %} center {% elsif block.settings.horizontalAlignment == 'flex-end' %} right {% endif %};">
+                <h2
+                class="h-reset animate font__size--medium font__family--title"
+                style="color: {% unless block.settings.headingColor contains 'rgba(0,0,0,0)' %}{{block.settings.headingColor}}{% else %}inherit{% endunless %};"
+                >
+                    {{ block.settings.heading }}
+                </h2>
+
+                <div
+                    class="inherit animate"
+                    style="color: {% unless block.settings.contentColor contains 'rgba(0,0,0,0)' %}{{block.settings.contentColor}}{% else %}inherit{% endunless %}; margin-bottom: 8px;"
+                >
+                    {{ block.settings.content }}
+                </div>
+
+                {% unless block.settings.button1Text == blank %}
+                    {% render 'button',
+                      type: block.settings.button1Style,
+                      buttonType: block.settings.button1Type,
+                      url: block.settings.button1Link,
+                      text: block.settings.button1Text,
+                    %}
+                {% endunless %} 
+        
+                {% unless block.settings.button2Text == blank %}
+                    {% render 'button',
+                      type: block.settings.button2Style,
+                      buttonType: block.settings.button2Type,
+                      url: block.settings.button2Link,
+                      text: block.settings.button2Text,
+                      class: 'animate slide__button'
+                    %}
+                {% endunless %} 
+            </div>
+
+            {% if block.settings.overlayOpacity > 0 %}
+                <div
+                class="overlay"
+                style="opacity: {{block.settings.overlayOpacity | times: 0.01}}; background-color: {{block.settings.overlayColor}};"
+                ></div>
+            {% endif %} 
+            
+
+            <img loading="lazy" style="object-position: {{block.settings.backgroundPosition}};" src="{% unless settings.lazyLoadSvg %}{{image | img_url: 'master'}}{% else %}data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='100%25'%3E%3Crect width='100%25' height='100%25' style='fill:%23eeeeee;'/%3E%3C/svg%3E{% endunless %}" 
+            data-srcset="{{bgset | slice: 0, strlen }}" data-sizes="(max-width: 767px) {{mobileSize}}, {{desktopSize}}" 
+            alt="{{alt}}" height="{{image.height}}" width="{{image.width}}" class="lazyload {{class}}">
+        </div>
+    </div>
+</div>

@@ -1,0 +1,421 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "section_cta_FggCAi": {
+      "type": "section__cta",
+      "blocks": {
+        "title_CiWbcA": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "UNLOCK 20% OFF *EVERY* LAGOON PILLOW",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "big"
+          }
+        },
+        "rich_text_qgEdG6": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<h3>Use code 'NEWYEAR' at checkout. </h3><h3>Offer ends soon! </h3>",
+            "detectLists": true,
+            "textColor": "#423d3d",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "button_XrUhqg": {
+          "type": "button",
+          "settings": {
+            "fullWidth": false,
+            "text": "Take the Quiz",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "medium",
+            "fontFamily": "title",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        },
+        "button_CmVTy3": {
+          "type": "button",
+          "settings": {
+            "fullWidth": false,
+            "text": "Shop Best Sellers",
+            "url": "shopify://collections/best-sellers",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "secondary",
+            "buttonType": "default",
+            "fontSize": "medium",
+            "fontFamily": "title",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "title_CiWbcA",
+        "rich_text_qgEdG6",
+        "button_XrUhqg",
+        "button_CmVTy3"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "hide-mobile",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 660,
+        "padding": 25,
+        "lineMargin": 12,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundImage": "shopify://shop_images/Clean_Website_Hero_Images_1_7a8d62d2-7086-4fd0-9071-57a973d7324b.png",
+        "backgroundImageUrl": "",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "end",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 100,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "banner": {
+      "type": "banner--page",
+      "disabled": true,
+      "settings": {
+        "layout": "default",
+        "height": 300,
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "fontSize": "medium",
+        "contentColor": "rgba(0,0,0,0)",
+        "fillColor": "rgba(0,0,0,0)",
+        "overlayOpacity": 0,
+        "overlayColor": "#000000"
+      }
+    },
+    "content": {
+      "type": "page",
+      "settings": {
+        "layout": "default",
+        "enableShortcodes": false
+      }
+    },
+    "section_content_MeWnVc": {
+      "type": "section__content",
+      "blocks": {
+        "image_QNkAkD": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-4",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/GQ_Review_751b9592-9180-41ee-8f7b-a9d8068076cd.png"
+          }
+        },
+        "image_hDYtVi": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-4",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/Insider_Review.png"
+          }
+        },
+        "image_zP8zcw": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-4",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/BITR_Review.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_QNkAkD",
+        "image_hDYtVi",
+        "image_zP8zcw"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 12,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "vertPaddingAccord": 12,
+        "horPaddingAccord": 4
+      }
+    },
+    "scrolling_text_KYj6ak": {
+      "type": "scrolling-text",
+      "blocks": {
+        "scrolling_text_HVpM8B": {
+          "type": "scrollingText",
+          "settings": {
+            "text": "⭐️⭐️⭐️⭐️⭐️ 11,000+ Satisfied Customers",
+            "iconPosition": "iconLeft"
+          }
+        },
+        "scrolling_text_p4Tkpg": {
+          "type": "scrollingText",
+          "settings": {
+            "text": "💤 100 Night Risk Free Trial",
+            "iconPosition": "iconLeft"
+          }
+        },
+        "scrolling_text_imCAND": {
+          "type": "scrollingText",
+          "settings": {
+            "text": "📦 Free Shipping & Returns",
+            "iconPosition": "iconLeft"
+          }
+        },
+        "scrolling_text_FGwLH4": {
+          "type": "scrollingText",
+          "settings": {
+            "text": "🖐️ Five Year Warranty",
+            "iconPosition": "iconLeft"
+          }
+        }
+      },
+      "block_order": [
+        "scrolling_text_HVpM8B",
+        "scrolling_text_p4Tkpg",
+        "scrolling_text_imCAND",
+        "scrolling_text_FGwLH4"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "scrollSpeed": 50,
+        "scrollDirection": "fromRight",
+        "font_size": "base",
+        "font_size_m": "base",
+        "hoverPause": false,
+        "fontColor": "rgba(0,0,0,0)",
+        "bgColor": "rgba(0,0,0,0)"
+      }
+    },
+    "76ef5d73-9fa6-43f7-838e-9f66bc13e392": {
+      "type": "section__image-text",
+      "blocks": {
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "HELPING CHAMPIONS IMPROVE PERFORMANCE",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "big"
+          }
+        },
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>Dakotah Lindwurm was the top American finisher in the 2024 Paris Olympics marathon.</p><p>\"I love that my Lagoon Pillow feels custom for me,\" said Lindwurm.</p><p>\"I am often running 120+ miles a week, and in order to maintain that, recovery & sleep are my highest priority. My Lagoon pillow helps me fall asleep faster, and get into a deep sleep for longer.\"</p><p>Find the pillow that's perfect for your needs. Get started by taking the 2 minute sleep quiz.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-button-1": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Take the Quiz",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "title",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-title-1",
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-richText-1",
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-button-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/Dakotah_Lindwurm.png",
+        "image_url": "",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000",
+        "vertPaddingAccord": 12,
+        "horPaddingAccord": 4
+      }
+    },
+    "e1ed4c65-9d5a-4264-87b4-253e4622ebcb": {
+      "type": "section__image-text",
+      "blocks": {
+        "05c27864-8584-49d3-a94d-6de208e97eee": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "UNLOCK MORE DEEP, RESTORATIVE SLEEP",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "big"
+          }
+        },
+        "b9f14ebc-21dc-453e-a6e8-0b28b89eb6e9": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 80,
+            "content": "<p>Caitlin Keen is a US Olympic Trials qualifying marathon runner who optimizes her rest and recovery to improve her marathon time.</p><p>Cait matched with the Fox pillow, and immediately fell in love. When she reviewed her sleep scores on her Whoop band in the first week using the Fox, she found her deep, restorative sleep improved by an average 52 minutes per night. </p><p>Lagoon helps you improve your restorative sleep by allowing you to fall asleep easier and stay asleep on the pillow most comfortable for you.  Find your perfect pillow to get started.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "21257460-48d2-4728-a055-be7a77e8cabe": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "Take the Quiz",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "title",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "05c27864-8584-49d3-a94d-6de208e97eee",
+        "b9f14ebc-21dc-453e-a6e8-0b28b89eb6e9",
+        "21257460-48d2-4728-a055-be7a77e8cabe"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "end",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/Caitlin_Keen_b7da1705-ff9e-49bd-be01-cb5777bfc49a.png",
+        "image_url": "",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000",
+        "vertPaddingAccord": 12,
+        "horPaddingAccord": 12
+      }
+    }
+  },
+  "order": [
+    "section_cta_FggCAi",
+    "banner",
+    "content",
+    "section_content_MeWnVc",
+    "scrolling_text_KYj6ak",
+    "76ef5d73-9fa6-43f7-838e-9f66bc13e392",
+    "e1ed4c65-9d5a-4264-87b4-253e4622ebcb"
+  ]
+}

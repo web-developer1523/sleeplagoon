@@ -1,0 +1,22 @@
+<!-- /templates/customers/activate_account.liquid -->
+{% section 'banner--account' %}
+
+<div class="col-12 customer__form">
+{% form 'activate_customer_password' %} {{ form.errors | default_errors }}
+
+<div>
+  <label for="password">{{'customer_area.forms.password' | t}}</label>
+  <input type="password" name="customer[password]" />
+</div>
+<div>
+  <label for="password_confirmation">{{'customer_area.forms.confirm_password' | t}}</label>
+  <input type="password" name="customer[password_confirmation]" />
+</div>
+<div>
+  <input style="display: inline-block; width: auto; margin-right: 8px;" type="submit" class="button button--primary button--filled button--primary__filled" value="{{'customer_area.forms.activate' | t}}" />
+  <span>or</span>
+  <input style="display: inline-block; width: auto; margin-left: 8px;" type="submit" name="decline" class="button" value="{{'customer_area.forms.decline' | t}}" />
+</div>
+
+{% endform %} 
+</div>

@@ -1,0 +1,49 @@
+<style>
+  .next_prev_article-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: var(--maxwidth);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .next_prev_article-left-column {
+    text-align: left;
+    flex: 1;
+  }
+  .next_prev_article-right-column {
+    text-align: right;
+    flex: 1;
+  }
+  .article__page--nav{
+    position: relative;
+    box-shadow: none;
+    background: lightgray;
+    display: block;
+    width: auto;
+    text-align: center;
+    margin: 0 !important;
+  }
+  .next_prev_article-right-column .article__page--nav{
+    float: right;
+  }
+  .next_prev_article-left-column .article__page--nav{
+    float: left;
+  }
+</style>
+
+<div class="next_prev_article-container padding-next_prev">
+  <div class="next_prev_article-left-column">
+    {% if blog.previous_article != null %}
+      <a class="article__page--nav article__page--prev" href="{{blog.previous_article.url}}">
+        <span>{{ 'general.buttons.article_previous' | t }}</span>
+      </a>
+    {% endif %}
+  </div>
+  <div class="next_prev_article-right-column">
+    {% if blog.next_article != null %}
+      <a class="article__page--nav article__page--next" href="{{blog.next_article.url}}">
+        <span>{{ 'general.buttons.article_next' | t }}</span>
+      </a>
+    {% endif %}
+  </div>
+</div>

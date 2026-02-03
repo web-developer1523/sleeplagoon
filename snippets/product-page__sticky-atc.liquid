@@ -1,0 +1,189 @@
+<style>
+  .sticky--desktop .sticky--container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .sticky--desktop .sticky-atc--buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    flex-grow: 1;
+    max-width: 50%
+  }
+
+  .sticky--desktop .sticky-atc--info {
+    display: flex;
+    align-items: center;
+  }
+
+  .sticky--desktop .sticky-atc--info img {
+    margin-right: 1rem;
+  }
+
+  .sticky--desktop .product__price--holder {
+    margin-bottom: 0 !important;
+  }
+
+  .sticky--desktop .layout__stretchContent .sticky-atc--buttons {
+    margin-right: 1rem;
+  }
+  
+  .sticky--desktop .sticky--atc__button {
+    max-width: 250px;
+  }
+
+  .sticky--desktop .sticky-atc--buttons button {
+    width: 33.33%;
+  }
+  
+  .sticky--mobile .quantity--input__input,
+  .sticky--desktop .quantity--input__input {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  @media screen and (max-width: 992px) {
+    .sticky--desktop .sticky--container {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .sticky--desktop .sticky-atc--buttons {
+      max-width: 100%;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+{% assign layoutConfig = settings.baseLayout %}
+{% assign displayFor = '' %}
+
+{% for block in section.blocks %}
+  {% if block.type == 'productPageATC' %}
+    {%- if block.settings.atcLayout != 'default' -%}
+      {%- assign layoutConfig = block.settings.atcLayout -%}
+      {%- assign displayFor = block.settings.displayAtcFor -%}
+    {%- endif -%}
+  {% endif %}
+{% endfor %}
+
+{% if displayFor != 'hide-desktop' %}
+  
+  <div class="sticky--desktop hide-mobile hide">
+    <div class="layout__{{ layoutConfig }}">
+      <div class="layout__content">
+        <div class="sticky--container">
+          <div class="sticky-atc--info">
+            <img height="80" width="80" loading="lazy"  class="lazyload" alt="{{product.featured_image.alt | escape}}" src="{{ product.featured_image.src | img_url: '1280x' }}">
+            <div>
+              <h4 class="h-reset" style="margin-bottom: 1rem">{{ product.title }}</h4>
+              {% render 'block__product-page--price', product: product, do_not_show_sale_badge: true %}
+            </div>
+          </div>
+  
+          <div class="sticky-atc--buttons">
+            {% if settings.quantity_selector %}
+              <div class="quantity--input" style="margin-top: 0;">
+                  <button class="quantity--input__button quantity--input__incr" data-product-id="{{product.id}}" onclick="BoosterTheme.cart.stickyQuantityHandler(event, false, false)">-</button>
+                  <input {% if product.selected_or_first_available_variant.inventory_management and product.selected_or_first_available_variant.inventory_policy != "continue" %}max="{{ product.selected_or_first_available_variant.inventory_quantity }}"{% endif %} class="quantity--input__input" value="1" data-qty-input type="number" name="quantity" min="1" aria-label="Quantity input"><!--
+                  --><button class="quantity--input__button quantity--input__decr" data-product-id="{{product.id}}" onclick="BoosterTheme.cart.stickyQuantityHandler(event, true, false)">+</button>
+              </div>
+            {% endif %}
+            <button
+              data-original-text="{%- if product.price == 0 and settings.freeShipping  %}{{settings.freeShippingText}}{% else %}{{ 'general.buttons.add_to_cart' | t  }}{% endif -%}"
+              data-buy-button="{{product.id}}"
+              onclick="BoosterTheme.ELEMENTS.stickyBuy(this, event)"
+              class="button button--primary button--{{-settings['primaryButtonStyle']}}  button--primary__{{-settings['primaryButtonStyle']}} sticky--atc__button"
+            >
+              <span data-button-text>
+                {%- if product.price == 0 and settings.freeShipping %}
+                  {{ settings.freeShippingText }}
+                {% else %}
+                  {{ 'general.buttons.add_to_cart' | t }}
+                {% endif -%}
+              </span>
+            </button>
+    
+            <button
+              data-original-text="Buy Now"
+              data-buy-button="{{product.id}}"
+              onclick="BoosterTheme.ELEMENTS.stickyBuyNow(this, event)"
+              class="button button--primary button--{{-settings['primaryButtonStyle']}}  button--primary__{{-settings['primaryButtonStyle']}} sticky--atc__button"
+            >
+              <span data-button-text>
+                {%- if product.price == 0 and settings.freeShipping %}
+                  {{ settings.freeShippingText }}
+                {% else %}
+                  Buy Now
+                {% endif -%}
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if displayFor != 'hide-mobile' %}
+  
+  <div class="sticky--mobile hide-desktop sticky--closed hide">
+    <div class="sticky--container">
+      <div style="text-align: right">
+        <span class="sticky__close" onclick="BoosterTheme.ELEMENTS.closeSticky(this)"><i class="uil uil-times"></i></span>
+      </div>
+      <h4 class="h-reset" style="text-align: center; margin-bottom: 1rem">{{ product.title }}</h4>
+      {% render 'block__product-page--price' with product as product %}
+      {% if settings.quantity_selector %}
+        <div class="quantity--input" style="margin-top:0;width:100%;">
+            <button class="quantity--input__button quantity--input__incr" data-product-id="{{product.id}}" onclick="BoosterTheme.cart.stickyQuantityHandler(event, false, false)">-</button>
+            <input {% if product.selected_or_first_available_variant.inventory_management and product.selected_or_first_available_variant.inventory_policy != "continue" %}max="{{ product.selected_or_first_available_variant.inventory_quantity }}"{% endif %} class="quantity--input__input" value="1" data-qty-input type="number" name="quantity" min="1" aria-label="Quantity input"><!--
+            --><button class="quantity--input__button quantity--input__decr" data-product-id="{{product.id}}" onclick="BoosterTheme.cart.stickyQuantityHandler(event, true, false)">+</button>
+        </div>
+      {% endif %}
+    </div>
+    <button
+      data-original-text="{%- if product.price == 0 and settings.freeShipping  %}{{settings.freeShippingText}}{% else %}{{ 'general.buttons.add_to_cart' | t  }}{% endif -%}"
+      data-buy-button="{{product.id}}"
+      onclick="BoosterTheme.ELEMENTS.stickyBuy(this, event)"
+      class="button button--primary button--{{-settings['primaryButtonStyle']}}  button--primary__{{-settings['primaryButtonStyle']}} sticky--atc__button"
+      style="margin-top:8px;"
+    >
+      <span data-button-text>
+        {%- if product.price == 0 and settings.freeShipping %}
+          {{ settings.freeShippingText }}
+        {% else %}
+          {{ 'general.buttons.add_to_cart' | t }}
+        {% endif -%}
+      </span>
+    </button>
+  
+    <button
+      data-original-text="Buy Now"
+      data-buy-button="{{product.id}}"
+      onclick="BoosterTheme.ELEMENTS.stickyBuyNow(this, event)"
+      class="button button--primary button--{{-settings['primaryButtonStyle']}}  button--primary__{{-settings['primaryButtonStyle']}} sticky--atc__button"
+      style="margin-top:8px;"
+    >
+      <span data-button-text>
+          {{ 'general.buttons.buy_now' | t }}
+      </span>
+    </button>
+  
+    <button
+      data-product-id="{{product.id}}"
+      onclick="BoosterTheme.ELEMENTS.stickyBuy(this, event)"
+      class="button button--primary button--{{-settings['primaryButtonStyle']}} hide button--primary__{{-settings['primaryButtonStyle']}} sticky--open__button"
+    >
+      {%- if product.price == 0 and settings.freeShipping %}
+        {{ settings.freeShippingText }}
+      {% else %}
+        {{ 'general.buttons.add_to_cart' | t }}
+      {% endif -%}
+    </button>
+  </div>
+{% endif %}

@@ -1,0 +1,93 @@
+<div class="col-12">
+  <h2 class="account__addresses--new-address-heading">
+    Edit address
+  </h2>
+</div>
+
+{% form 'customer_address', addy %}
+  <div class="row">
+    <div class="col-12 col-md-6 unflex">
+      <label>First name</label>
+      <input name="address[first_name]" value="{{ form.first_name }}" required>
+    </div>
+    <div class="col-12 col-md-6 unflex">
+      <label>Last name</label>
+      <input name="address[last_name]" value="{{ form.last_name }}" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 unflex">
+      <label>Company (optional)</label>
+      <input name="address[company]" value="{{ form.company }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 unflex">
+      <label>Address 1</label>
+      <input name="address[address1]" value="{{ form.address1 }}" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 unflex">
+      <label>Address 2 (optional)</label>
+      <input name="address[address2]" value="{{ form.address2 }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 unflex">
+      <label>City</label>
+      <input name="address[city]" value="{{ form.city }}" required>
+    </div>
+    <div class="col-12 col-md-6 unflex">
+      <label for="AddressCountry_{{ form.id }}">
+        Country
+      </label>
+      <div class="select address__country-select">
+        <select
+          id="AddressCountry_{{ form.id }}"
+          name="address[country]"
+          data-address-country-select
+          data-default="{{ form.country }}"
+          data-form-id="{{ form.id }}"
+          autocomplete="country"
+          required
+        >
+          {{ all_country_option_tags }}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 unflex">
+      <label>Province</label>
+      <input name="address[province]" value="{{ form.province }}">
+    </div>
+    <div class="col-12 col-md-6 unflex">
+      <label>ZIP</label>
+      <input name="address[zip]" value="{{ form.zip }}" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 unflex">
+      <label>Phone</label>
+      <input name="address[phone]" value="{{ form.phone }}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 address__set-default-field">
+      {{ form.set_as_default_checkbox }}
+      <label for="address_default_address_new">Set as default address</label>
+    </div>
+  </div>
+  <div class="address__form-submit row">
+    <div class="col-12 end-md">
+      <label class="button button--secondary button--filled button--secondary__filled address__close__toggle" data-address-id="{{ addy.id }}"> Cancel </label>
+      <button
+        type="submit"
+        class="button button--primary button--filled button--primary__filled"
+      >
+        Save changes
+      </button>
+    </div>
+  </div>
+{% endform %}

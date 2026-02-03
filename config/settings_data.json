@@ -1,0 +1,575 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "current": {
+    "defaultLogo": "shopify://shop_images/lagoon-logo.png",
+    "transparentLogo": "shopify://shop_images/Lagoon_Logo_Navy_Transparent_e9588e41-952e-4139-9372-781b506e2c3b.png",
+    "mobileLogo": "shopify://shop_images/lagoon-logo.png",
+    "favicon": "shopify://shop_images/Fox_Favicon_2.png",
+    "sFacebook": "https://www.facebook.com/lagoonsleep/",
+    "sInstagram": "https://www.instagram.com/lagoonsleep/",
+    "sTwitter": "",
+    "baseLayout": "stretchBg",
+    "baseBorderRadius": 4,
+    "baseBorderRadiusSmall": 4,
+    "baseBorderWidth": 0,
+    "baseSectionMargin": 0,
+    "pagination": "infinite",
+    "breadcrumbs": false,
+    "emptySearch": "our-pillows",
+    "baseBackground": "#ffffff",
+    "baseText": "#000000",
+    "baseTitle": "#003e52",
+    "baseSecondaryBackground": "#EFEFEF",
+    "baseSecondaryText": "#686363",
+    "primaryAccentBackground": "#e3530f",
+    "secondaryAccentBackground": "#003e52",
+    "secondaryAccentText": "#ffffff",
+    "baseAlert": "#dd6969",
+    "primaryFont": "lato_n3",
+    "secondaryFont": "fjalla_one_n4",
+    "smallFontSize": 12,
+    "baseFontSize": 16,
+    "mediumFontSize": 24,
+    "bigFontSize": 28,
+    "headingFontSize": 26,
+    "subHeadingFontSize": 24,
+    "buttonFontSize": "baseFontSize",
+    "buttonPaddingHorizontal": 30,
+    "buttonPaddingVertical": 10,
+    "primaryButtonCustomFill": "#e3530f",
+    "primaryButtonCustomHoverContent": "#e3530f",
+    "primaryButtonCustomBorder": true,
+    "primaryButtonBorderRadius": 4,
+    "primaryButtonBorderWidth": 4,
+    "secondaryButtonStyle": "filled",
+    "secondaryButtonColorCombo": "primaryCombo",
+    "secondaryButtonCustomFill": "#e3530f",
+    "secondaryButtonCustomContent": "#ffffff",
+    "secondaryButtonCustomHoverFill": "#e3530f",
+    "secondaryButtonCustomHoverContent": "#e3530f",
+    "secondaryButtonCustomBorder": true,
+    "secondaryButtonBorderRadius": 4,
+    "secondaryButtonBorderWidth": 4,
+    "inputContent": "#003e52",
+    "inputCustomBorder": false,
+    "inputBorderRadius": 4,
+    "inputBorderWidth": 4,
+    "addToCartColor": "secondary",
+    "addToCartType": "default",
+    "addToCartIcon": "none",
+    "cardImageRatio": "100",
+    "cardStyle": "noButton",
+    "cardFWButton": false,
+    "quickShop": false,
+    "cardShowGallery": false,
+    "cardTextAlign": "left",
+    "cardShowRating": true,
+    "cardNameColor": "#003e52",
+    "cardNameWeight": "700",
+    "cardPriceColor": "#000000",
+    "cardPriceWeight": "300",
+    "cardOldPriceColor": "#494444",
+    "cardOldPriceWeight": "700",
+    "cardNewPriceColor": "#e3530f",
+    "cardNewPriceWeight": "400",
+    "enable_border": true,
+    "borderType": "none",
+    "borderThickness": 5,
+    "borderRadius": 6,
+    "enable_shadow": false,
+    "shadowColor": "#000000",
+    "shadowHOffset": 0,
+    "prodCardVerticalPadding": 5,
+    "prodCardHorizontalPadding": 5,
+    "saleType": "percent",
+    "tagSaleColor": "#ef0a0a",
+    "tagSoldOut": true,
+    "collectionCardStyle": "default",
+    "blogCardStyle": "blur",
+    "blogCardAuthor": false,
+    "blogCardExcerpt": true,
+    "showArticleArrow": false,
+    "showRecentPost": false,
+    "articleHeight": 400,
+    "articleVertPadding": 0,
+    "articleHorPadding": 0,
+    "variantShowImage": true,
+    "imageSwatches": "Color",
+    "cartStyle": "drawer",
+    "ajaxType": "api",
+    "dynamicCheckout": false,
+    "cartAction": "minicart",
+    "quantity_selector": false,
+    "BPDynTitle": "Unlock Optimal Sleep",
+    "cartTimer": true,
+    "countdown": false,
+    "countdownCard": false,
+    "recentlyBought": false,
+    "recentlyBoughtCollection": "best-sellers",
+    "recentlyBoughtInterval": 30,
+    "recentlyBoughtRemain": 7,
+    "recentlyBoughtBorderRadius": 10,
+    "recentlyBoughtImage": "gap",
+    "recentlyBoughtNamesList": "Alissa Calley, Carroll Ashford, August Kuntz, Kenna Armstrong, Hailey Beckman, Breann Hinkle, Rachel Beeks, Brenda Silverio, Summer Jones, Sarah Gorgias, Yadira Smith, Belva Hopkins, Arlene Hanway, Huey Peters, Suzette Preston, Jeffrey Smith, Libby Montgomery, Shaun Jackson, Alison Chancellor, Robert Houston",
+    "reviewApp": "none",
+    "freeShippingAmount": "75",
+    "messenger": false,
+    "optimizedMessenger": false,
+    "messengerID": "#",
+    "gdpr": false,
+    "floatingContact": false,
+    "miniCartUpsell": true,
+    "miniCartUpsellCollection": "",
+    "jQuery": true,
+    "checkout_logo_image": "shopify://shop_images/Lagoon_Logo_Navy_Transparent_b3a57af0-4b8b-4f8c-9e13-e0e3dc6464fd.png",
+    "sections": {
+      "top-info-bar": {
+        "type": "top-info-bar",
+        "blocks": {
+          "df96f44f-b579-4ba2-a13e-cd2b3d346d96": {
+            "type": "social",
+            "disabled": true,
+            "settings": {
+              "enabled": true,
+              "enabledMobile": true,
+              "align": "auto"
+            }
+          },
+          "a3752054-0035-4709-aa87-74ca74f4250b": {
+            "type": "barTextMarquee",
+            "settings": {
+              "enabled": true,
+              "enabledMobile": true,
+              "align": "center",
+              "messages": "<p><strong>🎁  Holiday Sale: Discounts Auto-Apply in Cart</strong></p>"
+            }
+          },
+          "ea7c1653-fbe0-4a55-904f-79a3118183d9": {
+            "type": "linkList",
+            "disabled": true,
+            "settings": {
+              "enabled": true,
+              "enabledMobile": true,
+              "align": "auto",
+              "links": ""
+            }
+          }
+        },
+        "block_order": [
+          "df96f44f-b579-4ba2-a13e-cd2b3d346d96",
+          "a3752054-0035-4709-aa87-74ca74f4250b",
+          "ea7c1653-fbe0-4a55-904f-79a3118183d9"
+        ],
+        "settings": {
+          "enabled": true,
+          "enabledMobile": true,
+          "layout": "default",
+          "height": 35,
+          "fontSize": "font__size--small",
+          "colorCombo": "customCombo",
+          "customFillColor": "#00746a",
+          "customContentColor": "#ffffff"
+        }
+      },
+      "info-badges": {
+        "type": "info-badges",
+        "blocks": {
+          "fd5af8ef-fb9f-490a-b4da-4144a48a519d": {
+            "type": "infoBadge",
+            "settings": {
+              "icon": "shopping-bag",
+              "heading": "This is awesome!",
+              "subheading": "This is even more info about how awesome this is!"
+            }
+          },
+          "8f34a1fd-57f1-476d-b533-de18777ba59d": {
+            "type": "infoBadge",
+            "settings": {
+              "icon": "shopping-cart",
+              "heading": "This is awesome!",
+              "subheading": "This is even more info about how awesome this is!"
+            }
+          },
+          "8f34a1fd-b533-de18777ba59d": {
+            "type": "infoBadge",
+            "settings": {
+              "icon": "shopping-cart",
+              "heading": "This is awesome!",
+              "subheading": "There is no way it can get any more awesome?!"
+            }
+          }
+        },
+        "block_order": [
+          "fd5af8ef-fb9f-490a-b4da-4144a48a519d",
+          "8f34a1fd-57f1-476d-b533-de18777ba59d",
+          "8f34a1fd-b533-de18777ba59d"
+        ],
+        "settings": {
+          "enabled": false,
+          "displayFor": "display--both",
+          "layout": "default",
+          "nomargin": true,
+          "scopedCSS": "",
+          "height": 0,
+          "padding": 0,
+          "lineMargin": 12,
+          "backgroundColor": "rgba(0,0,0,0)",
+          "backgroundPosition": "middle",
+          "backgroundFilter": "none",
+          "backdropIntensity": 50,
+          "parallax": false,
+          "backgroundPattern": false,
+          "overlayOpacity": 0,
+          "overlayColor": "#000000",
+          "contentColor": "rgba(0,0,0,0)",
+          "horizontalAlignment": "end",
+          "verticalAlignment": "middle",
+          "iconPosition": "icon--left"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "0e188e08-01bf-4244-8aa3-997ce12eca05": {
+            "type": "footerText",
+            "settings": {
+              "width": "1-5",
+              "horizontalAlignment": "start",
+              "verticalAlignment": "top",
+              "heading": "Contact Us",
+              "text": "<p>Any questions or feedback? Reach out to us any time at hello@lagoonsleep.com</p>"
+            }
+          },
+          "79c988f6-1297-4df0-9e07-f6f74537046f": {
+            "type": "footerLinks",
+            "settings": {
+              "width": "1-5",
+              "horizontalAlignment": "start",
+              "verticalAlignment": "top",
+              "heading": "More from Lagoon",
+              "links": "more-from-lagoon"
+            }
+          },
+          "82546f61-a833-43c0-9802-5ffeeff65392": {
+            "type": "footerLinks",
+            "settings": {
+              "width": "3",
+              "horizontalAlignment": "start",
+              "verticalAlignment": "middle",
+              "heading": "Helpful Links",
+              "links": "helpful-links"
+            }
+          },
+          "d57a6daf-1a55-40fa-8f14-3076253fbd19": {
+            "type": "blockNewsletter",
+            "settings": {
+              "width": "4",
+              "horizontalAlignment": "start",
+              "verticalAlignment": "top",
+              "heading": "Sign up for the Lagoon newsletter for the latest news and greatest trends in optimizing sleep.",
+              "newsletter": "shopify",
+              "inputMaxWidth": 340,
+              "inputText": "#ffffff",
+              "inputBackground": "#efefef",
+              "email": "Your e-mail goes here",
+              "buttonType": "secondary",
+              "submit": "Subscribe"
+            }
+          }
+        },
+        "block_order": [
+          "0e188e08-01bf-4244-8aa3-997ce12eca05",
+          "79c988f6-1297-4df0-9e07-f6f74537046f",
+          "82546f61-a833-43c0-9802-5ffeeff65392",
+          "d57a6daf-1a55-40fa-8f14-3076253fbd19"
+        ],
+        "settings": {
+          "layout": "default",
+          "fillColor": "#003e52",
+          "footerLinearBg": "",
+          "contentColor": "#ffffff",
+          "spacing": 16
+        }
+      },
+      "subfooter": {
+        "type": "subfooter",
+        "blocks": {
+          "text-01": {
+            "type": "footerText",
+            "disabled": true,
+            "settings": {
+              "width": "4",
+              "horizontalAlignment": "start",
+              "verticalAlignment": "middle",
+              "heading": "",
+              "text": "<p>Designed and developed by <a href=\"https://boostertheme.com/\" target=\"_blank\">BoosterTheme™</a></p>"
+            }
+          },
+          "f8951efa-6069-4994-83e5-717218f8c48d": {
+            "type": "footerSocial",
+            "settings": {
+              "width": "auto",
+              "horizontalAlignment": "center",
+              "verticalAlignment": "middle",
+              "heading": "Follow us on social"
+            }
+          },
+          "00c75710-9946-40c0-a22a-b1d1bf56e2c7": {
+            "type": "footerPayment",
+            "disabled": true,
+            "settings": {
+              "width": "auto",
+              "horizontalAlignment": "end",
+              "verticalAlignment": "middle",
+              "heading": "",
+              "customIcons": true,
+              "icons": "master, paypal, shopify_pay, sofort, visa"
+            }
+          }
+        },
+        "block_order": [
+          "text-01",
+          "f8951efa-6069-4994-83e5-717218f8c48d",
+          "00c75710-9946-40c0-a22a-b1d1bf56e2c7"
+        ],
+        "settings": {
+          "layout": "default",
+          "fillColor": "#003e52",
+          "contentColor": "#ffffff",
+          "spacing": 0
+        }
+      },
+      "header--default": {
+        "type": "header--default",
+        "blocks": {
+          "megamenu_tTi4TA": {
+            "type": "megamenu",
+            "settings": {
+              "menuItem": "",
+              "narrow": true,
+              "showImage": true,
+              "image1ratio": "adapt",
+              "image1Focal": "center",
+              "image1heading": "",
+              "image1description": "",
+              "image1overlay": false,
+              "image1url": "",
+              "image1urlOpenNewTab": false,
+              "image2ratio": "adapt",
+              "image2Focal": "center",
+              "image2heading": "",
+              "image2description": "",
+              "image2overlay": false,
+              "image2url": "",
+              "image2urlOpenNewTab": false
+            }
+          },
+          "megamenu_wL7Nxx": {
+            "type": "megamenu",
+            "settings": {
+              "menuItem": "",
+              "narrow": true,
+              "showImage": true,
+              "image1ratio": "adapt",
+              "image1Focal": "center",
+              "image1heading": "",
+              "image1description": "",
+              "image1overlay": false,
+              "image1url": "",
+              "image1urlOpenNewTab": false,
+              "image2ratio": "adapt",
+              "image2Focal": "center",
+              "image2heading": "",
+              "image2description": "",
+              "image2overlay": false,
+              "image2url": "",
+              "image2urlOpenNewTab": false
+            }
+          },
+          "megamenu_8rmNFz": {
+            "type": "megamenu",
+            "settings": {
+              "menuItem": "Shop Night Bites",
+              "narrow": true,
+              "showImage": true,
+              "image1": "shopify://shop_images/Night_Bites_-_collection_-_mobile.png",
+              "image1ratio": "adapt",
+              "image1Focal": "center",
+              "image1heading": "Shop Night Bites",
+              "image1description": "",
+              "image1overlay": false,
+              "image1url": "shopify://collections/night-bites",
+              "image1urlOpenNewTab": false,
+              "image2ratio": "adapt",
+              "image2Focal": "center",
+              "image2heading": "",
+              "image2description": "",
+              "image2overlay": false,
+              "image2url": "",
+              "image2urlOpenNewTab": false
+            }
+          }
+        },
+        "block_order": [
+          "megamenu_tTi4TA",
+          "megamenu_wL7Nxx",
+          "megamenu_8rmNFz"
+        ],
+        "settings": {
+          "layout": "default",
+          "minHeight": 75,
+          "borderRadius": 0,
+          "shadow": true,
+          "menuLinks": "main-menu-booster",
+          "logoWidth": 100,
+          "logoHeight": 0,
+          "sticky": false,
+          "contentMargin": 0,
+          "loginPopup": false,
+          "desktopCart": true,
+          "headerBg": "#ffffff",
+          "headerLinearBg": "",
+          "linkColor": "#000000",
+          "accentColor": "#2b2f3d",
+          "hoverStyle": "underline",
+          "tagBgColor": "#e3530f",
+          "tagTextColor": "#e3530f",
+          "transparent": false,
+          "linkColorT": "#686363",
+          "accentColorT": "#003e52",
+          "fontSize": "base",
+          "customFont": true,
+          "fontFamily": "lato_n4",
+          "menu_icon": "bars",
+          "cartIcon": "shopping-bag",
+          "mobileCart": true,
+          "logoTopMobile": false,
+          "mobileLogoPosition": "center"
+        }
+      },
+      "bottom-info-bar": {
+        "type": "bottom-info-bar",
+        "blocks": {
+          "96dba3ed-8003-46e8-a323-ba370433958d": {
+            "type": "freeShippingBar",
+            "settings": {
+              "enabled": true,
+              "enabledMobile": true,
+              "align": "auto",
+              "freeText": "📦 Only %AMOUNT% more for free shipping!",
+              "gotFreeText": "🏆 You are eligible for free shipping!",
+              "barHeight": 10
+            }
+          }
+        },
+        "block_order": [
+          "96dba3ed-8003-46e8-a323-ba370433958d"
+        ],
+        "settings": {
+          "enabled": true,
+          "enabledMobile": true,
+          "layout": "default",
+          "height": 30,
+          "fontSize": "font__size--small",
+          "colorCombo": "customCombo",
+          "customFillColor": "#ffffff",
+          "customContentColor": "#003e52"
+        }
+      },
+      "api__upsell": {
+        "type": "api__upsell",
+        "settings": {
+          "defaultCollection": "",
+          "defaultSelector": "swatch"
+        }
+      }
+    },
+    "content_for_index": [],
+    "blocks": {
+      "4275615285897611771": {
+        "type": "shopify://apps/fera/blocks/embed/2fbfcfa7-8a04-479f-89a8-0621fa099c51",
+        "disabled": false,
+        "settings": {}
+      },
+      "855628211100114053": {
+        "type": "shopify://apps/klaviyo-email-marketing-sms/blocks/klaviyo-onsite-embed/2632fe16-c075-4321-a88b-50b567f42507",
+        "disabled": false,
+        "settings": {}
+      },
+      "6406956604159796213": {
+        "type": "shopify://apps/smart-seo/blocks/smartseo/7b0a6064-ca2e-4392-9a1d-8c43c942357b",
+        "disabled": false,
+        "settings": {}
+      },
+      "11068332061543699368": {
+        "type": "shopify://apps/booster-page-speed-optimizer/blocks/app-embed/d920faf3-7c60-423a-9636-22618b5561b5",
+        "disabled": false,
+        "settings": {}
+      },
+      "10864971697205422121": {
+        "type": "shopify://apps/gorgias-live-chat-helpdesk/blocks/gorgias/a66db725-7b96-4e3f-916e-6c8e6f87aaaa",
+        "disabled": false,
+        "settings": {}
+      },
+      "1768834845299682660": {
+        "type": "shopify://apps/subscriptions/blocks/app-embed-block/a3bfe9ec-96f8-4508-a003-df608a36d2ad",
+        "disabled": true,
+        "settings": {
+          "color_text_title": "#6d7175",
+          "color_text_body": "#6d7175",
+          "dividers_color": "#8f8d8d",
+          "bacgkround_color": "#ffffff",
+          "border_thickness": 1,
+          "border_radius": 0,
+          "subscription_policy_url": ""
+        }
+      },
+      "11567226959186545843": {
+        "type": "shopify://apps/savedby-package-protection/blocks/savedby-storefront-widget/6d4bce9c-696c-4f95-8a15-0cc2b2b9e839",
+        "disabled": false,
+        "settings": {
+          "hideSubtotal": true,
+          "parentMarginBottom": 4,
+          "infoIconUrl": "https://cdn.savedby.io/logos/savedby/SavedByLogo-small.png",
+          "infoBGColor": "#f5f5f5",
+          "infoTextColor": "#000000",
+          "checkoutButtonBGColor": "#000000",
+          "checkoutButtonTextColor": "#ffffff",
+          "checkoutButtonBorderRadius": 5,
+          "continueTextColor": "#000000",
+          "continueFontSize": 15,
+          "showLockIcon": false,
+          "showCartTotal": true,
+          "showCompareAtPrice": false,
+          "showInlineCartButton": false,
+          "swapButtonOrder": false,
+          "disclaimerLocation": "bottom",
+          "disclaimer": "We highly suggest protecting your package with Checkout+ for lost, damaged, or stolen packages.",
+          "customCheckoutSelector": "a[href=\"/checkout\"], .cart__total button[name='checkout']",
+          "tosSelector": "",
+          "customCSS": ".sb__info-container {\n    --info-border-radius: 25px;\n}\n\n.sb__disclaimer {\n    text-align: center;\n    max-width: 325px;\n}\n\n:host(:not([data-path=\"/cart\"])) .sb__continue-container {\n    justify-content: left;\n\n}\n\n:host(:not([data-path=\"/cart\"])) .sb__non-covered-link {\n    margin-left: 24px;\n}\n\n@media(min-width: 768px) {\n    :host(:not([data-path=\"/cart\"])) .sb__non-covered-link {\n        margin-left: 16px;\n    }\n}\n\n@media(max-width: 370px) {\n    :host(:not([data-path=\"/cart\"])) .sb__non-covered-link {\n        margin-bottom: 22px;\n    }\n}\n\n.sb__button-wrapper {\n    flex-direction: column-reverse !important;\n}",
+          "customJS": "const style = document.createElement('style');\n\nstyle.innerHTML = `\n  .cart-page__grandtotal--container button[name=\"checkout\"] {\n   display: none !important;\n}\n a[slot=\"savedby-cart-button\"] {\n   margin-top: 0 !important; \n}\n`;\n\ndocument.head.appendChild(style);",
+          "popupOverride": ""
+        }
+      },
+      "10641372206048101839": {
+        "type": "shopify://apps/rebuy-personalization-engine/blocks/rebuy-global-embed/a26ae9b9-933b-40bf-bbc6-bf1220bbc4dc",
+        "disabled": false,
+        "settings": {}
+      },
+      "2858414731233960599": {
+        "type": "shopify://apps/deco-labels-badges/blocks/main/fd2caeda-48fd-4076-b5f9-8dfada7253f1",
+        "disabled": false,
+        "settings": {}
+      }
+    }
+  }
+}

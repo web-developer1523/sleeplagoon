@@ -1,0 +1,26 @@
+<div class="max-width row">
+    <div class="col-12">
+        <div class="col-12 filter__bar">
+            {% comment %} <div id="removeFilters"></div> {% endcomment %}
+            <div class="filter__views">
+                <button class="filter__view hide-mobile view--active" onclick="BoosterTheme.ELEMENTS.toggleCollectionView('card', this);">{% render 'get-icon', icon: 'cardView'%}</button>
+                <button class="filter__view hide-mobile" onclick="BoosterTheme.ELEMENTS.toggleCollectionView('detail', this);">{% render 'get-icon', icon: 'detailView'%}</button>
+            </div>
+            <div class="filter__dropdown">
+                <i class="filter__icon uil uil-angle-down"></i>
+                <select onchange="BoosterTheme.ELEMENTS.renderSort(this)" id="sort-by">
+                    {% for option in collection.sort_options %}
+                        <option {% if option.value == collection.sort_by %}selected{% endif %} value="{{ option.value }}">{{ option.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Sort & Filter bar",
+    "settings": []
+}
+{% endschema %}

@@ -1,0 +1,40 @@
+{%- if block.settings.color != 'rgba(0,0,0,0)' -%}
+  <style>
+    .product__title--{{block.id}} {
+        color: {{block.settings.color}};
+    }
+  </style>
+{%- endif -%}
+
+{% assign is_truncated = false %}
+
+{% if settings.productNameLimit == 'words' %}
+  {% assign truncatedProductTitle = product.title | truncatewords: settings.productNameLimitAmount %}
+  {% assign is_truncated = true %}
+{% elsif settings.productNameLimit == 'chars' %}
+  {% assign truncatedProductTitle = product.title | truncate: settings.productNameLimitAmount %}
+  {% assign is_truncated = true %}
+{% endif %}
+
+<h1
+  class="
+    h-reset product__title{% if is_truncated %} product__title--truncated{% endif %} product__title--{{block.id}}
+    font__family--{{-block.settings.fontFamily}} font__size--{{-block.settings.fontSize}}
+     {% if block.settings.noMargin or noMargin %}margin__bottom--reduced{%endif-%}
+  "
+  {{ block.shopify_attributes }}
+  data-original-text="{{ product.title }}"
+  data-truncated-text="{{ truncatedProductTitle }}"
+>
+  {% unless settings.productNameLimit != 'none' %}
+    {{ product.title }}
+  {% else %}
+    {{ truncatedProductTitle }}
+  {% endunless %}
+</h1>
+
+{% comment %}
+  {% blockdef %}
+
+  {% endblockdef %}
+{% endcomment %}

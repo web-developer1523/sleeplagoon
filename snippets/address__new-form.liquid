@@ -1,0 +1,89 @@
+<div class="col-12">
+  <h2 class="account__addresses--new-address-heading">
+    Add a new address
+  </h2>
+</div>
+
+{% form 'customer_address', customer.new_address %}
+  <div class="row">
+    <div class="col-12 col-md-6 unflex">
+      <label>First name</label>
+      <input name="address[first_name]" required>
+    </div>
+    <div class="col-12 col-md-6 unflex">
+      <label>Last name</label>
+      <input name="address[last_name]" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 unflex">
+      <label>Company (optional)</label>
+      <input name="address[company]">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 unflex">
+      <label>Address 1</label>
+      <input name="address[address1]" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 unflex">
+      <label>Address 2 (optional)</label>
+      <input name="address[address2]">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 unflex">
+      <label>City</label>
+      <input name="address[city]" required>
+    </div>
+    <div class="col-12 col-md-6 unflex">
+      <label for="AddressCountryNew">Country</label>
+      <div class="select address__country-select">
+        <select
+          id="AddressCountryNew"
+          name="address[country]"
+          data-default="{{ form.country }}"
+          autocomplete="country"
+          required
+        >
+          {{ all_country_option_tags }}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 col-md-6 unflex">
+      <label>Province</label>
+      <input name="address[province]">
+    </div>
+    <div class="col-12 col-md-6 unflex">
+      <label>ZIP</label>
+      <input name="address[zip]" required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 unflex">
+      <label>Phone</label>
+      <input name="address[phone]">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12 address__set-default-field">
+      {{ form.set_as_default_checkbox }}
+      <label for="address_default_address_new">Set as default address</label>
+    </div>
+  </div>
+  <div class="address__form-submit row">
+    <div class="col-12 end-md">
+      <label class="button button--secondary button--filled button--secondary__filled" for="form__toggle"> Cancel </label>
+      <button
+        type="submit"
+        class="button button--primary button--filled button--primary__filled"
+      >
+        Add address
+      </button>
+    </div>
+  </div>
+{% endform %}

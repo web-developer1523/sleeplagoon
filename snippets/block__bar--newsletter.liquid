@@ -1,0 +1,231 @@
+<span>{{block.settings.bar_title}}<button class="sub-button">{{ block.settings.sub_btn_title }}</button></span>
+
+{% assign colorClass = block.settings.buttonType %}
+{% assign buttonStyle = 'newsletter--' | append: colorClass %}
+
+<div class="newsletter-container">
+  <div class="newsletter-overlay newsletter-exit"></div>
+  <div class="modal_newsletter {% unless block.settings.colorCombo == 'customCombo' %}{{ block.settings.colorCombo}}{% endunless %}
+    colorCombo"
+  style="{% if block.settings.colorCombo == 'customCombo' %}background-color: {{block.settings.customFillColor}};{% endif %}">
+    <span class="newsletter-exit">&times;</span>
+    <div class="modal_newsletter-inner {% unless block.settings.colorCombo == 'customCombo' %}{{ block.settings.colorCombo}}{% endunless %}
+      colorCombo">
+      <h1 class="h-reset font__size--medium font__family--title modal_newsletter-title">{{block.settings.heading}}</h1>
+        <p class="font__size--base font__family--base modal_newsletter-desc">{{block.settings.desc}}</p>
+        {% unless block.settings.newsletter_img == nil %}
+          {% if block.settings.newsletter_img_link %}
+            <a href="{{ block.settings.newsletter_img_link }}">
+              {% render 'ratio-image', image: block.settings.newsletter_img, mratio: '12', dratio: iWidth, ratioType: 'col' %}
+            </a>
+          {% else %}
+            {% render 'ratio-image', image: block.settings.newsletter_img, mratio: '12', dratio: iWidth, ratioType: 'col' %}
+          {% endif %}
+        {% endunless %}
+
+        {% if block.settings.newsletter == "shopify" %}
+          {% form 'customer', class: class, id: "header_news" %}
+            {% if form.posted_successfully? %}
+              {% render 'newsletter__bar--confirm' %}
+            {% endif %}
+            <div id="form--{{-block.id}}" class="newsletter__inputs top-newsletter_form {{section.settings.horizontalAlignment}}">
+                <input type="hidden" name="customer[accepts_marketing,newsletter,prospect]" value="true" />
+                <input name="contact[email]" placeholder="{{block.settings.email | default: 'Email'}}" id="{{block.id-}}__email" class="newsletter__input newsletter__email top__newsletter-input {% unless block.settings.colorCombo == 'customCombo' %}{{ block.settings.colorCombo}}{% endunless %} colorCombo" type="email" required>
+                {% assign btntext = block.settings.submit | default: 'Subscribe' %}
+                {% render 'button__submit', text: btntext, type: block.settings.buttonType, class: buttonStyle %}
+            </div>
+          {% endform %}
+
+        {% elsif block.settings.newsletter == "mailchimp" %}
+          {% unless settings.mcAction == blank %}
+            {% form 'customer', class: class, id: "header_news" %}
+              <form action="{{settings.mcAction}}" method="POST" class="{{class}}">
+                  {% if form.posted_successfully? %}
+                    {% render 'newsletter__bar--confirm' %}
+                  {% endif %}
+                  {% unless settings.mcU == blank %}<input type="hidden" name="u" value="{{settings.mcU}}">{% endunless %}
+                  {% unless settings.mcID == blank %}<input type="hidden" name="id" value="{{settings.mcID}}">{% endunless %}
+                  <div id="form--{{-block.id}}" class="newsletter__inputs {{section.settings.horizontalAlignment}}">
+                  <input name="EMAIL" placeholder="{{block.settings.email | default: 'Email'}}" id="{{block.id-}}__email" class="newsletter__input newsletter__email top__newsletter-input {% unless block.settings.colorCombo == 'customCombo' %}{{ block.settings.colorCombo}}{% endunless %} colorCombo" type="email" required>
+                  {% assign btntext = block.settings.submit | default: 'Subscribe' %}
+                  {% render 'button__submit', text: btntext, type: block.settings.buttonType, class: buttonStyle %}
+                  </div>
+              </form>
+            {% endform %}
+          {% else %}
+          <h2 class="h-reset">SETUP YOUR MAILCHIMP ACTION IN Theme Settings->Newsletter</h2>
+          {% endunless %}
+        {% endif %}
+    </div>
+  </div>    
+</div>
+
+<style>
+   .top__newsletter-input{
+        width: 100%;
+        max-width: initial;
+        flex-shrink: initial;
+    }
+
+    .top-newsletter_form{
+        width: 100%;
+    }
+   
+   .newsletter-container .newsletter-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, .5);
+   }
+   
+   .newsletter-container .modal_newsletter {
+        position: fixed;
+        padding: 50px 20px;
+        box-sizing: 0 3px 15px rgba(0, 0, 0, .5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 500px;
+   }
+   
+   .newsletter-container .modal_newsletter span.newsletter-exit {
+        position: absolute;
+        top: 15px;
+        right: 20px;
+        font-weight: bold;
+        font-size: {{block.settings.subBtnSize}}px;
+        color: {{block.settings.subBtnColor}};
+   }
+   
+   .newsletter-container .newsletter-exit {
+        cursor: pointer;
+   }
+    
+   .fade-in {
+        visibility: visible !important;
+        z-index: 99;
+        opacity: 1;
+   }
+
+   .sub-button{
+        background: none;
+        outline: none;
+        border-radius: {{ block.settings.subRadius }}px;
+        margin-left: 8px;
+        {% if block.settings.subColorCombo == 'sectionColors' %}
+
+          {% case section.settings.colorCombo %}
+            {% when 'primaryCombo' %}
+              border: 1px solid var(--accentTextColor);
+            {% when 'secondaryCombo' %}
+              border: 1px solid var(--secondaryAccentTextColor);
+            {% else %}
+              border: 1px solid {{ section.settings.customContentColor }};
+          {% endcase %}
+
+        {% else %}
+
+          {% unless block.settings.subColor == nil %}
+            background: {{ block.settings.subColor }};
+          {% endunless %}
+
+          {% unless block.settings.subBorder == nil %}
+            border: 1px solid {{ block.settings.subBorder }};
+          {% endunless %}
+          
+        {% endif %}
+
+        {% unless block.settings.subPaddingX == nil %}
+          padding-left: {{ block.settings.subPaddingX }}px;
+          padding-right: {{ block.settings.subPaddingX }}px;
+        {% endunless %}
+
+        {% unless block.settings.subPaddingY == nil %}
+          padding-top: {{ block.settings.subPaddingY }}px;
+          padding-bottom: {{ block.settings.subPaddingY }}px;
+        {% endunless %}
+    }
+
+    .modal_newsletter-title{
+      font-size: {{ block.settings.headingSize }}px !important;
+    }
+
+    .modal_newsletter-desc{
+      font-size: {{ block.settings.descFontSize }}px !important;
+    }
+
+    .modal_newsletter-inner.secondaryCombo {
+      background-color: var(--secondaryAccentColor) !important;
+      color: var(--secondaryAccentTextColor) !important;
+    }
+
+    .modal_newsletter-inner.primaryCombo {
+      background-color: var(--accentColor) !important;
+      color: var(--accentTextColor) !important;
+    }
+
+    .newsletter--secondary{
+      background-color: var(--secondaryAccentColor) !important;
+      border-radius: 0 5px 5px 0;
+      padding: 12px;
+    }
+
+    .newsletter--primary{
+      background-color: var(--accentColor) !important;
+      border-radius: 0 5px 5px 0;
+      padding: 12px;
+    }
+
+    .newsletter--custom{
+      background-color: {{block.settings.buttonColor}} !important;
+      background: 1px solid {{block.settings.buttonBorder}} !important;
+      border-radius: 0 5px 5px 0;
+      padding: 12px;
+    }
+
+    @media screen and (max-width: 568px){
+      .newsletter-container .modal_newsletter{
+        max-width: 500px;
+        width: 90%;
+        margin: 0 1rem;
+      }
+
+      .top-newsletter_form{
+        gap: 1rem;
+        flex-direction: column;
+      }
+
+      .top-newsletter_form input,
+      .top-newsletter_form button{
+        border-radius: 5px !important;
+      }
+    }
+
+    @media screen and (max-width: 425px){
+      .modal_newsletter-title{
+        font-size: 30px !important;
+      }
+
+      .modal_newsletter-desc{
+        font-size: 14px !important;
+      }
+    }
+</style>
+
+<script>
+(function (){
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector(".sub-button").addEventListener("click", function() {
+        document.querySelector(".newsletter-container").classList.add("fade-in");
+      })
+      document.querySelectorAll(".newsletter-exit").forEach((elem) => {
+        elem.addEventListener("click", () => {
+          document.querySelector(".newsletter-container").classList.remove("fade-in");
+        })
+      })
+    })
+})();
+</script>

@@ -1,0 +1,108 @@
+{% for block in section.blocks %}
+  {% if block.settings.menuItem == title %}
+    {% assign csize = 12 | divided_by: link.links.size | at_least: 3 %}
+    <div class="nav__submenu nav__submenu--mega row fancy-scroll{% if block.settings.narrow %} narrow{% endif %}{% if block.settings.showImage and block.settings.image1 != null or block.settings.image2 != null %} has-image{% endif %}" style="--mega-block-size: {{ csize }}">
+      {% if block.settings.image1 != null or block.settings.image2 != null %}
+        <div class="megamenu-navs row">
+      {% endif %}
+      {% for sub_link in link.links %}
+        <span class="nav__link__holder--mega">
+          <div class="nav__megamenu__menu">
+            {% if block.settings.showImage and sub_link.type == 'product_link' or sub_link.type == 'collection_link' %}
+              {% assign object = sub_link.object %}
+              {% assign src = object.featured_image.src %}
+              {% assign alt = object.featured_image.alt %}
+              {% assign height = object.featured_image.height %}
+              {% assign width = object.featured_image.width %}
+
+              {% if sub_link.type == 'collection_link' %}
+                {% assign src = object.image %}
+                {% assign alt = object.image.alt %}
+                {% assign height = object.image.height %}
+                {% assign width = object.image.width %}
+              {% endif %}
+
+              <a href="{{sub_link.url}}">
+                <img
+                  src="{{src | img_url: 'master'}}"
+                  class="nav__megamenu--image"
+                >
+              </a>
+            {% endif %}
+            <a href="{{sub_link.url}}" class="nav__megamenu__title">{{ sub_link.title }}</a>
+            {% for slink in sub_link.links %}
+              <a href="{{slink.url}}" class="nav__megamenu__link">{{ slink.title }}</a>
+            {% endfor %}
+          </div>
+        </span>
+      {% endfor %}
+      {% if block.settings.image1 != null or block.settings.image2 != null %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.image1 != null or block.settings.image2 != null %}
+        <div class="megamenu-images">
+          {% if block.settings.image1 != null %}
+            <a
+              href="{{ block.settings.image1url }}"
+              class="mega-menu__promo-link media-wrapper{% if block.settings.image1overlay %} mega-menu__promo--overlay{% endif %}"
+              role="link"
+              {% if block.settings.image1urlOpenNewTab %}
+                target="_blank"
+              {% endif %}
+            >
+              <div
+                class="megamenu-image media--{{ block.settings.image1ratio }}"
+                style="--image-position: {{ block.settings.image1Focal }};{% if block.settings.image1ratio == 'adapt' %}--image-ratio-percent: 100.0%;{% endif %}"
+              >
+                {% render 'image', src: block.settings.image1, class: 'megamenu-image', size: 'master' %}
+              </div>
+
+              {% if block.settings.image1heading != '' or block.settings.image1description != '' %}
+                <div class="mega-menu__promo-content">
+                  {% if block.settings.image1heading != '' %}
+                    <p class="mega-menu__promo-heading">{{ block.settings.image1heading }}</p>
+                  {% endif %}
+
+                  {% if block.settings.image1description != '' %}
+                    <span class="mega-menu__promo-subheading">{{ block.settings.image1description }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </a>
+          {% endif %}
+
+          {% if block.settings.image2 != null %}
+            <a
+              href="{{ block.settings.image2url }}"
+              class="mega-menu__promo-link media-wrapper{% if block.settings.image2overlay %} mega-menu__promo--overlay{% endif %}"
+              role="link"
+              {% if block.settings.image2urlOpenNewTab %}
+                target="_blank"
+              {% endif %}
+            >
+              <div
+                class="megamenu-image media--{{ block.settings.image2ratio }}"
+                style="--image-position: {{ block.settings.image2Focal }};{% if block.settings.image2ratio == 'adapt' %}--image-ratio-percent: 100.0%;{% endif %}"
+              >
+                {% render 'image', src: block.settings.image2, class: 'megamenu-image', size: 'master' %}
+              </div>
+
+              {% if block.settings.image2heading != '' or block.settings.image2description != '' %}
+                <div class="mega-menu__promo-content">
+                  {% if block.settings.image2heading != '' %}
+                    <p class="mega-menu__promo-heading">{{ block.settings.image2heading }}</p>
+                  {% endif %}
+
+                  {% if block.settings.image2description != '' %}
+                    <span class="mega-menu__promo-subheading">{{ block.settings.image2description }}</span>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endfor %}

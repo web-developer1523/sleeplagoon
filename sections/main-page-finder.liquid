@@ -1,0 +1,65 @@
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT-MZC9T9X"></script>
+<script>
+window.fera = window.fera || []; window.fera.push('setProductId', "2220918636673"   );
+</script>
+
+<div class="">
+<div class="page">
+
+    <div class="page_main">
+      <div class="product-finder-embed"></div>
+    </div>
+
+</div>
+</div>
+
+<script>
+  (function(c,a,r,t,f,u,l){c[u]=c[u]||function(){(c[u].q=c[u].q||[]).push(arguments)},l=a.createElement(r),l.async=1,l.id=u+"scr",l.src=f,a[t].appendChild(l)})(window,document,"script","body","//embed.cartfulsolutions.com/lagoon-pillow-finder/recommendation.min.js","cfl730");
+</script>
+
+<script>
+  let url = "";
+  console.log("working");
+
+  document.addEventListener('cfl730.LAGOON_RESULTS',  (e) => {
+    console.log("e is",e);
+     url = e?.data[0]?.producturl + "-recommend";
+    sessionStorage.setItem("recommendedPillowURL", url);
+    
+    let recommendedPillows = e?.data[0]?.complementaryProducts;
+    const pillowOne = recommendedPillows[0].producturl.split("products/")[1];
+    const pillowTwo = recommendedPillows[1].producturl.split("products/")[1];
+    sessionStorage.setItem("recommendPillowOne", pillowOne);
+    sessionStorage.setItem("recommendPillowTwo", pillowTwo);
+    
+  });
+  
+  document.addEventListener('cfl730.currentState',  (e) => {
+    if (e?.data?.state == "show-email-capture") {
+      function handleClick() {
+          console.log("url",url);
+        console.log("after the submit is clicked",e);
+        const recommendedPillowURL = sessionStorage.getItem("recommendedPillowURL");
+        console.log("pillow url is",recommendedPillowURL);
+        
+         // setTimeout(()=>{
+          
+         // const recommendedPillowURL = sessionStorage.getItem("recommendedPillowURL");
+         //   window.location.replace(recommendedPillowURL);
+        
+         // }, 5000);
+      }
+
+      document.querySelector(".cfl730-result-modal--submit").addEventListener("click", handleClick);
+      document.querySelector(".cfl730-result-modal--dismiss").addEventListener("click", handleClick);
+    }
+
+    else if (e?.data?.state == "open") {
+      console.log("not working");
+      const recommendedPillowURL = sessionStorage.getItem("recommendedPillowURL");
+      // if (recommendedPillowURL) {
+      //   window.location.replace(recommendedPillowURL);
+      // }
+    }
+  });
+</script>

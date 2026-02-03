@@ -1,0 +1,90 @@
+<style>
+  .slide--{{-block.id}} .slide__content h2, .slide--{{-block.id}} .slide__content div {
+      padding-bottom: {{block.settings.contentSpacing}}px;
+  }
+
+  .banner--background {
+    transition: 1s all;
+  }
+
+  .slide--{{-block.id}}:hover .banner--background {
+    transform: scale(1.1);
+    transition: 1s all;
+  }
+
+  .banner-card--items {
+    overflow: hidden;
+  }
+
+  .colorfix{};
+</style>
+
+<a href="{{block.settings.cardLink}}">
+<div
+  class="slide--{{-block.id}} lazyload slide {{block.settings.verticalAlignment}} {{block.settings.horizontalAlignment}} "
+  {{ block.shopify_attributes }}
+>
+    <div class="bg__{{block.settings.backgroundPosition}} lazyload banner--background"
+      style=" width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;background-color: {{block.settings.backgroundColor}};background-size:{{block.settings.imageFit}};background-repeat:no-repeat;{% unless block.settings.backgroundImage == nil %}background-image: url({{ block.settings.backgroundImage | img_url: '10x'}});{% endunless %}"
+      {% unless block.settings.backgroundImage == null %}
+        {%- render 'background', image: block.settings.backgroundImage -%}
+      {% else %}
+        {%- if settings.demo %}data-bgset="https://source.unsplash.com/random/1280x720"{% endif -%}
+      {% endunless %}>
+    </div>
+
+    {% if block.settings.overlayOpacity > 0 %}
+        <div
+        class="overlay"
+        style="opacity: {{block.settings.overlayOpacity | times: 0.01}}; background-color: {{block.settings.overlayColor}};"
+        ></div>
+    {% endif %} 
+
+      
+    {% if settings.demo == false and block.settings.backgroundImage == null %}
+        <div class="slide__fakeImage">{{ 'lifestyle-1' | placeholder_svg_tag }}</div>
+    {% endif %}
+
+    <div
+        class="slide__content {{block.settings.horizontalAlignment}} layout__content"
+        style="padding: {{block.settings.padding}}px;"
+    > 
+
+        <h2
+        class="h-reset animate font__size--medium font__family--title"
+        style="color: {% unless block.settings.headingColor contains 'rgba(0,0,0,0)' %}{{block.settings.headingColor}}{% else %}inherit{% endunless %};"
+        >
+            {{ block.settings.heading }}
+        </h2>
+
+        <div
+            class="inherit animate"
+            style="color: {% unless block.settings.contentColor contains 'rgba(0,0,0,0)' %}{{block.settings.contentColor}}{% else %}inherit{% endunless %}; margin-bottom: 8px;"
+        >
+            {{ block.settings.content }}
+        </div> 
+  
+        {% unless block.settings.button1Text == blank %}
+            {% render 'button',
+              type: block.settings.button1Style,
+              buttonType: block.settings.button1Type,
+              url: block.settings.button1Link,
+              text: block.settings.button1Text,
+            %}
+        {% endunless %} 
+
+        {% unless block.settings.button2Text == blank %}
+            {% render 'button',
+              type: block.settings.button2Style,
+              buttonType: block.settings.button2Type,
+              url: block.settings.button2Link,
+              text: block.settings.button2Text,
+              class: 'animate slide__button'
+            %}
+        {% endunless %} 
+    </div>
+</div>
+</a>

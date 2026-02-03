@@ -1,0 +1,96 @@
+<!-- /templates/customers/register.liquid -->
+{% section 'banner--register' %}
+<div class="col-12 customer__form">
+{% form 'create_customer' %} 
+{{ form.errors | default_errors }}
+
+<label for="first_name">{{'customer_area.account.first_name'|t}}</label>
+<input type="text" value="" name="customer[first_name]" />
+
+<label for="last_name">{{'customer_area.account.last_name'|t}}</label>
+<input type="text" value="" name="customer[last_name]"/>
+
+<label for="email">{{'customer_area.forms.email' | t}}</label>
+<input type="email" value="" name="customer[email]" />
+
+<label for="password">{{'customer_area.forms.password' | t}}</label>
+<input type="password" value="" name="customer[password]" />
+<input
+    type="hidden"
+    name="customer[tags]"
+    id="cartfulCustomerTags"
+  >
+  
+{% assign regt = 'customer_area.forms.register' | t %}
+{% render 'submit-button', text: regt, type: 'primary', class: 'button--submit' %}
+<a href="{{routes.account_login_url}}" class="button--notice">{{'customer_area.forms.already_member' | t}}</a>
+
+{% endform %} 
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const raw = localStorage.getItem("cartful_complete_sessions");
+      if (!raw) return;
+    
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch (e) {
+        return;
+      }
+    
+      const KEY_MAP = {
+        name: "session_name",
+        productName: "product_name",
+        productId: "product_id",
+        timestamp: "timestamp",
+    
+        "What’s your primary sleep goal?": "sleep_goal",
+        "What sleep challenges do you want to solve?": "sleep_challenge",
+        "How would you describe your body frame?": "body_frame",
+        "What’s your go-to sleep position?": "sleep_position",
+        "Do you usually sleep hot or cold?": "sleep_temperature",
+        "How do you want your pillow to feel?": "pillow_feel",
+        "How much support do you need under your head?": "pillow_support"
+      };
+    
+      function clean(str) {
+        return str
+          .toLowerCase()
+          .replace(/\s+/g, "_")
+          .replace(/[^a-z0-9_]/g, "");
+      }
+    
+      const tags = ["quiz__completed__true"];
+    
+      // top-level fields
+      for (const key in data) {
+        if (!data.hasOwnProperty(key)) continue;
+    
+        if (key === "shopperPreferences") {
+          for (const prefKey in data.shopperPreferences) {
+            const mappedKey = KEY_MAP[prefKey];
+            if (!mappedKey) continue;
+    
+            tags.push(
+              `quiz__${mappedKey}__${clean(data.shopperPreferences[prefKey])}`
+            );
+          }
+        } else {
+          const mappedKey = KEY_MAP[key];
+          if (!mappedKey) continue;
+    
+          tags.push(
+            `quiz__${mappedKey}__${clean(data[key])}`
+          );
+        }
+      }
+    
+      const input = document.getElementById("cartfulCustomerTags");
+      if (input) {
+        input.value = tags.join(",");
+      }
+    });
+    </script>
+    
+    

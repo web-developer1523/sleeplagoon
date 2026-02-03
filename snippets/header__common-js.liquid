@@ -1,0 +1,36 @@
+<script>
+{% if section.settings.sticky %}
+(()=>{
+function debounce(func, timeout = 300){
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+  };
+}
+const headers = document.querySelectorAll('.page__header')
+const checkHs = ()=>{
+    headers.forEach(h=>{
+        if(window.scrollY > 120){
+            {% if section.settings.transparent and template == "index" %}h.classList.remove('page__header--transparent'){% endif %}
+            if(h.clientHeight) h.parentElement.style.height = h.clientHeight + 'px'
+
+            {% if settings.productCompare %}
+              let productCompare = document.querySelector('[data-compare-product-modal]')
+              if(productCompare) {
+                productCompare.style.top = h.parentElement.style.height
+              }
+            {% endif %}
+
+            return h.classList.add('page__header--sticky')
+        }
+        h.parentElement.style.height = null
+        h.classList.remove('page__header--sticky')
+        {% if section.settings.transparent and template == "index" %}h.classList.add('page__header--transparent'){% endif %}
+    })
+}
+window.addEventListener('scroll', debounce(checkHs, 75))
+window.addEventListener('resize', debounce(checkHs, 150))
+})()
+{% endif %}
+</script>

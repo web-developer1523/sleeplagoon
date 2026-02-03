@@ -1,0 +1,596 @@
+{% unless cart.items.size == 0 %}
+{% assign tran_checkout = 'general.buttons.checkout' | t %}
+{% assign tran_update = 'general.buttons.update_cart' | t %}
+<form class="col-12 cart__form" action="{{ routes.cart_url }}" method="post" novalidate>
+    <div class="col-12 middle cart__header">
+        <h1 class="h-reset col-12 col-md middle">{{'cart.page.title' | t}}</h1>
+        {% if settings.cartTimer %}
+        <div style="margin-bottom: 0; padding: 0.5rem" class="minicart__timer unflex col-12 col-md" data-countdown data-ct-key="cart-ct-timer" data-duration="{{settings.cartTimerDuration}}" data-duration-format="minutes">
+            <span>{{'cart.page.expires'|t}}</span> <span class="minutes">00</span>:<span class="seconds">00</span>
+        </div>
+        {% endif %}
+        <div class="col-12 col-md start end-md checkout__button cart-page__grandtotal--container flex">
+            <span class="cart__grandtotal">{{'cart.page.grand_total' | t}}: <span class="jsPrice">{{ cart.total_price | money | strip_html }}</span></span>
+                {% if settings.ajaxType == "disabled" %}
+                    {% render 'button__submit', text: tran_update, name: 'update', type: 'secondary', class: 'button--cart__update' %}
+                {% endif %}
+            {% render 'button__submit', text: tran_checkout, name: 'checkout' %}
+        </div>
+    </div>
+    {% assign cart_product = '' %}
+
+    {% assign totalAmount = 0 %}
+    {% for item in cart.items %}
+    {% assign cart_product = cart_product | append: item.product_id | append: ',' %}
+    {% assign product = item.variant %}
+    <div class="col-12 cart__item">
+        <div class="col-11 col-md-4 cart__info">
+            <a class="card__img--container minicart__image" href="{{ item.url | within: collections.all }}">
+                <div class="card__img--ratio">
+                    <div class="card__img">
+                        {% render 'image', src: item, alt: item.title | escape , size: 'medium' %}
+                    </div>
+                </div>
+            </a>
+            <div class="cart__info--text">
+                <a href="{{ item.url }}">{{ item.product.title }}</a>
+                <span
+                    class="cart__info--variant">{% unless item.product.has_only_default_variant %}{{ item.variant.title }}{% endunless %}</span>
+                    {% for property_name in item.properties %}
+                        {% if property_name.last != '' %}
+                            <span class="cart__info--properties">
+                                {{ property_name.first }}:       
+                                {% if property_name.last contains '/uploads/' %}
+                                    <a href="{{ property_name.last }}">{{ property_name.last | split: '/' | last }}</a>
+                                {% else %}
+                                    {{ property_name.last }}
+                                {% endif %}
+                            </span>
+                        {% endif %}
+                    {% endfor %}
+
+                <!-- 
+
+
+                -->
+
+
+                <div class="col-12 no-gap hide-desktop cart__qtyTotal--holder">
+                    {% if settings.quantity_selector %}
+                    <div class="col-12 no-gap cart__quantity start">
+                        <div class="quantity--input">
+                            <button class="quantity--input__button quantity--input__incr"
+                                onclick="cartPage.quantityHandler(event, false)">-</button>
+                            <!--
+--><input class="quantity--input__input" value={{item.quantity}} data-qty-input data-qty-int-input data-variant-id={{item.key}}
+                                onchange="cartPage.updateQuantity(event)"
+                                type="number" min="0"
+                                {% if item.variant.inventory_management %}max="{{ item.variant.inventory_quantity}}"
+                                {% endif%}>
+                            <!--
+--><button class="quantity--input__button quantity--input__decr"
+                                onclick="cartPage.quantityHandler(event, true)">+</button>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="col-12 no-gap cart__ptotal start unflex">
+                        {%- if item.original_line_price != item.line_price -%}{{ item.original_line_price | money | strip_html }}{%- endif -%}
+                        <span class="jsPrice">{{- item.line_price | money | strip_html -}}</span>
+                        {% if product.compare_at_price > 0 %}
+                        <span
+                            class="cart__compare-price jsPrice">{{product.compare_at_price | times: item.quantity | money | strip_html}}</span>
+                        {% endif %}
+                        {%- for discount in item.discounts -%}{{- discount.title -}}{%- endfor -%}
+                    </div>
+                </div>
+
+
+                <!--
+
+
+                -->
+            </div>
+        </div>
+        <div onclick="cartPage.removeItem(this, '{{item.key}}')" class="col middle center cart__trash hide-desktop">
+            {% render 'get-icon', icon: 'trash' %}
+        </div>
+        <div class="col-md-2 cart__punit hide-mobile">
+            <span class="jsPrice">{{ item.price | money | strip_html }}</span>
+            {% if product.compare_at_price > 0 %}
+            <span class="cart__compare-price cart__compare-price--punit jsPrice">{{product.compare_at_price | money | strip_html}}</span>
+            {% endif %}
+        </div>
+        <div class="col-5 col-md-5 cart__qtyTotal--holder hide-mobile">
+            <div class="col-12 col-md-7 cart__quantity center">
+                {% if settings.quantity_selector %}
+                <div class="quantity--input">
+                    <button class="quantity--input__button quantity--input__incr"
+                        onclick="cartPage.quantityHandler(event, false)">-</button>
+                    <!--
+--><input class="quantity--input__input" value={{item.quantity}} data-qty-input data-variant-id={{item.key}}
+                        name="updates[]" id="updates_{{item.key}}" data-qty-int-input onchange="cartPage.updateQuantity(event)" type="number"
+                        min="0" {% if item.variant.inventory_management and item.variant.inventory_policy != "continue" %}max="{{ item.variant.inventory_quantity}}"
+                        {% endif%}>
+                    <!--
+--><button class="quantity--input__button quantity--input__decr"
+                        onclick="cartPage.quantityHandler(event, true)">+</button>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-12 col-md-5 cart__ptotal center unflex">
+                {%- if item.original_line_price != item.line_price -%}
+                    <div class="cart-item__discounted-prices">
+                        <s class="cart-item__old-price product-option jsPrice">
+                            {{ item.original_line_price | money | strip_html }}
+                        </s>
+                        <strong class="cart-item__final-price product-option">
+                            <span class="jsPrice">{{- item.line_price | money | strip_html -}}</span>
+                        </strong>
+                    </div>
+                {%- else -%}
+                    <div class="product-option">
+                        <span class="jsPrice">{{- item.line_price | money | strip_html -}}</span>
+                    </div>
+                {%- endif -%}
+                {% assign totalOriginal = 0 %}
+                {% if product.compare_at_price > 0 %}
+                {% assign totalOriginal = product.compare_at_price | times: item.quantity %}
+                <span class="cart__compare-price jsPrice">{{product.compare_at_price | times: item.quantity | money | strip_html }}</span>
+                {% assign totalAmount = totalAmount | plus: totalOriginal %}
+                {% else %}
+                {% assign totalAmount = totalAmount | plus: item.line_price %}
+                {% endif %}
+                {%- for discount in item.discounts -%}{{- discount.title -}}{%- endfor -%}
+            </div>
+        </div>
+        <div class="col-md-1 cart__trash hide-mobile">
+            <span onclick="cartPage.removeItem(this, '{{item.key}}')">{% render 'get-icon', icon: 'trash' %}</span>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if settings.miniCartUpsell and cart.items.size > 0 and settings.miniCartUpsellCollection %}
+        <style>
+          :root {
+            --cartupsell-bg-color: {{ settings.upsellBgColor }};
+            --cartupsell-card-bg-color: {{ settings.upsellCardBgColor }};
+          }
+
+          .cart__upsell {
+            border: {{ settings.upsellBorderWidth }}px {{ settings.upsellBorderStyle }} {{ settings.upsellBorderColor }};
+          }
+
+          .cart__upsell .minicart__upsell--header p,
+          .cart__upsell .cart__upsell--info > *,
+          .cart__upsell .jsPrice {
+            color: {% if settings.upsellTextColor != 'rgba(0,0,0,0)' %}{{ settings.upsellTextColor }}{% else %}var(--textColor){% endif %} !important;  
+          } 
+        </style>
+        {% assign hasProduct = false %}
+        {% for miniCartUpsellProduct in settings.miniCartUpsellCollection.products %}
+            {% if cart_product contains miniCartUpsellProduct.id %}
+            {% assign hasProduct = true %}
+            {% else %}
+            {% assign hasProduct = false %}
+            {% break %}
+            {% endif %}
+        {% endfor %}
+
+    {% unless hasProduct %}
+        <div class="cart__upsell">
+        
+            <div class="minicart__upsell--header">
+            <p> {{ settings.miniCartUpsellHeading }} </p>
+            </div>
+            {% assign length = 999 %}
+            {% assign total_products = settings.miniCartUpsellCollection.products.size %}
+            {% assign max_start = total_products | minus: length %}
+            {% assign start_index = "now" | date: "%S" | modulo: max_start %}
+            {% assign products_shown = 0 %}
+            <div data-bstr-carousel >
+                <div class="cart__upsell--container swiper main-swiper" data-bstr-carousel-items>
+                    <div class="swiper-button-prev" data-bstr-carousel-button-prev></div>
+                    <div class="cart__upsell--entries swiper-wrapper" >
+                        {% for miniCartUpsellProduct in settings.miniCartUpsellCollection.products %}
+                        {% if forloop.index0 >= start_index %}
+                            {% unless cart_product contains miniCartUpsellProduct.id %}
+                            <div class="swiper-slide cart__upsell--entry">
+                                <a class="card__img--container minicart__image"  href="{{ miniCartUpsellProduct.url | within: collections.all }}">
+                                    <div class="card__img--ratio">
+                                        <div class="card__img">
+                                        <img src="{{ miniCartUpsellProduct.featured_image | img_url: 'medium'}}" alt="{{miniCartUpsellProduct.title | escape }}">
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="cart__upsell--info">
+                                <a href="{{ miniCartUpsellProduct.url }}">{{ miniCartUpsellProduct.title }}</a>
+                                {% if miniCartUpsellProduct.variants.size > 1 %}
+                                    <select class="minicart__variant-dropdown" data-product-id="{{ miniCartUpsellProduct.id }}" onchange="BoosterTheme.cartUpsell.toggleUpsellVariantUI({{ miniCartUpsellProduct.id }},this.value, this.options[this.selectedIndex].getAttribute('price'))">
+                                    {% for variant_option in miniCartUpsellProduct.variants %}
+                                    
+                                        {% if variant_option.available %}
+                                        <option value="{{ variant_option.id }}" price="{{ variant_option.price | money | strip_html}}">
+                                            {{ variant_option.title | truncate: 20, '...' }}
+                                        </option>
+                                        {% else %}
+                                        <option disabled>{{ variant_option.title | truncate: 20, '...' }} - {{'general.buttons.sold_out' | t}}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                    </select>
+                                {% endif %}
+
+                                <span class="minicart__price">
+                                    <span class="minicart__price">
+                                        <span class="jsPrice" data-product-id="{{ miniCartUpsellProduct.id }}">{{ miniCartUpsellProduct.price | money | strip_html }}</span> 
+                                    </span>
+                                </span>
+        
+                                <div class="cart__upsell--quantity-input">
+                                    <div class="quantity--input">
+                                        <span class="cart-upsell quantity--input__button quantity--input__incr" onclick="BoosterTheme.cartUpsell.quantityHandler(event, false, {{miniCartUpsellProduct.id}})">-</span><!--
+                                        --><input class="cart-upsell quantity--input__input" data-cart-upsell-quantity-id="{{ miniCartUpsellProduct.id }}" value="1" ><!--
+                                        --><span class="cart-upsell quantity--input__button quantity--input__decr"onclick="BoosterTheme.cartUpsell.quantityHandler(event, true, {{miniCartUpsellProduct.id}})">+</span>
+                                    </div>
+                                </div>
+        
+                                <div class="cart__upsell--button"> 
+                                {% assign text = 'upsell.add_to_cart' | t  %}
+                                {% render 'add-to-cart-button-upsell',product:miniCartUpsellProduct.id , variant: miniCartUpsellProduct.first_available_variant.id, quantity: 1, price: miniCartUpsellProduct.price, text: text, isCartPage: true %}
+                                </div>
+                                </div>
+                                
+                            </div>
+                            {% assign products_shown = products_shown | plus: 1 %}
+                            {% if products_shown >= length %}{% break %}{% endif %}
+                            {% endunless %}
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="swiper-button-next" data-bstr-carousel-button-next></div>
+                </div>
+
+            </div>
+        </div>
+    {% endunless %}
+    {% endif %}
+    {% if settings.shopCurrency == 'convert' %}
+        <div class="col-12 unflex cart__currency">
+        {{ 'cart.page.currency_notice' | t | replace: '%curr_symbol%', cart.currency.symbol | replace: '%curr_code%', cart.currency.iso_code }}
+    </div>
+    {% endif %}
+    <div class="row cart__additional">
+        <div class="col-12 col-md-4 cart__additional--left">
+            <a class="cart__continue"
+                href="{% if settings.continue_shopping_cart != blank %}{{settings.continue_shopping_cart}}{% else %}{{routes.all_products_collection_url}}{% endif %}">{% render 'get-icon', icon: 'arrow-left' %}
+                <span>{{ 'general.buttons.continue' | t }}</span></a>
+        </div>
+        <div class="col-12 col-md end cart__additional--right">
+            {% if settings.additional_notes %}
+                <div class="cart__notes col">
+                    <span>{{'cart.page.additional_notes' | t}}</span>
+                    <textarea class="cart__notes--note" name="note" placeholder="{{'cart.page.additional_notes' | t}}" rows="6"></textarea>
+                </div>
+            {%endif %}
+            <div class="cart__total">
+                {% if totalAmount > cart.total_price and section.settings.discount != 'none' %}
+                <span class="cart__total">{{'cart.page.total' | t}}: <span class="jsPrice">{{ totalAmount | money | strip_html }}</span></span>
+                <span class="cart__discount">{{'cart.page.discount' | t}}: <span class="cart__discount--amount {% if section.settings.discount == 'money' %}jsPrice{% endif %}">
+                        {% if section.settings.discount == 'money' %}
+                        -{{totalAmount | minus: cart.total_price | money | strip_html }}
+                        {% else %}
+                        {{ cart.total_price | minus: totalAmount | times: 100 | divided_by: totalAmount }}%
+                        {% endif %}
+                    </span>
+                </span>
+                {% endif %}
+                <span class="cart__grandtotal">{{'cart.page.grand_total' | t}}: <span class="jsPrice">{{ cart.total_price | money | strip_html }}</span></span>
+                {% render 'plus_cart_discount_code' %}
+                {% render 'button__submit', text: tran_checkout, name: 'checkout', class: 'button--full-width' %}
+            </div>
+        </div>
+    </div>
+</form>
+
+{% else %}
+<div class="col-12 no-gap cart__header">
+    <h1 class="h-reset col middle center">{{'cart.page.empty_title'|t}}</h1>
+</div>
+
+<div class="row col-12">
+    <h3 class="h-reset col-12 center">{{'cart.page.empty_text'|t}}</h3>
+    {% if section.settings.featured != blank %}
+    <h3 class="h-reset col-12 center cart__suggestion">{{'cart.page.empty_suggestion'|t}}</h3>
+    <div class="col-12 cart__page--suggestions" style="overflow: auto;">
+        {% assign coll = collections[section.settings.featured] %}
+        {% for item in coll.products limit: 4 %}
+            <div class="col-12 col-md-3">
+            {% render 'product-card-default', product: item, dsize: '3' %}
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="col-12 center cart__suggestion--button">
+    {% liquid
+        assign checkout_url = ''
+        if settings.checkout_offering_url != blank 
+            assign checkout_url = settings.checkout_offering_url 
+        else 
+            assign checkout_url = routes.all_products_collection_url 
+        endif
+    %}
+    {% assign btext = 'cart.page.empty_button' | t %}
+    {% render 'button', type: 'primary', text: btext, url: checkout_url %}
+    </div>
+</div>
+{% endunless %}
+
+  <script id="cartJavascript">
+  let cartPage = {};
+  cartPage.removeItem = async (t, id)=>{
+    let centry = t ? t.closest('.cart__item') : false;
+    if(t) t.disabled = true;
+    if(centry) centry.style.opacity = "0.5"
+    let res = await BoosterTheme.cart.removeFromCart(false, id);
+  }
+
+  cartPage.updateCart = async ()=>{
+    let time = new Date().getTime();
+    let cartData = await fetch(`${window.Shopify.routes.root}?section_id=cart-page`, {headers: { 'Pragma': 'no-cache', 'Cache-Control': 'no-cache, no-store, must-revalidate', 'Expires': 0 }}).then((data)=> data.text());
+    let div = document.createElement('div');
+    let currentCart = document.querySelector('.shopify-section.section--cart-page');
+    if(currentCart.dataset.lastUpdate > time){
+      return;
+    }
+    let p = document.createElement('div')
+    p.innerHTML = cartData
+    p.querySelector('[id="cartJavascript"]').remove()
+    currentCart.innerHTML = p.querySelector('.shopify-section.section--cart-page').innerHTML;
+    currentCart.dataset.lastUpdate = time;
+    BoosterTheme.events.trigger('booster:content:update', {trigger: 'cart-page'})
+
+    const swiper = new Swiper('.swiper', {
+        on: {
+            init: function() {
+              document.querySelector(".cart__upsell--entries").style.visibility = "visible"
+            }
+        },
+        slidesPerView: 1,
+        spaceBetween: 20,
+        grabCursor: true,
+        allowTouchMove: true,
+        loop: true,
+        navigation: {
+            nextEl: "[data-bstr-carousel-button-next]",
+            prevEl: "[data-bstr-carousel-button-prev]",
+        },
+        breakpoints: {
+            320: {
+              slidesPerView: 1,
+            },
+            768: {
+              slidesPerView: 2,
+            },
+            1024: {
+              slidesPerView: 3,
+            }
+          }
+      });
+
+    {% if settings.enable_discount_code %}
+    let clearBtn = document.querySelector('#clear-discount-btn');
+    let applyBtn = document.querySelector('#apply-discount-btn');
+    let discountCodeError = document.querySelector('#discount-code-error');
+    let discountCodeWrapper = document.querySelector('#applied-discount-code .applied-discount-code-wrapper');
+    let discountCodeValue = document.querySelector('#applied-discount-code .applied-discount-code-value');
+    let discountCodeInput = document.querySelector('#discount-code-input');
+    let authorization_token;
+
+    let checkoutContainer = document.createElement('div');
+    document.body.appendChild(checkoutContainer);
+    if (localStorage.discountCode) applyDiscount(JSON.parse(localStorage.discountCode).code);
+    checkInput();
+    if (applyBtn)
+      applyBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (applyBtn) {
+          applyBtn.innerHTML = `<span class="discountLoader"></span>`;
+          applyBtn.style.opacity = "0.5"
+          applyBtn.style.pointerEvents = 'none';
+        }
+        applyDiscount(discountCodeInput.value);
+      });
+    if (clearBtn)
+      clearBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        clearDiscount();
+      });
+
+    discountCodeInput.addEventListener('input', checkInput);
+
+    function checkInput() {
+      if (discountCodeInput.value.trim() == '') {
+        applyBtn.disabled = true;
+        applyBtn.style.opacity = "0.5"
+      } else {
+        applyBtn.disabled = false;
+        applyBtn.style.opacity = "1"
+      }
+    }
+
+    function clearDiscount() {
+      discountCodeValue.innerHTML = '';
+      discountCodeError.innerHTML = '';
+      discountCodeInput.value = '';
+      checkInput();
+      clearLocalStorage();
+      fetch("/discount/CLEAR");
+    }
+    function clearLocalStorage() {
+      if (discountCodeWrapper) discountCodeWrapper.style.display = 'none';
+      localStorage.removeItem('discountCode');
+    }
+    function applyDiscount(code) {
+      fetch('/payments/config', { method: 'GET' })
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+          const checkout_json_url = '/wallets/checkouts/';
+          authorization_token = btoa(data.paymentInstruments.accessToken);
+          fetch('/cart.js', {})
+            .then(function (res) {
+              return res.json();
+            })
+            .then(function (data) {
+              let body = {
+                checkout: {
+                  country: Shopify.country,
+                  discount_code: code,
+                  line_items: data.items,
+                  presentment_currency: Shopify.currency.active,
+                },
+              };
+              fetch(checkout_json_url, {
+                headers: {
+                  accept: '*/*',
+                  'cache-control': 'no-cache',
+                  authorization: 'Basic ' + authorization_token,
+                  'content-type': 'application/json, text/javascript',
+                  pragma: 'no-cache',
+                  'sec-fetch-dest': 'empty',
+                  'sec-fetch-mode': 'cors',
+                  'sec-fetch-site': 'same-origin',
+                },
+                referrerPolicy: 'strict-origin-when-cross-origin',
+                method: 'POST',
+                mode: 'cors',
+                credentials: 'include',
+                body: JSON.stringify(body),
+              })
+                .then(function (response) {
+                  return response.json();
+                })
+                .then(function (data) {
+                  if (data.checkout && data.checkout.applied_discounts.length > 0) {
+                    discountCodeInput.style.border = "initial"
+                    let discountApplyUrl = '/discount/' + code + '?v=' + Date.now() + '&redirect=/checkout/';
+                    fetch(discountApplyUrl, {}).then(function (response) {
+                      return response.text();
+                    });
+                    if (discountCodeWrapper) discountCodeWrapper.style.display = 'inline-flex';
+                    if (discountCodeError) discountCodeError.innerHTML = '';
+                    if (discountCodeValue)
+                      discountCodeValue.innerHTML =
+                        data.checkout.applied_discounts[0].title;
+                    let localStorageValue = {
+                      code: code.trim(),
+                    };
+                    localStorage.setItem('discountCode', JSON.stringify(localStorageValue));
+                    discountCodeInput.value = '';
+                    checkInput();
+                  } else {
+                    discountCodeInput.style.border = '1px solid #e22120'
+                    if (discountCodeValue) discountCodeValue.innerHTML = '';
+                    clearLocalStorage();
+                    if (discountCodeError) discountCodeError.innerHTML = 'Please Enter Valid Coupon Code.';
+                  }
+                })
+                .finally(function (params) {
+                  applyBtn.style.opacity = "1"
+                  if (applyBtn) {
+                    applyBtn.innerHTML = 'Apply';
+                    applyBtn.style.pointerEvents = 'all';
+                    checkInput();
+                  }
+                });
+            });
+        });
+    }
+    {% endif %}
+  }
+
+{% unless settings.ajaxType == "disabled" %}
+  cartPage.quantityHandler = (event, req)=>{
+    let res = BoosterTheme.cart.quantityHandler(event, req);
+  }
+
+  cartPage.updateQuantity = async (event)=>{
+    await BoosterTheme.cart.updateQuantity(event);
+  }
+{% else %}
+  cartPage.quantityHandler = (event, req)=>{
+    event.preventDefault();
+    let {target} = event;
+    let input = target.closest('.quantity--input').querySelector('.quantity--input__input');
+    let value = parseInt(input.value);
+    if(!req && value){
+      input.value = --value;
+    } else {
+      input.value = ++value;
+    }
+    cartPage.updateQuantity({target: input});
+  }
+
+  cartPage.updateQuantity = async (event)=>{
+    let {target} = event;
+    let key = target.dataset.variantId;
+    let inputs = target.closest('form').querySelectorAll(`[data-variant-id="${key}"]`);
+    for(let input of inputs){
+      input.value = target.value;
+    }
+  }
+{% endunless %}
+document.addEventListener('booster:cart:update', (e)=>{
+    cartPage.updateCart()
+})
+  </script>
+
+{% schema %}
+{
+"name": "Cart page",
+"class": "col-12 row max-width section--cart-page",
+"settings": [
+{
+"type": "radio",
+"label": "Show discount in",
+"options": [
+{"value": "money", "label": "Money amount ($)"},
+{"value": "percent", "label": "Percent (%)"},
+{"value": "none", "label": "Don't show saved amount"}
+],
+"default": "money",
+"id": "discount"
+},
+{
+    "type": "header",
+    "content": "Featured products"
+},
+{
+    "type": "collection",
+    "label": "Featured collection",
+    "info": "This collection will be shown if there are no products in the cart",
+    "id": "featured"
+}
+],
+"blocks": [
+{
+"type": "cartField",
+"name": "Text field",
+"settings": [
+{
+"id": "required",
+"label": "This field is required",
+"type": "checkbox",
+"default": false
+},
+{
+"id": "label",
+"label": "Label",
+"default": "Additional field",
+"type": "text"
+}
+]
+}
+]
+}
+{% endschema %}

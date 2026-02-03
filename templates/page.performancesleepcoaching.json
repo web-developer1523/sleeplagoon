@@ -1,0 +1,1147 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "banner--page",
+      "disabled": true,
+      "settings": {
+        "layout": "default",
+        "height": 300,
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "fontSize": "medium",
+        "contentColor": "rgba(0,0,0,0)",
+        "fillColor": "rgba(0,0,0,0)",
+        "overlayOpacity": 0,
+        "overlayColor": "#000000"
+      }
+    },
+    "content": {
+      "type": "page",
+      "settings": {
+        "layout": "default",
+        "enableShortcodes": false
+      }
+    },
+    "1e8b67d7-3621-48a5-b900-9bbb6b5cbae4": {
+      "type": "section__image-text",
+      "blocks": {
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Unlock superior athletic performance by mastering your sleep",
+            "textColor": "#ffffff",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>Performance sleep coaching assesses your current sleep and workout routines, provides recommendations to optimize your behaviors, and practices collaborative accountability to foster long-term success.</p>",
+            "detectLists": true,
+            "textColor": "#ffffff",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "98d5fa5a-acfd-4135-b877-e31c1c2cfa82": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "BOOK FREE ASSESSMENT",
+            "url": "https://calendly.com/lagoonsleep/30min",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-title-1",
+        "template--14509588283521__1e8b67d7-3621-48a5-b900-9bbb6b5cbae4-richText-1",
+        "98d5fa5a-acfd-4135-b877-e31c1c2cfa82"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "#003e52",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/PSC_-_Square_Elements.jpg",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "76ef5d73-9fa6-43f7-838e-9f66bc13e392": {
+      "type": "section__image-text",
+      "blocks": {
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>Hi there, I'm Ryan Hurley - your performance sleep coach. I work with amateur and elite athletes to improve their athletic performance by mastering their sleep routine.</p><p></p><p>Over the course of my athletic and professional career, I've seen how dedicating myself to a thoughtful sleep program unlocked limitless potential. I'd like to share with you my formula that I've honed in my experience as an US Olympic Trials Finalists, Ironman, swim coach, 10 year NBC Sports veteran, and entrepreneur. Let's get started.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-button-1": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "fullWidth": true,
+            "text": "Take the Quiz",
+            "url": "shopify://pages/product-finder",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-title-1",
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-richText-1",
+        "template--14509588283521__76ef5d73-9fa6-43f7-838e-9f66bc13e392-button-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "#ffffff",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/PSC_-_Square_Elements_7.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "fa34c409-e489-49c4-b180-acdc4fa308f5": {
+      "type": "section__video-text",
+      "blocks": {
+        "template--14509886210177__fa34c409-e489-49c4-b180-acdc4fa308f5-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Welcome to Performance Sleep Coaching",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509886210177__fa34c409-e489-49c4-b180-acdc4fa308f5-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 70,
+            "content": "<p>Watch this intro video from sleep performance coach Ryan Hurley.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "template--14509886210177__fa34c409-e489-49c4-b180-acdc4fa308f5-title-1",
+        "template--14509886210177__fa34c409-e489-49c4-b180-acdc4fa308f5-richText-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "8",
+        "video": "https://www.youtube.com/watch?v=c7C3nzdOv8o&t=5s"
+      }
+    },
+    "c52577b1-316e-492f-8505-ca3ef3d67b65": {
+      "type": "section__heading",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "heading": "Why Performance Sleep Coaching?",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "UNLOCK THE POWER OF SLEEP",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "26ad0319-5d72-4d54-b88e-068b29eb3564": {
+      "type": "section__content",
+      "blocks": {
+        "d6ea91b6-02a8-4fce-ade7-c79fc2df4a6d": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-4",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/1_858b54de-a775-428d-8338-c28aa80ad7f8.png"
+          }
+        },
+        "d8d1c7dc-3391-4c47-831e-c0c92ed6987e": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-4",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/2_dc18dfa3-ecb7-400a-bf6b-0a282700da5c.png"
+          }
+        },
+        "dadf383c-67d5-40a4-b92e-70ad9ba409ef": {
+          "type": "image",
+          "settings": {
+            "blockWidth": "col-md-3",
+            "vertPadding": 12,
+            "horPadding": 4,
+            "horAlign": "center",
+            "vertAlign": "middle",
+            "image": "shopify://shop_images/4_bcb6007a-ff93-47f0-a066-44555d6831c1.png"
+          }
+        }
+      },
+      "block_order": [
+        "d6ea91b6-02a8-4fce-ade7-c79fc2df4a6d",
+        "d8d1c7dc-3391-4c47-831e-c0c92ed6987e",
+        "dadf383c-67d5-40a4-b92e-70ad9ba409ef"
+      ],
+      "disabled": true,
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "lineMargin": 12,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle"
+      }
+    },
+    "38ab8499-1d35-47ae-b274-d449d6872db9": {
+      "type": "section__image-text",
+      "blocks": {
+        "c1520649-49b2-435d-85cf-5c377f38556b": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "More Sleep Improves Endurance",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "849943e6-2b46-4334-8b2d-91acf14af2b9": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>A study of elite cyclists found that when total sleep time was increased by 30%, athletes saw a 3% improvement in their one hour time trial performance after only two nights of extra sleep.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "c1520649-49b2-435d-85cf-5c377f38556b",
+        "849943e6-2b46-4334-8b2d-91acf14af2b9"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/18_b19d023d-369f-4250-b61c-ac846eb8a190.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "8ba1108f-baac-4c62-97b8-ef05583aa436": {
+      "type": "section__image-text",
+      "blocks": {
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Decreased Risk of Injury",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>Research has shown that endurance athletes who sleep for under seven hours a night are 50% more likely to get injured over only a two-week period. That number increases to over 70% in adolescents.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-title-1",
+        "template--14509588283521__8ba1108f-baac-4c62-97b8-ef05583aa436-richText-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/20_c15592b6-5289-4a8c-9e2a-09fe5e53025b.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "79e64851-5963-401e-9fb6-8ff7bbe36e39": {
+      "type": "section__image-text",
+      "blocks": {
+        "654e5f28-c29c-496f-bd5d-9e224433a14b": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Increased Speed & Reaction Time",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "649db4f2-11c8-4a16-9fea-58a0d3a8f87c": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>In a study published in the Journal of Science and Medicine in Sport, elite swimmers who increased their sleep time to 10 hours per night for six weeks showed a 4% improvement in their performance during a 15-meter sprint.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "654e5f28-c29c-496f-bd5d-9e224433a14b",
+        "649db4f2-11c8-4a16-9fea-58a0d3a8f87c"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "#ffffff",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/19_b2729ee7-400f-4677-9a5d-59621865369a.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "ea6ed1e3-4280-4f9c-aefe-abd9295d4afc": {
+      "type": "section__image-text",
+      "blocks": {
+        "5f15f000-4107-4a39-a770-dc4d7a137e0b": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Decreased Perceived Exhaustion",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "cd0eb4ee-e1d6-4292-b42a-5c38c459e76c": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>Finally, research has also shown that athletes who are sleep-deprived tend to get exhausted 11% sooner than those who slept well. Also, it has been proven that working out will *feel* harder too.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "5f15f000-4107-4a39-a770-dc4d7a137e0b",
+        "cd0eb4ee-e1d6-4292-b42a-5c38c459e76c"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/21_4b8bd4f3-4ffd-42f8-87c8-17c1caaff5b1.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "99f7712f-f349-4b0f-a887-cbff1027df46": {
+      "type": "section__cta",
+      "blocks": {
+        "template--14509886210177__99f7712f-f349-4b0f-a887-cbff1027df46-title-1": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Get your free 30 min sleep assessment now!",
+            "textColor": "#ffffff",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "template--14509886210177__99f7712f-f349-4b0f-a887-cbff1027df46-richText-1": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>We'll go through your current sleep routine, and I'll make recommendations that will provide immediate improvement to the quality of your sleep.</p><p>Slots fill up quickly, so book now!</p>",
+            "detectLists": true,
+            "textColor": "#ffffff",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "6e75ec68-28f0-447b-a2ed-e8c3dc395d5d": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>We'll go through your current sleep routine, and I'll make recommendations that will provide immediate improvement to the quality of your sleep.</p><p>Slots fill up quickly, so book now!</p>",
+            "detectLists": true,
+            "textColor": "#ffffff",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "template--14509886210177__99f7712f-f349-4b0f-a887-cbff1027df46-button-1": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "BOOK FREE ASSESSMENT",
+            "url": "https://calendly.com/lagoonsleep/meeting",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "template--14509886210177__99f7712f-f349-4b0f-a887-cbff1027df46-title-1",
+        "template--14509886210177__99f7712f-f349-4b0f-a887-cbff1027df46-richText-1",
+        "6e75ec68-28f0-447b-a2ed-e8c3dc395d5d",
+        "template--14509886210177__99f7712f-f349-4b0f-a887-cbff1027df46-button-1"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 400,
+        "padding": 25,
+        "lineMargin": 20,
+        "backgroundColor": "#003e52",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 80,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "22c4018c-aa20-49cb-a4bf-5f0bcc47fdd0": {
+      "type": "section__heading",
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "heading": "How does the Performance Sleep program work?",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "66402b4a-ba6e-4b50-8f7e-c72bd2942ee8": {
+      "type": "section__image-text",
+      "blocks": {
+        "16e54489-926a-4cd2-83b0-f760f5bfa453": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "1. Education",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "d29f9f74-feb7-44b2-b1fc-d0aadf5a245d": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>Learn the fundamentals of why sleep is important for you and your sport. We'll pull and distill key information about how optimal sleep can help you improve specific aspects of your performance from experts such as <a href=\"https://hubermanlab.com/\" title=\"https://hubermanlab.com/\">Andrew Huberman</a>, <a href=\"https://www.sleepdiplomat.com/\" title=\"https://www.sleepdiplomat.com/\">Matt Walker </a>and more.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "16e54489-926a-4cd2-83b0-f760f5bfa453",
+        "d29f9f74-feb7-44b2-b1fc-d0aadf5a245d"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/8_7ce5442d-0ab6-455c-9bca-4a584f3a103d.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "31246c73-4936-4a07-bdfb-fc621ce04341": {
+      "type": "section__image-text",
+      "blocks": {
+        "b1412b5d-82ca-40ff-8a66-724489a64cd5": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "2. Tracking",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "1b174601-4959-4437-b6c6-bf6cdf33283e": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>Here we asses the tools you currently have at your disposal to track your sleep routine and quality of sleep; and if necessary make recommendation for appropriate trackers. Our preferred wearable for coaching is the <a href=\"https://ouraring.com/\" title=\"https://ouraring.com/\">Oura Ring</a>, or the <a href=\"https://sleepspace.com/lagoon-promo/\" title=\"https://sleepspace.com/lagoon-promo/\">SleepSpace </a>app.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "b1412b5d-82ca-40ff-8a66-724489a64cd5",
+        "1b174601-4959-4437-b6c6-bf6cdf33283e"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "#ffffff",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/10_88f9d672-0eed-47dd-9657-7a424359f0eb.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "5ff9f24b-d36e-44ff-8b67-5f142889c1b5": {
+      "type": "section__image-text",
+      "blocks": {
+        "8ef7dc2a-876d-403c-b10a-063f2bd3d677": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "3. Routine Setting",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "b8c50931-ff3f-4225-bdbc-e02ae76f07f0": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>After establishing your baseline sleep, we will do a deep dive into the elements of your routine to understand what is contributing either to hinder or boost the quality of your sleep. We will formulate a weekly plan to begin or optimization testing.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "8ef7dc2a-876d-403c-b10a-063f2bd3d677",
+        "b8c50931-ff3f-4225-bdbc-e02ae76f07f0"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "rgba(0,0,0,0)",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "right",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/12_d46303a3-4495-421f-9dfb-64b2ca29e388.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "1b80ad7a-3e1d-4684-bab5-69f5d1d8a936": {
+      "type": "section__image-text",
+      "blocks": {
+        "24e29502-3590-446b-996f-e2caf53bc74c": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "4. Optimization",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "63adadf0-f1a3-4d0f-bb8c-7ae0c8f24472": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 90,
+            "content": "<p>After your initial assessment and game plan is formulated we will begin the testing process. Steps taken during this process may include but not be limited to changing timing, adding or removing equipment, and adjusting external stimuli. Before the end of the program we will lock in go-forward best practices.</p>",
+            "detectLists": true,
+            "textColor": "rgba(0,0,0,0)",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        }
+      },
+      "block_order": [
+        "24e29502-3590-446b-996f-e2caf53bc74c",
+        "63adadf0-f1a3-4d0f-bb8c-7ae0c8f24472"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 20,
+        "lineMargin": 0,
+        "backgroundColor": "#ffffff",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "imagePosition": "left",
+        "imageWidth": "6",
+        "image": "shopify://shop_images/14_29b0a00a-06dc-4571-8516-425091d02c41.png",
+        "imageOverlayOpacity": 0,
+        "imageOverlayColor": "#000000"
+      }
+    },
+    "4616c1db-266b-407a-acac-2b4f0a4293af": {
+      "type": "section__columns",
+      "blocks": {
+        "24022d06-6df9-4740-abd7-3ff499f9a981": {
+          "type": "columnImage",
+          "settings": {
+            "image": "shopify://shop_images/24_ee71d57f-643d-4fe6-90d2-c3b455c25541.png",
+            "imageSize": 75,
+            "heading": "<p>Free Consultation</p>",
+            "content": "<p>Talk with Ryan for 15 min about your current sleep habits, and see if this program is a good fit for you.</p>",
+            "buttonText": "Book Now",
+            "buttonURL": "https://calendly.com/lagoonsleep/30min",
+            "openTab": true,
+            "buttonStyle": "secondary",
+            "buttonType": "filled"
+          }
+        },
+        "0230a761-7531-469c-8013-3d855f8227a1": {
+          "type": "columnImage",
+          "settings": {
+            "image": "shopify://shop_images/23_ccbb78de-e113-45b8-a67c-9e2aa6a8c41b.png",
+            "imageSize": 75,
+            "heading": "<p>1 Month Trial</p>",
+            "content": "<p>Not ready to fully commit to the 12 Week program? Try our shorter, more intensive program of four (4) weekly sessions for 1 month for $595.</p>",
+            "buttonText": "Book Now",
+            "buttonURL": "https://calendly.com/lagoonsleep/30min",
+            "openTab": true,
+            "buttonStyle": "secondary",
+            "buttonType": "filled"
+          }
+        },
+        "0b179dff-c339-4bbe-ac0d-410b4ae53792": {
+          "type": "columnImage",
+          "settings": {
+            "image": "shopify://shop_images/22_4b643118-1661-4270-a79f-5a065e024979.png",
+            "imageSize": 75,
+            "heading": "<p>12 Week Program</p>",
+            "content": "<p>Jump right in with our Performance Sleep Coaching program for $995. You'll get six (6) one hour sessions every other week, and full access to continuous feedback from Ryan.</p>",
+            "buttonText": "Book Now",
+            "buttonURL": "https://calendly.com/lagoonsleep/30min",
+            "openTab": true,
+            "buttonStyle": "secondary",
+            "buttonType": "filled"
+          }
+        }
+      },
+      "block_order": [
+        "24022d06-6df9-4740-abd7-3ff499f9a981",
+        "0230a761-7531-469c-8013-3d855f8227a1",
+        "0b179dff-c339-4bbe-ac0d-410b4ae53792"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 30,
+        "lineMargin": 25,
+        "backgroundColor": "#003e52",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "#ffffff",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "heading": "Pricing and Packaging",
+        "headingColor": "#ffffff",
+        "subheading": "leave this blank",
+        "subheadingColor": "#003e52",
+        "subheadingPosition": "above",
+        "headingAlignment": "center",
+        "colHeight": 240,
+        "colGap": 20,
+        "textAlign": "center",
+        "contentAlign": "top",
+        "colCount": "col-md-4"
+      }
+    },
+    "a5b55216-3781-40c0-b5a7-8dc239b59508": {
+      "type": "section__cta",
+      "blocks": {
+        "78239038-7f7a-4e8f-9fad-ad7441b04ccd": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Everyone knows sleep is important",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "b8ebe8bd-e230-4fc1-9d48-b7f4d1e2305c": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>But we all struggle to prioritize it</p>",
+            "detectLists": true,
+            "textColor": "#003e52",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "69ef83fd-2508-4382-b66d-f0abf4973727": {
+          "type": "title",
+          "settings": {
+            "fullWidth": true,
+            "content": "Elite athletes cannot afford to under-invest in their sleep",
+            "textColor": "#003e52",
+            "fontFamily": "title",
+            "fontSize": "medium"
+          }
+        },
+        "66b1efb8-74dc-472c-9cd6-6c084095bc33": {
+          "type": "richText",
+          "settings": {
+            "fullWidth": true,
+            "maxBWidth": 100,
+            "content": "<p>As your performance sleep coach, I'll practice education, encouragement, and accountability to ensure your sleep and athletic goals are achieved</p>",
+            "detectLists": true,
+            "textColor": "#003e52",
+            "fontFamily": "base",
+            "fontSize": "base"
+          }
+        },
+        "8b4dcb15-549d-4656-8656-f0c22c947554": {
+          "type": "button",
+          "settings": {
+            "fullWidth": true,
+            "text": "BOOK FREE ASSESSMENT",
+            "url": "https://calendly.com/lagoonsleep/30min",
+            "icon": "",
+            "iconPosition": "icon--left",
+            "wideButton": false,
+            "buttonStyle": "primary",
+            "buttonType": "default",
+            "fontSize": "base",
+            "fontFamily": "base",
+            "animation": "none",
+            "animationDuration": 1000,
+            "animationInfinite": true
+          }
+        }
+      },
+      "block_order": [
+        "78239038-7f7a-4e8f-9fad-ad7441b04ccd",
+        "b8ebe8bd-e230-4fc1-9d48-b7f4d1e2305c",
+        "69ef83fd-2508-4382-b66d-f0abf4973727",
+        "66b1efb8-74dc-472c-9cd6-6c084095bc33",
+        "8b4dcb15-549d-4656-8656-f0c22c947554"
+      ],
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": false,
+        "scopedCSS": "",
+        "height": 400,
+        "padding": 25,
+        "lineMargin": 20,
+        "backgroundColor": "#ffffff",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#000000",
+        "contentColor": "rgba(0,0,0,0)",
+        "horizontalAlignment": "center",
+        "verticalAlignment": "middle",
+        "maxContentWidth": 80,
+        "heading": "",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center"
+      }
+    },
+    "ae3cae93-5f1e-4a51-b874-3877b3019339": {
+      "type": "section__blog",
+      "disabled": true,
+      "settings": {
+        "custom_id": "",
+        "displayFor": "display--both",
+        "layout": "default",
+        "nomargin": true,
+        "scopedCSS": "",
+        "height": 0,
+        "padding": 0,
+        "backgroundColor": "#ffffff",
+        "backgroundPosition": "middle",
+        "backgroundFilter": "none",
+        "backdropIntensity": 50,
+        "parallax": false,
+        "backgroundPattern": false,
+        "overlayOpacity": 0,
+        "overlayColor": "#ffffff",
+        "contentColor": "#ffffff",
+        "horizontalAlignment": "start",
+        "verticalAlignment": "middle",
+        "heading": "Sleep + Fitness News",
+        "headingColor": "rgba(0,0,0,0)",
+        "subheading": "LAGOON'S",
+        "subheadingColor": "rgba(0,0,0,0)",
+        "subheadingPosition": "above",
+        "headingAlignment": "center",
+        "blog": "news",
+        "maxCards": 3
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "content",
+    "1e8b67d7-3621-48a5-b900-9bbb6b5cbae4",
+    "76ef5d73-9fa6-43f7-838e-9f66bc13e392",
+    "fa34c409-e489-49c4-b180-acdc4fa308f5",
+    "c52577b1-316e-492f-8505-ca3ef3d67b65",
+    "26ad0319-5d72-4d54-b88e-068b29eb3564",
+    "38ab8499-1d35-47ae-b274-d449d6872db9",
+    "8ba1108f-baac-4c62-97b8-ef05583aa436",
+    "79e64851-5963-401e-9fb6-8ff7bbe36e39",
+    "ea6ed1e3-4280-4f9c-aefe-abd9295d4afc",
+    "99f7712f-f349-4b0f-a887-cbff1027df46",
+    "22c4018c-aa20-49cb-a4bf-5f0bcc47fdd0",
+    "66402b4a-ba6e-4b50-8f7e-c72bd2942ee8",
+    "31246c73-4936-4a07-bdfb-fc621ce04341",
+    "5ff9f24b-d36e-44ff-8b67-5f142889c1b5",
+    "1b80ad7a-3e1d-4684-bab5-69f5d1d8a936",
+    "4616c1db-266b-407a-acac-2b4f0a4293af",
+    "a5b55216-3781-40c0-b5a7-8dc239b59508",
+    "ae3cae93-5f1e-4a51-b874-3877b3019339"
+  ]
+}

@@ -1,0 +1,27 @@
+{% assign logoStyle = '' %}
+{% if settings.defaultLogo != nil %}
+{% capture defaultLogo %}<img loading="lazy" height="{{settings.defaultLogo.height}}" width="{{settings.defaultLogo.width}}" src="{{settings.defaultLogo | img_url: '256x'}}" alt="logo" class="lazyload logo--default">{% endcapture %}
+{% assign logoStyle = logoStyle | append: ' logo--default-available' %}
+{% endif %}
+
+{% if settings.mobileLogo != nil %}
+{% capture mobileLogo %}<img loading="lazy" height="{{settings.mobileLogo.height}}" width="{{settings.mobileLogo.width}}" src="{{settings.mobileLogo | img_url: '256x'}}" alt="logo" class="hide-desktop lazyload logo--mobile">{% endcapture %}
+{% assign logoStyle = logoStyle | append: ' logo--mobile-available' %}
+{% endif %}
+
+{% if settings.transparentLogo != nil %}
+{% capture transparentLogo %}<img loading="lazy" height="{{settings.transparentLogo.height}}" width="{{settings.transparentLogo.width}}" src="{{settings.transparentLogo | img_url: '256x'}}" alt="logo" class="lazyload logo--transparent">{% endcapture %}
+{% assign logoStyle = logoStyle | append: ' logo--transparent-available' %}
+{% endif %}
+
+{% if logoStyle != '' %}
+<a href="{{ routes.root_url }}" class="logo-img {{logoStyle}}">
+{{defaultLogo}}
+{{mobileLogo}}
+{{transparentLogo}}
+</a>
+{% elsif settings.textLogo != blank %}
+<a href="{{ routes.root_url }}" class="logo-text">{{settings.textLogo}}</a>
+{% else %}
+<a href="{{ routes.root_url }}" class="logo-text">{{shop.name}}</a>
+{% endif %}

@@ -1,0 +1,29 @@
+<!-- /templates/customers/login.liquid -->
+{% section 'banner--login' %}
+<div class="col-12 customer__form">
+{% form 'customer_login' %} {{ form.errors | default_errors }}
+
+{% assign login = 'customer_area.forms.login' | t %}
+
+<label for="customer_email">{{'customer_area.forms.email' | t }}</label>
+<input type="email" name="customer[email]" />
+
+<label for="customer_password">{{'customer_area.forms.password' | t }}</label>
+<input type="password" name="customer[password]" />
+
+{% render 'submit-button', text: login, type: 'primary', class: 'button--submit' %}
+{% endform %} 
+
+{% form 'recover_customer_password' %} {{ form.errors | default_errors }}
+
+<input type="checkbox" id="recover">
+<label style="display: inline-block;" class="button--notice" for="recover">{{'customer_area.forms.forgot_password' | t }}</label>
+<a style="display: inline-block;" href="{{routes.account_register_url}}" class="button--notice">{{'customer_area.forms.register_here' | t }}</a>
+<div class="recover__password">
+<label for="customer_email">{{'customer_area.forms.email' | t }}</label>
+<input type="email" name="email" />
+<input class="button button--primary button--filled button--primary__filled" type="submit" value="Submit" />
+</div>
+
+{% endform %} 
+</div>

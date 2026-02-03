@@ -1,0 +1,67 @@
+{% if section.settings.useFakeImages %}
+  {% assign imageCntr = 1 %}
+{% endif %}
+
+{% if section.settings.enableCarousel %}
+  {% for block in section.blocks %}
+    <div class="testimonial-slider testimonial--author-below swiper-slide{% if settings.easeIn %} ease-in{% endif %}" {{ block.shopify_attributes }}>
+      <div class="testimonial__content inherit">"{{ block.settings.text }}"</div>
+      <div class="testimonial__author">
+        {% unless block.settings.authorImage == null %}
+          {% assign alt = block.settings.imageAlt %}
+
+          {% if block.settings.imageAlt == '' %}
+            {% assign alt = block.settings.authorName %}
+          {% endif %}
+          {% render 'image',
+            src: block.settings.authorImage,
+            size: '140x140',
+            class: 'testimonial__author--image',
+            alt: alt
+          %}
+        {% elsif section.settings.useFakeImages %}
+          <img
+            loading="lazy"
+            class="lazyload testimonial__author--image"
+            src="https://randomuser.me/api/portraits/thumb/{{-block.settings.fakeImageSex-}}/{{imageCntr}}.jpg"
+            data-src="https://randomuser.me/api/portraits/{{-block.settings.fakeImageSex-}}/{{imageCntr}}.jpg"
+            alt="{{block.settings.fakeImageSex}} - {{imageCntr}}"
+          >
+          {% assign imageCntr = imageCntr | plus: 1 %}
+        {% endunless %}
+        <span class="testimonial__author--name">{{ block.settings.authorName }}</span>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  {% for block in section.blocks %}
+    <div class="col-12 col-md-4 unflex testimonial testimonial--author-below{% if settings.easeIn %} ease-in{% endif %}" {{ block.shopify_attributes }}>
+      <div class="testimonial__content inherit">"{{ block.settings.text }}"</div>
+      <div class="testimonial__author">
+        {% unless block.settings.authorImage == null %}
+          {% assign alt = block.settings.imageAlt %}
+
+          {% if block.settings.imageAlt == '' %}
+            {% assign alt = block.settings.authorName %}
+          {% endif %}
+          {% render 'image',
+            src: block.settings.authorImage,
+            size: '140x140',
+            class: 'testimonial__author--image',
+            alt: alt
+          %}
+        {% elsif section.settings.useFakeImages %}
+          <img
+            loading="lazy"
+            class="lazyload testimonial__author--image"
+            src="https://randomuser.me/api/portraits/thumb/{{-block.settings.fakeImageSex-}}/{{imageCntr}}.jpg"
+            data-src="https://randomuser.me/api/portraits/{{-block.settings.fakeImageSex-}}/{{imageCntr}}.jpg"
+            alt="{{block.settings.fakeImageSex}} - {{imageCntr}}"
+          >
+          {% assign imageCntr = imageCntr | plus: 1 %}
+        {% endunless %}
+        <span class="testimonial__author--name">{{ block.settings.authorName }}</span>
+      </div>
+    </div>
+  {% endfor %}
+{% endif %}

@@ -1,0 +1,137 @@
+{% assign color = settings.floatingSocialColor %}
+{% assign iconColorOnHover = settings.floatingSocialColorOnHover %}
+
+{% if settings.floatingSocialColor == 'rgba(0,0,0,0)'  %}
+    {% assign color = 'var(--linkColor)' %}
+{% endif %}
+
+{% if settings.floatingSocialColorOnHover == 'rgba(0,0,0,0)'  %}
+    {% assign iconColorOnHover = '#FFF' %}
+{% endif %}
+
+<div class="bstr--floating-social {{ settings.socialIconsDisplay }}{% if settings.easeIn %} ease-in{% endif %}">
+    <div class="bstr--floating-social__container">
+        <div class="bstr--floating-social__wrapper">
+            <div class="bstr--floating-social__card">
+                <ul class="bstr--floating-social__list">
+                    {%- assign socialMedia = 'Facebook,Twitter,Pinterest,Instagram,Tiktok,Tumblr,Linkedin,Snapchat,Youtube,Vimeo' | split: ',' -%}
+                    {%- for social in socialMedia -%}
+                        {%- assign prop = social | prepend: 'f' -%}
+                        {%- if settings[prop] != blank -%}
+                            {%- assign name = social | downcase -%}
+                            <li class="bstr--floating-social__item">
+                                <a class="bstr--floating-social__link" target="_blank" href="{{settings[prop]}}" aria-label="Go to {{social}}">
+                                {% render 'get-icon' with name as icon %}
+                                </a>
+                            </li>
+                        {%- endif -%}
+                    {%- endfor -%}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .bstr--floating-social{
+        position: fixed;
+        z-index: 9;
+        left: 0;
+        bottom: 50%;
+        transform: translateY(50%);
+        width: 5rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .bstr--floating-social__container{
+        display: block;
+        position: relative;
+    }
+
+    .bstr--floating-social__wrapper{
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+        transition-duration: var(--duration-short);
+        transition-property: transform, opacity, visibility;
+        transition-timing-function: ease;
+        top: 100%;
+    }
+
+    .bstr--floating-social__list{
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        row-gap: 0;
+        padding: 0;
+        padding-left: .5rem;
+        display: flex;
+        flex-wrap: wrap;
+        margin-inline-start: -1rem;
+    }
+
+    .bstr--floating-social__item{
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        height: calc({{settings.floating_social_icon_size}} + .5rem);
+        width: calc({{settings.floating_social_icon_size}} + .5rem);
+    }
+
+    .bstr--floating-social__link{
+        position: relative;
+        z-index: 1;
+        background: none;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        width: calc({{settings.floating_social_icon_size}} + .5rem);
+        height: calc({{settings.floating_social_icon_size}} + .5rem);
+        transition-property: color;
+    }
+
+    .bstr--floating-social__link i{
+        font-size: {{settings.floating_social_icon_size}};
+        color: {{color}};
+    }
+
+    .bstr--floating-social__link svg,
+    .bstr--floating-social__link .svg-tiktok path{
+        height: {{settings.floating_social_icon_size}};
+        width: {{settings.floating_social_icon_size}};
+        fill: {{color}};
+    }
+
+    .bstr--floating-social__link:hover i,
+    .bstr--floating-social__link:hover svg,
+    .bstr--floating-social__link:hover .svg-tiktok path{
+        color: {{ iconColorOnHover }} !important;
+        fill: {{ iconColorOnHover }} !important;
+    }
+    
+    .bstr--floating-social__link:hover{
+        background-position: left bottom, left bottom;
+        background-size: 100% .1rem, 100% .1rem;
+    }
+
+    .bstr--floating-social__link:hover:after {
+        transform: scale(1);
+    }
+
+    .bstr--floating-social__link:after{
+        content: "";
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: 50%;
+        background-color: {{color}};
+        transform: scale(0);
+        transition: transform .25s ease;
+    }
+</style>

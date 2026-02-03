@@ -1,0 +1,110 @@
+<style>
+  .next_prev_article-left-column {
+    text-align: left;
+    flex: 1;
+  }
+
+  .next_prev_article-right-column {
+    text-align: right;
+    flex: 1;
+  }
+
+  .article__page--nav_alt:hover {
+    {% if settings.primaryButtonColorCombo == 'primaryCombo' %}
+      {% if settings.primaryButtonHover == 'darken' %}
+        background-color: {{ settings.primaryAccentBackground | color_darken: 10 }};
+        color: {{ settings.primaryAccentText }};
+      {% elsif settings.primaryButtonHover == 'lighten' %}
+        background-color: {{ settings.primaryAccentBackground | color_lighten: 10 }};
+        color: {{ settings.primaryAccentText }};
+      {% elsif settings.primaryButtonHover == 'reverse' %}
+        background-color: {{ settings.primaryAccentText }};
+        color: {{ settings.primaryAccentBackground }};
+      {% elsif settings.primaryButtonHover == 'custom' %}
+        background-color: {{- settings.primaryButtonCustomHoverFill -}};
+        color: {{- settings.primaryButtonCustomHoverContent -}};
+      {% endif %}
+    {% elsif settings.primaryButtonColorCombo == 'secondaryCombo' %}
+      {% if settings.primaryButtonHover == 'darken' %}
+        background-color: {{ settings.secondaryAccentBackground | color_darken: 10 }};
+        color: {{ settings.secondaryAccentText }};
+      {% elsif settings.primaryButtonHover == 'lighten' %}
+        background-color: {{ settings.secondaryAccentBackground | color_lighten: 10 }};
+        color: {{ settings.secondaryAccentText }};
+      {% elsif settings.primaryButtonHover == 'reverse' %}
+        background-color: {{ settings.secondaryAccentText }};
+        color: {{ settings.secondaryAccentBackground }};
+      {% elsif settings.primaryButtonHover == 'custom' %}
+        background-color: {{- settings.primaryButtonCustomHoverFill -}};
+        color: {{- settings.primaryButtonCustomHoverContent -}};
+      {% endif %}
+    {% else %}
+      {% if settings.primaryButtonHover == 'darken' %}
+        background-color: {{ settings.primaryButtonCustomFill | color_darken: 10 }};
+        color: {{- settings.primaryButtonCustomContent -}};
+      {% elsif settings.primaryButtonHover == 'lighten' %}
+        background-color: {{ settings.primaryButtonCustomFill | color_lighten: 10 }};
+        color: {{- settings.primaryButtonCustomContent -}};
+      {% elsif settings.primaryButtonHover == 'reverse' %}
+        background-color: {{- settings.primaryButtonCustomContent -}};
+        color: {{- settings.primaryButtonCustomFill -}};
+      {% elsif settings.primaryButtonHover == 'custom' %}
+        background-color: {{- settings.primaryButtonCustomHoverFill -}};
+        color: {{- settings.primaryButtonCustomHoverContent -}};
+      {% endif %}
+    {% endif %}
+  }
+
+  .article__page--nav_alt {
+    width: 48px;
+    height: 48px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    cursor: pointer;
+    margin: 0 0 4px 16px;
+    padding: 0!important;
+    text-decoration: none;
+  }
+
+  .next_prev_article-right-column .article__page--nav_alt {
+    float: right;
+  }
+
+  .next_prev_article-left-column .article__page--nav_alt {
+    float: left;
+  }
+
+  .next_prev_alt_article-right-column {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .hide_alt_button {
+    opacity: 75%;
+  }
+
+  a.disabled {
+    pointer-events: none;
+    cursor: default;
+  }
+
+  .next__prev_alt-container {
+    margin-bottom: 12px;
+  }
+</style>
+
+<div class="next_prev_article-container next__prev_alt-container">
+  <div class="next_prev_alt_article-left-column">
+  </div>
+  <div class="next_prev_alt_article-right-column">
+    <a class="{% if blog.next_article == null %} disabled hide_alt_button {% endif %} button--primary button--filled button--primary__filled button article__page--nav_alt article__page--next" href="{{blog.next_article.url}}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    <a class="{% if blog.previous_article == null %}disabled hide_alt_button {% endif %} button--primary button--filled button--primary__filled button article__page--nav_alt article__page--prev" href="{{blog.previous_article.url}}">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-left"><polyline points="15 18 9 12 15 6"/></svg>
+    </a>
+  </div>
+</div>
