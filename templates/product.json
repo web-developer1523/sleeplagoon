@@ -1181,7 +1181,7 @@
       "settings": {
         "enabled": true,
         "subheading": "__HIDE__",
-        "heading": "Here's why the [recommended] is best for [side] sleepers.",
+        "heading": "Here's why [recommended] is best for [side] sleepers.",
         "heading_tag": "h2",
         "heading_alignment": "text-start",
         "heading_size": "1.5rem",

@@ -1033,6 +1033,19 @@
         "vertPaddingAccord": 12,
         "horPaddingAccord": 4
       }
+    },
+    "recommeded_carfull_products_WdwdQL": {
+      "type": "recommeded-carfull-products",
+      "name": "Recommended Cartfull",
+      "settings": {
+        "enabled": true,
+        "subheading": "__HIDE__",
+        "heading": "Here's why [recommended] is best for [side] sleepers.",
+        "heading_tag": "h2",
+        "heading_alignment": "text-start",
+        "heading_size": "1.5rem",
+        "heading_color": "rgba(0,0,0,0)"
+      }
     }
   },
   "order": [
@@ -1051,6 +1064,7 @@
     "upsell",
     "recommended",
     "172202063786c347c5",
-    "section_content_cLYwip"
+    "section_content_cLYwip",
+    "recommeded_carfull_products_WdwdQL"
   ]
 }

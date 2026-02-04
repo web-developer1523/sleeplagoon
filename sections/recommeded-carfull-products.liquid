@@ -8,15 +8,19 @@
 {% assign sleep_position_value = '' %}
 {% assign quiz_product_handle_by_name = '' %}
 {% assign quiz_product_handle_by_id = '' %}
+{% assign quiz_product_name_raw = '' %}
 {% if customer %}
+  
   {% assign tag_list = customer.tags | split: ', ' %}
   {% for tag in tag_list %}
+
     {% assign tag_stripped = tag | strip %}
     {% if tag_stripped contains 'quiz__sleep_position__' %}
       {% assign sleep_position_value = tag_stripped | remove_first: 'quiz__sleep_position__' | replace: '_', ' ' | capitalize %}
     {% endif %}
     {% if tag_stripped contains 'quiz__product_name__' %}
-      {% assign h = tag_stripped | remove_first: 'quiz__product_name__' | replace: '_', '-' | downcase %}
+      {% assign quiz_product_name_raw = tag_stripped | remove_first: 'quiz__product_name__' %}
+      {% assign h = quiz_product_name_raw | replace: '_', '-' | downcase %}
       {% if h != '' %}{% assign quiz_product_handle_by_name = h %}{% endif %}
     {% endif %}
     {% if tag_stripped contains 'quiz__product_id__' %}
@@ -25,28 +29,36 @@
     {% endif %}
   {% endfor %}
 {% endif %}
-{% assign cartful_product = nil %}
+{% assign quiz_product_handle = '' %}
 {% if quiz_product_handle_by_name != '' %}
-  {% assign cartful_product = all_products[quiz_product_handle_by_name] %}
-{% endif %}
-{% if cartful_product == blank and quiz_product_handle_by_id != '' %}
-  {% assign cartful_product = all_products[quiz_product_handle_by_id] %}
+  {% assign quiz_product_handle = quiz_product_handle_by_name %}
+{% elsif quiz_product_handle_by_id != '' %}
+  {% assign quiz_product_handle = quiz_product_handle_by_id %}
 {% endif %}
 
 {% assign heading_text = section.settings.heading | default: "Here's why the [recommended] pillow is best for [side] sleepers." %}
-{% if cartful_product != blank %}
-  {% assign recommended_name = cartful_product.title %}
+{% if quiz_product_name_raw != '' %}
+  {% assign recommended_name = quiz_product_name_raw | replace: '_', ' ' | capitalize | replace: '"', '' %}
 {% else %}
   {% assign recommended_name = product.title | default: 'this' %}
 {% endif %}
+
 {% assign heading_text = heading_text | replace: '[recommended]', recommended_name %}
 {% if sleep_position_value != '' %}
+  {% assign sleep_position_value = sleep_position_value | replace: '"', '' | capitalize %}
   {% assign heading_text = heading_text | replace: '[side]', sleep_position_value %}
 {% endif %}
-
 <style>
+.card__buttons a{
+    background-color: #e3530f;
+    color: #FFFFFF;
+    width: 100%;
+}
 #s--{{ section.id }} .recommended-cartfull__heading {
-  text-align: {{ section.settings.heading_alignment }};
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #s--{{ section.id }} .recommended-cartfull__heading .heading-tag {
   font-size: {{ section.settings.heading_size }};
@@ -58,16 +70,24 @@
 {% endif %}
 #s--{{ section.id }} .recommended-cartfull__product {
   margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 #s--{{ section.id }} .recommended-cartfull__card {
   max-width: 320px;
+  width: 100%;
+  margin: 0 auto;
 }
+
 </style>
 
-<div class="recommended-cartfull section__heading" id="s--{{ section.id }}"
+<div class="recommended-cartfull recommended-cartfull--loading section__heading" id="s--{{ section.id }}"
   data-heading-raw="{{ section.settings.heading | escape }}"
-  data-placeholder-recommended="{{ product.title | escape }}"
+  data-placeholder-recommended="{{ recommended_name | escape }}"
   data-placeholder-side="{{ sleep_position_value | escape }}"
+  data-quiz-product-name="{{ quiz_product_name_raw | replace: '_', ' ' | capitalize | replace: '"', '' }}"
+  data-quiz-product-handle="{{ quiz_product_handle | replace: '"', ''}}"
   data-customer-logged-in="{% if customer %}true{% else %}false{% endif %}">
   <div class="recommended-cartfull__heading {{ section.settings.heading_alignment }}">
     {% assign subheading_clean = section.settings.subheading | strip %}
@@ -81,13 +101,7 @@
       {% else %}<h2 class="heading-tag h-reset font__family--title">{{ heading_text }}</h2>
     {% endcase %}
   </div>
-  <div class="recommended-cartfull__product" id="recommended-cartfull-product--{{ section.id }}" aria-live="polite" {% if cartful_product != blank %}data-cartful-rendered="true"{% endif %}>
-    {% if cartful_product != blank %}
-      <div class="recommended-cartfull__card card--holder">
-        {% render 'product-card-default', product: cartful_product, dsize: '3' %}
-      </div>
-    {% endif %}
-  </div>
+  <div class="recommended-cartfull__product" id="recommended-cartfull-product--{{ section.id }}" aria-live="polite"></div>
 </div>
 
 <script>
@@ -96,103 +110,173 @@
   var el = document.getElementById('s--' + sectionId);
   if (!el) return;
   var raw = el.getAttribute('data-heading-raw');
-  var recommended = el.getAttribute('data-placeholder-recommended');
-  var sideFromLiquid = el.getAttribute('data-placeholder-side');
+  var recommended = el.getAttribute('data-placeholder-recommended') || '';
+  var sideFromLiquid = el.getAttribute('data-placeholder-side') || '';
+  var quizProductName = el.getAttribute('data-quiz-product-name') || '';
+  var quizProductHandle = el.getAttribute('data-quiz-product-handle') || '';
   var isLoggedIn = el.getAttribute('data-customer-logged-in') === 'true';
   var headingEl = el.querySelector('.heading-tag');
-  var productContainer = document.getElementById('recommended-cartfull-product--' + sectionId);
+  var productContainer = el.querySelector('.recommended-cartfull__product');
 
   function applyPlaceholders() {
     if (!headingEl || !raw) return;
 
-    // Logged-in customers: heading is already fully built in Liquid from tags (quiz__*)
-    if (isLoggedIn) return;
+    var recommendedFinal;
+    var sideFinal;
 
-    // Guests: use localStorage session for both [recommended] and [side]
-    var sessionData = localStorage.getItem('cartful_complete_sessions');
-    var side = '';
-    var recommendedFromSession = recommended || 'this';
-
-    if (sessionData) {
-      try {
-        var data = JSON.parse(sessionData);
-        if (data && data.productName) {
-          recommendedFromSession = data.productName;
-        }
-        var prefs = (data && data.shopperPreferences) || {};
-        for (var q in prefs) {
-          if (q.toLowerCase().indexOf('sleep position') !== -1) {
-            side = (prefs[q] || '').replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
-            break;
+    if (isLoggedIn) {
+      // Logged-in: use only customer tag data (data-quiz-product-name, data-placeholder-side from quiz__sleep_position__*)
+      recommendedFinal = quizProductName || recommended || 'this';
+      sideFinal = sideFromLiquid || '';
+    } else {
+      // Guest: use session (Cartful) then fallbacks
+      var sessionData = localStorage.getItem('cartful_complete_sessions');
+      var sideFromSession = '';
+      var recommendedFromSession = '';
+      if (sessionData) {
+        try {
+          var data = JSON.parse(sessionData);
+          if (data && data.productName) recommendedFromSession = data.productName;
+          var prefs = (data && data.shopperPreferences) || {};
+          for (var q in prefs) {
+            if (q.toLowerCase().indexOf('sleep position') !== -1) {
+              sideFromSession = (prefs[q] || '').replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+              break;
+            }
           }
-        }
-      } catch (e) {}
+        } catch (e) {}
+      }
+      recommendedFinal = quizProductName || recommendedFromSession || recommended || 'this';
+      sideFinal = sideFromLiquid || sideFromSession || '';
     }
 
     headingEl.textContent = raw
-      .replace(/\[recommended\]/g, recommendedFromSession)
-      .replace(/\[side\]/g, side || '');
+      .replace(/\[recommended\]/g, recommendedFinal)
+      .replace(/\[side\]/g, sideFinal);
   }
 
   function productNameToHandle(name) {
     if (!name || typeof name !== 'string') return '';
     return name.toLowerCase()
+      .replace(/_/g, ' ')
       .replace(/\s+/g, '-')
       .replace(/[^a-z0-9-]/g, '');
   }
 
   function renderCartfulProduct() {
     if (!productContainer) return;
-    if (isLoggedIn) return;
-    if (productContainer.getAttribute('data-cartful-rendered') === 'true') return;
-    var sessionData = localStorage.getItem('cartful_complete_sessions');
-    if (!sessionData) return;
-    try {
-      var data = JSON.parse(sessionData);
-      var productName = data.productName || (data.product && data.product.title) || '';
-      var productId = data.productId || '';
-      if (!productName && !productId) return;
+    var productName = '';
+    var handle = '';
 
-      var handle = productName ? productNameToHandle(productName) : productId.toLowerCase();
-      if (!handle) return;
+    if (isLoggedIn) {
+      productName = quizProductName;
+      handle = quizProductHandle;
+    } else {
+      var sessionData = localStorage.getItem('cartful_complete_sessions');
+      if (!sessionData) return;
+      try {
+        var data = JSON.parse(sessionData);
+        productName = data.productName || (data.product && data.product.title) || '';
+      } catch (e) {
+        return;
+      }
+    }
 
-      var root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
-      fetch(root + 'products/' + handle + '.json')
+    // Use product name (handle) only for both login and logout – no product id
+    var nameHandle = productNameToHandle(productName);
+    var candidates = [];
+    if (nameHandle) candidates.push(nameHandle);
+    if (handle && handle !== nameHandle) candidates.push(handle);
+    // Remove empties and duplicates
+    var seen = {};
+    candidates = candidates.filter(function(h) {
+      if (!h) return false;
+      if (seen[h]) return false;
+      seen[h] = true;
+      return true;
+    });
+
+    if (!candidates.length) return;
+
+    function tryNext(index) {
+      if (index >= candidates.length) {
+        return;
+      }
+      var h = candidates[index];
+      var url = '/products/' + h + '.js';
+      var fullUrl = (window.location.origin || '') + url;
+      console.log('Cartful recommended product URL (full):', fullUrl);
+      fetch(url)
         .then(function(res) { return res.ok ? res.json() : null; })
         .then(function(json) {
-          if (!json || !json.product) return;
-          var p = json.product;
+          if (!json) {
+            tryNext(index + 1);
+            return;
+          }
+          var p = json.product || json;
           var img = p.featured_image || (p.images && p.images[0]);
-          var imgUrl = img ? (typeof img === 'string' ? img : (img.src || img.url)) : '';
-          var v = (p.variants && p.variants[0]) || {};
+          var imgUrl = '';
+          if (img) {
+            imgUrl = typeof img === 'string' ? img : (img.src || img.url || (img.preview_image && img.preview_image.src) || '');
+          }
+          if (imgUrl && imgUrl.indexOf('//') === 0) {
+            imgUrl = 'https:' + imgUrl;
+          }
+          var variants = (p.variants && p.variants.length) ? p.variants : [];
+          var v = variants[0] || {};
+          for (var i = 0; i < variants.length; i++) {
+            if (variants[i].available) {
+              v = variants[i];
+              break;
+            }
+          }
           var priceCents = v.price != null ? parseInt(v.price, 10) : 0;
-          var compareCents = v.compare_at_price ? parseInt(v.compare_at_price, 10) : 0;
+          var compareCents = (v.compare_at_price != null) ? parseInt(v.compare_at_price, 10) : 0;
           var moneyFormat = (window.Shopify && window.Shopify.formatMoney) ? window.Shopify.formatMoney : function(c) { return '$' + (c / 100).toFixed(2); };
           var priceHtml = priceCents ? '<span class="card__price">' + moneyFormat(priceCents) + '</span>' : '';
           if (compareCents && compareCents > priceCents) {
             priceHtml = '<span class="card__price card__price--sale">' + moneyFormat(priceCents) + ' <span class="card__price--old">' + moneyFormat(compareCents) + '</span></span>';
           }
-          var productUrl = (typeof p.url === 'string' && p.url) ? p.url : (root + 'products/' + (p.handle || handle));
+          var productUrl = (typeof p.url === 'string' && p.url) ? p.url : ('/products/' + (p.handle || h));
+          var imgSrc = imgUrl ? ('<img src="' + imgUrl.replace(/"/g, '&quot;') + '" alt="' + (p.title || '').replace(/"/g, '&quot;') + '" loading="lazy" width="300" height="300">') : '';
           productContainer.innerHTML =
             '<div class="recommended-cartfull__card card--default card--holder">' +
-              '<a class="card__img--container" href="' + productUrl + '">' +
-                '<div class="card__img--ratio"><div class="card__img">' +
-                  (imgUrl ? '<img src="' + imgUrl + '" alt="' + (p.title || '').replace(/"/g, '&quot;') + '" loading="lazy" width="300" height="300">' : '') +
-                '</div></div>' +
+              '<a class="card__img--container" href="' + productUrl.replace(/"/g, '&quot;') + '">' +
+                '<div class="card__img--ratio"><div class="card__img">' + imgSrc + '</div></div>' +
               '</a>' +
               '<div class="card__info">' +
-                '<a class="card__title" href="' + productUrl + '">' + (p.title || '') + '</a>' +
+                '<a class="card__title" href="' + productUrl.replace(/"/g, '&quot;') + '">' + (p.title || '').replace(/</g, '&lt;').replace(/>/g, '&gt;') + '</a>' +
                 priceHtml +
-                '<div class="card__buttons"><a href="' + productUrl + '" class="button button--primary">View product</a></div>' +
+                '<div class="card__buttons"><a href="' + productUrl.replace(/"/g, '&quot;') + '" class="button button--primary">View product</a></div>' +
               '</div>' +
             '</div>';
+          el.classList.remove('recommended-cartfull--loading');
           try { if (window.BoosterTheme && window.BoosterTheme.events) window.BoosterTheme.events.trigger('booster:content:update'); } catch (e) {}
         })
-        .catch(function() {});
-    } catch (e) {}
+        .catch(function(err) {
+          tryNext(index + 1);
+        });
+    }
+
+    tryNext(0);
   }
 
   function init() {
+    if (!isLoggedIn) {
+      var rawSession = localStorage.getItem('cartful_complete_sessions');
+      if (!rawSession) return;
+      try {
+        var d = JSON.parse(rawSession);
+        var hasProduct =
+          (d && d.productName) ||
+          (d && d.product && (d.product.title || d.product.handle));
+        var hasPrefs =
+          d && d.shopperPreferences && Object.keys(d.shopperPreferences).length > 0;
+        if (!hasProduct && !hasPrefs) return;
+      } catch (e) {
+        return;
+      }
+    }
     applyPlaceholders();
     renderCartfulProduct();
   }
