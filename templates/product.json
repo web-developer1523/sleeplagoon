@@ -1174,6 +1174,19 @@
         "cardDesktop": "default",
         "cardMobile": "default"
       }
+    },
+    "recommeded_carfull_products_tVRKzB": {
+      "type": "recommeded-carfull-products",
+      "name": "Recommended Cartfull",
+      "settings": {
+        "enabled": true,
+        "subheading": "__HIDE__",
+        "heading": "Here's why the [recommended] is best for [side] sleepers.",
+        "heading_tag": "h2",
+        "heading_alignment": "text-start",
+        "heading_size": "1.5rem",
+        "heading_color": "rgba(0,0,0,0)"
+      }
     }
   },
   "order": [
@@ -1195,6 +1208,7 @@
     "3f660c84-61bc-4b12-b078-20e8b786c007",
     "section_content_MdjGz7",
     "upsell",
-    "recommended"
+    "recommended",
+    "recommeded_carfull_products_tVRKzB"
   ]
 }

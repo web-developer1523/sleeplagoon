@@ -1,0 +1,288 @@
+{% comment %}
+  Recommended Cartfull – Custom text with placeholders [recommended] and [side].
+  Use on product template. [recommended] = product title, [side] = sleep position from Cartful/customer.
+{% endcomment %}
+
+{% if section.settings.enabled %}
+
+{% assign sleep_position_value = '' %}
+{% assign quiz_product_handle_by_name = '' %}
+{% assign quiz_product_handle_by_id = '' %}
+{% if customer %}
+  {% assign tag_list = customer.tags | split: ', ' %}
+  {% for tag in tag_list %}
+    {% assign tag_stripped = tag | strip %}
+    {% if tag_stripped contains 'quiz__sleep_position__' %}
+      {% assign sleep_position_value = tag_stripped | remove_first: 'quiz__sleep_position__' | replace: '_', ' ' | capitalize %}
+    {% endif %}
+    {% if tag_stripped contains 'quiz__product_name__' %}
+      {% assign h = tag_stripped | remove_first: 'quiz__product_name__' | replace: '_', '-' | downcase %}
+      {% if h != '' %}{% assign quiz_product_handle_by_name = h %}{% endif %}
+    {% endif %}
+    {% if tag_stripped contains 'quiz__product_id__' %}
+      {% assign h = tag_stripped | remove_first: 'quiz__product_id__' | downcase %}
+      {% if h != '' %}{% assign quiz_product_handle_by_id = h %}{% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+{% assign cartful_product = nil %}
+{% if quiz_product_handle_by_name != '' %}
+  {% assign cartful_product = all_products[quiz_product_handle_by_name] %}
+{% endif %}
+{% if cartful_product == blank and quiz_product_handle_by_id != '' %}
+  {% assign cartful_product = all_products[quiz_product_handle_by_id] %}
+{% endif %}
+
+{% assign heading_text = section.settings.heading | default: "Here's why the [recommended] pillow is best for [side] sleepers." %}
+{% if cartful_product != blank %}
+  {% assign recommended_name = cartful_product.title %}
+{% else %}
+  {% assign recommended_name = product.title | default: 'this' %}
+{% endif %}
+{% assign heading_text = heading_text | replace: '[recommended]', recommended_name %}
+{% if sleep_position_value != '' %}
+  {% assign heading_text = heading_text | replace: '[side]', sleep_position_value %}
+{% endif %}
+
+<style>
+#s--{{ section.id }} .recommended-cartfull__heading {
+  text-align: {{ section.settings.heading_alignment }};
+}
+#s--{{ section.id }} .recommended-cartfull__heading .heading-tag {
+  font-size: {{ section.settings.heading_size }};
+}
+{% if section.settings.heading_color != blank and section.settings.heading_color != 'rgba(0,0,0,0)' %}
+#s--{{ section.id }} .recommended-cartfull__heading .heading-tag {
+  color: {{ section.settings.heading_color }};
+}
+{% endif %}
+#s--{{ section.id }} .recommended-cartfull__product {
+  margin-top: 1.5rem;
+}
+#s--{{ section.id }} .recommended-cartfull__card {
+  max-width: 320px;
+}
+</style>
+
+<div class="recommended-cartfull section__heading" id="s--{{ section.id }}"
+  data-heading-raw="{{ section.settings.heading | escape }}"
+  data-placeholder-recommended="{{ product.title | escape }}"
+  data-placeholder-side="{{ sleep_position_value | escape }}"
+  data-customer-logged-in="{% if customer %}true{% else %}false{% endif %}">
+  <div class="recommended-cartfull__heading {{ section.settings.heading_alignment }}">
+    {% assign subheading_clean = section.settings.subheading | strip %}
+    {% if subheading_clean != blank and subheading_clean != '__HIDE__' %}
+      <span class="section__heading--subheading recommended-cartfull__subheading">{{ subheading_clean }}</span>
+    {% endif %}
+    {% case section.settings.heading_tag %}
+      {% when 'h1' %}<h1 class="heading-tag h-reset font__family--title">{{ heading_text }}</h1>
+      {% when 'h2' %}<h2 class="heading-tag h-reset font__family--title">{{ heading_text }}</h2>
+      {% when 'h3' %}<h3 class="heading-tag h-reset font__family--title">{{ heading_text }}</h3>
+      {% else %}<h2 class="heading-tag h-reset font__family--title">{{ heading_text }}</h2>
+    {% endcase %}
+  </div>
+  <div class="recommended-cartfull__product" id="recommended-cartfull-product--{{ section.id }}" aria-live="polite" {% if cartful_product != blank %}data-cartful-rendered="true"{% endif %}>
+    {% if cartful_product != blank %}
+      <div class="recommended-cartfull__card card--holder">
+        {% render 'product-card-default', product: cartful_product, dsize: '3' %}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+(function() {
+  var sectionId = '{{ section.id }}';
+  var el = document.getElementById('s--' + sectionId);
+  if (!el) return;
+  var raw = el.getAttribute('data-heading-raw');
+  var recommended = el.getAttribute('data-placeholder-recommended');
+  var sideFromLiquid = el.getAttribute('data-placeholder-side');
+  var isLoggedIn = el.getAttribute('data-customer-logged-in') === 'true';
+  var headingEl = el.querySelector('.heading-tag');
+  var productContainer = document.getElementById('recommended-cartfull-product--' + sectionId);
+
+  function applyPlaceholders() {
+    if (!headingEl || !raw) return;
+
+    // Logged-in customers: heading is already fully built in Liquid from tags (quiz__*)
+    if (isLoggedIn) return;
+
+    // Guests: use localStorage session for both [recommended] and [side]
+    var sessionData = localStorage.getItem('cartful_complete_sessions');
+    var side = '';
+    var recommendedFromSession = recommended || 'this';
+
+    if (sessionData) {
+      try {
+        var data = JSON.parse(sessionData);
+        if (data && data.productName) {
+          recommendedFromSession = data.productName;
+        }
+        var prefs = (data && data.shopperPreferences) || {};
+        for (var q in prefs) {
+          if (q.toLowerCase().indexOf('sleep position') !== -1) {
+            side = (prefs[q] || '').replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+            break;
+          }
+        }
+      } catch (e) {}
+    }
+
+    headingEl.textContent = raw
+      .replace(/\[recommended\]/g, recommendedFromSession)
+      .replace(/\[side\]/g, side || '');
+  }
+
+  function productNameToHandle(name) {
+    if (!name || typeof name !== 'string') return '';
+    return name.toLowerCase()
+      .replace(/\s+/g, '-')
+      .replace(/[^a-z0-9-]/g, '');
+  }
+
+  function renderCartfulProduct() {
+    if (!productContainer) return;
+    if (isLoggedIn) return;
+    if (productContainer.getAttribute('data-cartful-rendered') === 'true') return;
+    var sessionData = localStorage.getItem('cartful_complete_sessions');
+    if (!sessionData) return;
+    try {
+      var data = JSON.parse(sessionData);
+      var productName = data.productName || (data.product && data.product.title) || '';
+      var productId = data.productId || '';
+      if (!productName && !productId) return;
+
+      var handle = productName ? productNameToHandle(productName) : productId.toLowerCase();
+      if (!handle) return;
+
+      var root = (window.Shopify && window.Shopify.routes && window.Shopify.routes.root) || '/';
+      fetch(root + 'products/' + handle + '.json')
+        .then(function(res) { return res.ok ? res.json() : null; })
+        .then(function(json) {
+          if (!json || !json.product) return;
+          var p = json.product;
+          var img = p.featured_image || (p.images && p.images[0]);
+          var imgUrl = img ? (typeof img === 'string' ? img : (img.src || img.url)) : '';
+          var v = (p.variants && p.variants[0]) || {};
+          var priceCents = v.price != null ? parseInt(v.price, 10) : 0;
+          var compareCents = v.compare_at_price ? parseInt(v.compare_at_price, 10) : 0;
+          var moneyFormat = (window.Shopify && window.Shopify.formatMoney) ? window.Shopify.formatMoney : function(c) { return '$' + (c / 100).toFixed(2); };
+          var priceHtml = priceCents ? '<span class="card__price">' + moneyFormat(priceCents) + '</span>' : '';
+          if (compareCents && compareCents > priceCents) {
+            priceHtml = '<span class="card__price card__price--sale">' + moneyFormat(priceCents) + ' <span class="card__price--old">' + moneyFormat(compareCents) + '</span></span>';
+          }
+          var productUrl = (typeof p.url === 'string' && p.url) ? p.url : (root + 'products/' + (p.handle || handle));
+          productContainer.innerHTML =
+            '<div class="recommended-cartfull__card card--default card--holder">' +
+              '<a class="card__img--container" href="' + productUrl + '">' +
+                '<div class="card__img--ratio"><div class="card__img">' +
+                  (imgUrl ? '<img src="' + imgUrl + '" alt="' + (p.title || '').replace(/"/g, '&quot;') + '" loading="lazy" width="300" height="300">' : '') +
+                '</div></div>' +
+              '</a>' +
+              '<div class="card__info">' +
+                '<a class="card__title" href="' + productUrl + '">' + (p.title || '') + '</a>' +
+                priceHtml +
+                '<div class="card__buttons"><a href="' + productUrl + '" class="button button--primary">View product</a></div>' +
+              '</div>' +
+            '</div>';
+          try { if (window.BoosterTheme && window.BoosterTheme.events) window.BoosterTheme.events.trigger('booster:content:update'); } catch (e) {}
+        })
+        .catch(function() {});
+    } catch (e) {}
+  }
+
+  function init() {
+    applyPlaceholders();
+    renderCartfulProduct();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "Recommended Cartfull",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Enable/Disable"
+    },
+    {
+      "type": "checkbox",
+      "id": "enabled",
+      "label": "Enable recommended products block",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "__HIDE__",
+      "info": "Optional. Replace this text with your subheading (or delete it) to show one."
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Here's why the [recommended] pillow is best for [side] sleepers.",
+      "info": "Use [recommended] for the product name and [side] for sleep position (e.g. Side, Back, Stomach). These are filled from Cartful or customer profile."
+    },
+    {
+      "type": "select",
+      "id": "heading_tag",
+      "label": "Heading element",
+      "options": [
+        { "value": "h1", "label": "H1" },
+        { "value": "h2", "label": "H2" },
+        { "value": "h3", "label": "H3" }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Text alignment",
+      "options": [
+        { "value": "text-start", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-end", "label": "Right" }
+      ],
+      "default": "text-start"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "Heading size",
+      "options": [
+        { "value": "1rem", "label": "Small" },
+        { "value": "1.25rem", "label": "Medium" },
+        { "value": "1.5rem", "label": "Large" },
+        { "value": "2rem", "label": "Extra large" }
+      ],
+      "default": "1.5rem"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "rgba(0,0,0,0)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Recommended Cartfull"
+    }
+  ]
+}
+{% endschema %}

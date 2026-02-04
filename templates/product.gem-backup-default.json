@@ -31,7 +31,7 @@
           "settings": {
             "fullWidth": true,
             "maxBWidth": 100,
-            "content": "<p>We've assessed results from thousands of sleepers to bring you this personalized recommendation.<\/p>",
+            "content": "<p>We've assessed results from thousands of sleepers to bring you this personalized recommendation.</p>",
             "detectLists": true,
             "textColor": "rgba(0,0,0,0)",
             "fontFamily": "base",
@@ -162,7 +162,7 @@
             "noMargin": true,
             "icon": "null",
             "iconColor": "rgba(0,0,0,0)",
-            "text": "<p>Delivered between %start% and %end%.<\/p>",
+            "text": "<p>Delivered between %start% and %end%.</p>",
             "start": "1",
             "end": "5",
             "textColor": "rgba(0,0,0,0)"
@@ -179,7 +179,7 @@
           }
         },
         "loop_subscriptions_loop_widget_irPCEW": {
-          "type": "shopify:\/\/apps\/loop-subscriptions\/blocks\/loop_widget\/267a7c64-5cb3-4552-b817-5485165f0a0b",
+          "type": "shopify://apps/loop-subscriptions/blocks/loop_widget/267a7c64-5cb3-4552-b817-5485165f0a0b",
           "settings": {}
         },
         "ppATC": {
@@ -237,7 +237,7 @@
             "metafieldNS": "custom",
             "metafieldKey": "the_details",
             "page": "",
-            "customContent": "<p>Add custom content here!<\/p>"
+            "customContent": "<p>Add custom content here!</p>"
           }
         },
         "6a6e984c-0e45-43ac-bf3d-8f6092b6820e": {
@@ -249,16 +249,8 @@
             "metafieldNS": "custom",
             "metafieldKey": "care_instructions",
             "page": "",
-            "customContent": "Care Instructions\n<br>Regularly fluff pillows to maintain shape. Every six months insert pillow into the dryer and run on low for 10-15 minutes.\n\n<br><br>Wash Instructions\n<br>Pillow Cover\n<br>Wash in cold water on low\/gentle cycle. Tumble dry on low. Ensure cover is completely dry before use.\n\n<br><br>Inner Pillow\n<br>For stains, spot clean with a wet cloth and soap. To wash, secure zipper with a closed safety pin to ensure the fill is secure. Wash in cold water on low\/gentle cycle. Tumble dry on low. Ensure cover is completely dry before use. Do not wash more than one time per year."
+            "customContent": "Care Instructions\n<br>Regularly fluff pillows to maintain shape. Every six months insert pillow into the dryer and run on low for 10-15 minutes.\n\n<br><br>Wash Instructions\n<br>Pillow Cover\n<br>Wash in cold water on low/gentle cycle. Tumble dry on low. Ensure cover is completely dry before use.\n\n<br><br>Inner Pillow\n<br>For stains, spot clean with a wet cloth and soap. To wash, secure zipper with a closed safety pin to ensure the fill is secure. Wash in cold water on low/gentle cycle. Tumble dry on low. Ensure cover is completely dry before use. Do not wash more than one time per year."
           }
-        },
-        "selleasy_lb_upsell_fbt_block_3pmmRy": {
-          "type": "shopify:\/\/apps\/selleasy\/blocks\/lb-upsell-fbt-block\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
-        },
-        "selleasy_lb_upsell_addon_block_YgJ4JM": {
-          "type": "shopify:\/\/apps\/selleasy\/blocks\/lb-upsell-addon-block\/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
         }
       },
       "block_order": [
@@ -279,9 +271,7 @@
         "d9d8409c-3b78-4854-97bf-17ace3af4039",
         "b75a3889-aeb2-4337-a7cb-6d2e4f6acb83",
         "5394be81-7fbd-4a0d-a5b5-cec4814a1995",
-        "6a6e984c-0e45-43ac-bf3d-8f6092b6820e",
-        "selleasy_lb_upsell_fbt_block_3pmmRy",
-        "selleasy_lb_upsell_addon_block_YgJ4JM"
+        "6a6e984c-0e45-43ac-bf3d-8f6092b6820e"
       ],
       "settings": {
         "view": "default",
@@ -339,7 +329,7 @@
             "horAlign": "center",
             "vertAlign": "middle",
             "maxBWidth": 100,
-            "content": "<p>LAGOON'S CUSTOMER GUARANTEES<\/p>",
+            "content": "<p>LAGOON'S CUSTOMER GUARANTEES</p>",
             "detectLists": true,
             "textColor": "#ffffff",
             "fontFamily": "title",
@@ -619,7 +609,7 @@
             "horPadding": 20,
             "horAlign": "center",
             "vertAlign": "middle",
-            "image": "shopify:\/\/shop_images\/Sleep_Cooler_b03f2b76-745b-4a21-9ad1-5d9e728eb085.png"
+            "image": "shopify://shop_images/Sleep_Cooler_b03f2b76-745b-4a21-9ad1-5d9e728eb085.png"
           }
         },
         "c3d4a8f7-e9b2-4f30-b41d-17b23cb4b1ff": {
@@ -630,7 +620,7 @@
             "horPadding": 20,
             "horAlign": "center",
             "vertAlign": "middle",
-            "image": "shopify:\/\/shop_images\/Relieve_Pressure_4e113364-31f6-40ca-aa2c-8f36815085ef.png"
+            "image": "shopify://shop_images/Relieve_Pressure_4e113364-31f6-40ca-aa2c-8f36815085ef.png"
           }
         },
         "a5829c39-7643-423e-8205-99c24634b78a": {
@@ -641,7 +631,7 @@
             "horPadding": 20,
             "horAlign": "center",
             "vertAlign": "middle",
-            "image": "shopify:\/\/shop_images\/Breathe_Easier_b8ffd569-9f4c-45ce-a1b3-72823fccb2e2.png"
+            "image": "shopify://shop_images/Breathe_Easier_b8ffd569-9f4c-45ce-a1b3-72823fccb2e2.png"
           }
         }
       },
@@ -692,7 +682,7 @@
           "settings": {
             "fullWidth": true,
             "maxBWidth": 80,
-            "content": "<p>{{ product.metafields.custom.fill_description | metafield_tag }}<\/p>",
+            "content": "<p>{{ product.metafields.custom.fill_description | metafield_tag }}</p>",
             "detectLists": true,
             "textColor": "rgba(0,0,0,0)",
             "fontFamily": "base",
@@ -782,7 +772,7 @@
           "settings": {
             "fullWidth": true,
             "maxBWidth": 85,
-            "content": "<p>{{ product.metafields.custom.team_leader | metafield_tag }}<\/p>",
+            "content": "<p>{{ product.metafields.custom.team_leader | metafield_tag }}</p>",
             "detectLists": true,
             "textColor": "rgba(0,0,0,0)",
             "fontFamily": "base",
@@ -831,10 +821,10 @@
         "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-1": {
           "type": "testimonial",
           "settings": {
-            "text": "<p>As a collegiate swimmer, training and recovery go hand in hand. The most important form of recovery is sleep and with my<a href=\"https:\/\/www.instagram.com\/lagoonsleep\/\">@lagoonsleep <\/a>pillows I fall asleep faster and wake up feeling stronger and more recovered. Their customized survey determined the pillow that would fit my style best. I am looking forward to getting more amazing sleep, thanks<a href=\"https:\/\/www.instagram.com\/lagoonsleep\/\">@lagoonsleep<\/a>!<\/p>",
+            "text": "<p>As a collegiate swimmer, training and recovery go hand in hand. The most important form of recovery is sleep and with my<a href=\"https://www.instagram.com/lagoonsleep/\">@lagoonsleep </a>pillows I fall asleep faster and wake up feeling stronger and more recovered. Their customized survey determined the pillow that would fit my style best. I am looking forward to getting more amazing sleep, thanks<a href=\"https://www.instagram.com/lagoonsleep/\">@lagoonsleep</a>!</p>",
             "authorName": "Matt Brownstead <br> NCAA Champion Swimmer",
             "fakeImageSex": "men",
-            "authorImage": "shopify:\/\/shop_images\/297340410_117405890922697_4430776124317636482_n.jpg",
+            "authorImage": "shopify://shop_images/297340410_117405890922697_4430776124317636482_n.jpg",
             "imageAlt": "",
             "star_rating": 5
           }
@@ -842,10 +832,10 @@
         "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-2": {
           "type": "testimonial",
           "settings": {
-            "text": "<p>Genuinely excited to sleep every night with this new <a href=\"https:\/\/www.instagram.com\/lagoonsleep\/\">@lagoonsleep <\/a>pillow 😴 It’s honestly the comfiest pillow and I’ve already noticed my sleep improve since I’ve started using it. As an athlete, sleep is high on my priority list since better sleep = better performance, and I can safely say that my energy levels and performance have been stellar lately 🤩<\/p>",
+            "text": "<p>Genuinely excited to sleep every night with this new <a href=\"https://www.instagram.com/lagoonsleep/\">@lagoonsleep </a>pillow 😴 It’s honestly the comfiest pillow and I’ve already noticed my sleep improve since I’ve started using it. As an athlete, sleep is high on my priority list since better sleep = better performance, and I can safely say that my energy levels and performance have been stellar lately 🤩</p>",
             "authorName": "Shayna Powless  <br>USA Cycling Champion",
             "fakeImageSex": "women",
-            "authorImage": "shopify:\/\/shop_images\/296074272_1034686520584905_5878095345769014686_n.jpg",
+            "authorImage": "shopify://shop_images/296074272_1034686520584905_5878095345769014686_n.jpg",
             "imageAlt": "",
             "star_rating": 5
           }
@@ -853,10 +843,10 @@
         "template--14509164986497__3f660c84-61bc-4b12-b078-20e8b786c007-testimonial-3": {
           "type": "testimonial",
           "settings": {
-            "text": "<p>When I started getting consistent, solid sleep is when my running career took off... As a new pro runner, I had been looking for a pillow that would allow me to get even better sleep to maximize my performance and recovery. I took the pillow quiz on @lagoonsleep that addressed my personal sleep goals and preferences... and I've already been getting deeper sleep and waking up feeling more refreshed.<\/p>",
+            "text": "<p>When I started getting consistent, solid sleep is when my running career took off... As a new pro runner, I had been looking for a pillow that would allow me to get even better sleep to maximize my performance and recovery. I took the pillow quiz on @lagoonsleep that addressed my personal sleep goals and preferences... and I've already been getting deeper sleep and waking up feeling more refreshed.</p>",
             "authorName": "Katie Izzo <br> PRO TRACK ATHLETE",
             "fakeImageSex": "women",
-            "authorImage": "shopify:\/\/shop_images\/32.png",
+            "authorImage": "shopify://shop_images/32.png",
             "imageAlt": "",
             "star_rating": 5
           }
@@ -914,7 +904,7 @@
             "horPadding": 0,
             "horAlign": "start",
             "vertAlign": "middle",
-            "liquid": "<div data-fera-widget='product_reviews' data-fera-id='fwid_30WevjS' data-product-id='{{ product.id }}'><\/div>",
+            "liquid": "<div data-fera-widget='product_reviews' data-fera-id='fwid_30WevjS' data-product-id='{{ product.id }}'></div>",
             "customCSS": ".block__liquid {\nwidth: 100%;\n}\n\n.fera h1 {\n    color: #003e52 !important;\n}"
           }
         }
