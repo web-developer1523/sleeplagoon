@@ -1,6 +1,7 @@
 {% comment %}
-  Recommended Cartfull – Custom text with placeholders [recommended] and [side].
-  Use on product template. [recommended] = product title, [side] = sleep position from Cartful/customer.
+  Recommended Cartfull – Heading with placeholders filled from Cartful quiz.
+  Logged-in: data from customer tags (quiz__*). Guest: data from localStorage cartful_complete_sessions.
+  Same variable names for both; sources differ.
 {% endcomment %}
 
 {% if section.settings.enabled %}
@@ -9,14 +10,18 @@
 {% assign quiz_product_handle_by_name = '' %}
 {% assign quiz_product_handle_by_id = '' %}
 {% assign quiz_product_name_raw = '' %}
+{% assign body_frame_value = '' %}
+{% assign pillow_feel_value = '' %}
+{% assign pillow_support_value = '' %}
+{% assign sleep_challenge_value = '' %}
+{% assign sleep_goal_value = '' %}
+{% assign sleep_temperature_value = '' %}
 {% if customer %}
-  
   {% assign tag_list = customer.tags | split: ', ' %}
   {% for tag in tag_list %}
-
     {% assign tag_stripped = tag | strip %}
     {% if tag_stripped contains 'quiz__sleep_position__' %}
-      {% assign sleep_position_value = tag_stripped | remove_first: 'quiz__sleep_position__' | replace: '_', ' ' | capitalize %}
+      {% assign sleep_position_value = tag_stripped | remove_first: 'quiz__sleep_position__' | replace: '_', ' ' | capitalize | replace: '"', '' %}
     {% endif %}
     {% if tag_stripped contains 'quiz__product_name__' %}
       {% assign quiz_product_name_raw = tag_stripped | remove_first: 'quiz__product_name__' %}
@@ -27,6 +32,24 @@
       {% assign h = tag_stripped | remove_first: 'quiz__product_id__' | downcase %}
       {% if h != '' %}{% assign quiz_product_handle_by_id = h %}{% endif %}
     {% endif %}
+    {% if tag_stripped contains 'quiz__body_frame__' %}
+      {% assign body_frame_value = tag_stripped | remove_first: 'quiz__body_frame__' | replace: '_', ' ' | capitalize | replace: '"', '' %}
+    {% endif %}
+    {% if tag_stripped contains 'quiz__pillow_feel__' %}
+      {% assign pillow_feel_value = tag_stripped | remove_first: 'quiz__pillow_feel__' | replace: '_', ' ' | capitalize | replace: '"', '' %}
+    {% endif %}
+    {% if tag_stripped contains 'quiz__pillow_support__' %}
+      {% assign pillow_support_value = tag_stripped | remove_first: 'quiz__pillow_support__' | replace: '_', ' ' | capitalize | replace: '"', '' %}
+    {% endif %}
+    {% if tag_stripped contains 'quiz__sleep_challenge__' %}
+      {% assign sleep_challenge_value = tag_stripped | remove_first: 'quiz__sleep_challenge__' | replace: '_', ' ' | capitalize | replace: '"', '' %}
+    {% endif %}
+    {% if tag_stripped contains 'quiz__sleep_goal__' %}
+      {% assign sleep_goal_value = tag_stripped | remove_first: 'quiz__sleep_goal__' | replace: '_', ' ' | capitalize | replace: '"', '' %}
+    {% endif %}
+    {% if tag_stripped contains 'quiz__sleep_temperature__' %}
+      {% assign sleep_temperature_value = tag_stripped | remove_first: 'quiz__sleep_temperature__' | replace: '_', ' ' | capitalize | replace: '"', '' %}
+    {% endif %}
   {% endfor %}
 {% endif %}
 {% assign quiz_product_handle = '' %}
@@ -36,18 +59,21 @@
   {% assign quiz_product_handle = quiz_product_handle_by_id %}
 {% endif %}
 
-{% assign heading_text = section.settings.heading | default: "Here's why the [recommended] pillow is best for [side] sleepers." %}
 {% if quiz_product_name_raw != '' %}
   {% assign recommended_name = quiz_product_name_raw | replace: '_', ' ' | capitalize | replace: '"', '' %}
 {% else %}
   {% assign recommended_name = product.title | default: 'this' %}
 {% endif %}
 
+{% assign heading_text = section.settings.heading | default: "Here's why the [recommended] pillow is best for [side] sleepers." %}
 {% assign heading_text = heading_text | replace: '[recommended]', recommended_name %}
-{% if sleep_position_value != '' %}
-  {% assign sleep_position_value = sleep_position_value | replace: '"', '' | capitalize %}
-  {% assign heading_text = heading_text | replace: '[side]', sleep_position_value %}
-{% endif %}
+{% assign heading_text = heading_text | replace: '[side]', sleep_position_value %}
+{% assign heading_text = heading_text | replace: '[body_frame]', body_frame_value %}
+{% assign heading_text = heading_text | replace: '[pillow_feel]', pillow_feel_value %}
+{% assign heading_text = heading_text | replace: '[pillow_support]', pillow_support_value %}
+{% assign heading_text = heading_text | replace: '[sleep_challenge]', sleep_challenge_value %}
+{% assign heading_text = heading_text | replace: '[sleep_goal]', sleep_goal_value %}
+{% assign heading_text = heading_text | replace: '[sleep_temperature]', sleep_temperature_value %}
 <style>
 .card__buttons a{
     background-color: #e3530f;
@@ -86,6 +112,12 @@
   data-heading-raw="{{ section.settings.heading | escape }}"
   data-placeholder-recommended="{{ recommended_name | escape }}"
   data-placeholder-side="{{ sleep_position_value | escape }}"
+  data-placeholder-body-frame="{{ body_frame_value | escape }}"
+  data-placeholder-pillow-feel="{{ pillow_feel_value | escape }}"
+  data-placeholder-pillow-support="{{ pillow_support_value | escape }}"
+  data-placeholder-sleep-challenge="{{ sleep_challenge_value | escape }}"
+  data-placeholder-sleep-goal="{{ sleep_goal_value | escape }}"
+  data-placeholder-sleep-temperature="{{ sleep_temperature_value | escape }}"
   data-quiz-product-name="{{ quiz_product_name_raw | replace: '_', ' ' | capitalize | replace: '"', '' }}"
   data-quiz-product-handle="{{ quiz_product_handle | replace: '"', ''}}"
   data-customer-logged-in="{% if customer %}true{% else %}false{% endif %}">
@@ -110,49 +142,64 @@
   var el = document.getElementById('s--' + sectionId);
   if (!el) return;
   var raw = el.getAttribute('data-heading-raw');
-  var recommended = el.getAttribute('data-placeholder-recommended') || '';
-  var sideFromLiquid = el.getAttribute('data-placeholder-side') || '';
   var quizProductName = el.getAttribute('data-quiz-product-name') || '';
   var quizProductHandle = el.getAttribute('data-quiz-product-handle') || '';
   var isLoggedIn = el.getAttribute('data-customer-logged-in') === 'true';
   var headingEl = el.querySelector('.heading-tag');
   var productContainer = el.querySelector('.recommended-cartfull__product');
 
+  /** Same variable names for admin; sources: logged-in = customer tags, guest = localStorage session */
+  var placeholderKeys = ['recommended', 'side', 'body_frame', 'pillow_feel', 'pillow_support', 'sleep_challenge', 'sleep_goal', 'sleep_temperature'];
+
+  function getPlaceholdersFromElement() {
+    var m = {};
+    placeholderKeys.forEach(function(key) {
+      var attr = 'data-placeholder-' + key.replace(/_/g, '-');
+      var val = el.getAttribute(attr) || '';
+      m[key] = val;
+    });
+    if (quizProductName) m.recommended = quizProductName;
+    if (!m.recommended) m.recommended = el.getAttribute('data-placeholder-recommended') || 'this';
+    return m;
+  }
+
+  function formatPrefValue(str) {
+    if (!str || typeof str !== 'string') return '';
+    return str.replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+  }
+
+  function getPlaceholdersFromSession() {
+    var placeholders = getPlaceholdersFromElement();
+    var sessionData = localStorage.getItem('cartful_complete_sessions');
+    if (!sessionData) return placeholders;
+    try {
+      var data = JSON.parse(sessionData);
+      if (data && data.productName) placeholders.recommended = data.productName;
+      var prefs = (data && data.shopperPreferences) || {};
+      for (var q in prefs) {
+        var qLower = q.toLowerCase();
+        var val = formatPrefValue(prefs[q] || '');
+        if (qLower.indexOf('sleep position') !== -1 || qLower.indexOf('go-to sleep position') !== -1) placeholders.side = val;
+        else if (qLower.indexOf('sleep goal') !== -1 || qLower.indexOf('primary sleep goal') !== -1) placeholders.sleep_goal = val;
+        else if (qLower.indexOf('sleep challenge') !== -1) placeholders.sleep_challenge = val;
+        else if (qLower.indexOf('body frame') !== -1) placeholders.body_frame = val;
+        else if (qLower.indexOf('sleep hot') !== -1 || qLower.indexOf('hot or cold') !== -1 || qLower.indexOf('temperature') !== -1) placeholders.sleep_temperature = val;
+        else if (qLower.indexOf('pillow to feel') !== -1 || qLower.indexOf('pillow feel') !== -1) placeholders.pillow_feel = val;
+        else if (qLower.indexOf('support') !== -1 && qLower.indexOf('head') !== -1) placeholders.pillow_support = val;
+      }
+    } catch (e) {}
+    return placeholders;
+  }
+
   function applyPlaceholders() {
     if (!headingEl || !raw) return;
-
-    var recommendedFinal;
-    var sideFinal;
-
-    if (isLoggedIn) {
-      // Logged-in: use only customer tag data (data-quiz-product-name, data-placeholder-side from quiz__sleep_position__*)
-      recommendedFinal = quizProductName || recommended || 'this';
-      sideFinal = sideFromLiquid || '';
-    } else {
-      // Guest: use session (Cartful) then fallbacks
-      var sessionData = localStorage.getItem('cartful_complete_sessions');
-      var sideFromSession = '';
-      var recommendedFromSession = '';
-      if (sessionData) {
-        try {
-          var data = JSON.parse(sessionData);
-          if (data && data.productName) recommendedFromSession = data.productName;
-          var prefs = (data && data.shopperPreferences) || {};
-          for (var q in prefs) {
-            if (q.toLowerCase().indexOf('sleep position') !== -1) {
-              sideFromSession = (prefs[q] || '').replace(/_/g, ' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
-              break;
-            }
-          }
-        } catch (e) {}
-      }
-      recommendedFinal = quizProductName || recommendedFromSession || recommended || 'this';
-      sideFinal = sideFromLiquid || sideFromSession || '';
-    }
-
-    headingEl.textContent = raw
-      .replace(/\[recommended\]/g, recommendedFinal)
-      .replace(/\[side\]/g, sideFinal);
+    var placeholders = isLoggedIn ? getPlaceholdersFromElement() : getPlaceholdersFromSession();
+    var text = raw;
+    placeholderKeys.forEach(function(key) {
+      var re = new RegExp('\\[' + key + '\\]', 'g');
+      text = text.replace(re, placeholders[key] || '');
+    });
+    headingEl.textContent = text;
   }
 
   function productNameToHandle(name) {
@@ -309,6 +356,11 @@
       "content": "Content"
     },
     {
+      "type": "paragraph",
+      "content": "Use these variables in your heading text. Same names for all customers; data comes from customer tags when logged in, and from the Cartful browser session when logged out."
+    },
+
+    {
       "type": "text",
       "id": "subheading",
       "label": "Subheading",
@@ -320,7 +372,10 @@
       "id": "heading",
       "label": "Heading",
       "default": "Here's why the [recommended] pillow is best for [side] sleepers.",
-      "info": "Use [recommended] for the product name and [side] for sleep position (e.g. Side, Back, Stomach). These are filled from Cartful or customer profile."
+    },
+    {
+      "type": "paragraph",
+      "content": "[recommended] — Quiz recommended product name | [side] — Sleep position | [body_frame] — Body frame | [pillow_feel] — Pillow feel | [pillow_support] — Support/loft | [sleep_challenge] — Sleep challenge | [sleep_goal] — Sleep goal | [sleep_temperature] — Sleep temp"
     },
     {
       "type": "select",
